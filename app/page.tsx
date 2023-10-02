@@ -1,6 +1,6 @@
 "use client"
 
-import Image from 'next/image'
+import Image from "next/image";
 import React from "react";
 import {Separator} from "@/components/ui/separator";
 import {Button} from "@/components/ui/button";
@@ -73,8 +73,7 @@ export default function Home() {
                     <Separator></Separator>
 
                     <div className={"pt-8"}>
-                        I have nearly two years experience using OpenAI's large language models in projects with the completions API, starting in late 2021 with the release of GPT-3. Since then I have prototyped complex applications that leverage function calling for sophisticated LLM driven automation.
-                    </div>
+                        I have nearly two years of experience using OpenAI&apos;s large language models in projects with the completions API, starting in late 2021 with the release of GPT-3. Since then I have prototyped complex applications that leverage function calling for sophisticated LLM driven automation.                    </div>
                 </CardContent>
                 {/*<CardFooter>*/}
                 {/*    <p>Card Footer</p>*/}
@@ -141,7 +140,7 @@ export default function Home() {
                     <CardHeader>
                         <CardTitle>LU GPT</CardTitle>
                         <CardDescription>An AI chat-bot designed to help new and perspective Liberty University student learn more about the university, answer their questions and guide them around the website in a familiar ChatGPT style interface.</CardDescription>
-                        <CardDescription>This project uses data scraped from the Liberty University webpage alongside a vector database. It is build on top of OpenAI's api, and makes use of function calling. It has a front-end written using ReactJS, and a backend built with django.</CardDescription>
+                        <CardDescription>This project uses data scraped from the Liberty University webpage alongside a vector database. It is built on top of OpenAI&apos;s api, and makes use of function calling. It has a front-end written using ReactJS, and a backend built with django.</CardDescription>
                     </CardHeader>
                     <CardContent className={"grid grid-rows-1 grid-cols-5"}>
 
@@ -204,7 +203,7 @@ export default function Home() {
                     <CardHeader>
                         <CardTitle>MathGPT / SnapSolve</CardTitle>
                         <CardDescription>An AI powered replacement for photo-math, allowing users to get much more in depth answers with interactive explanations in a chat-bot style fashion while also being able to tackle difficult word problems that other tools cannot.</CardDescription>
-                        <CardDescription>This project uses MathPix OCR to read problems, and uses wolfram alpha for a step by step guide on how to answer. It then uses OpenAI's GPT-4 to wrap the answer in a human friendly manner, explaining all the steps.</CardDescription>
+                        <CardDescription>This project uses MathPix OCR to read problems, and uses wolfram alpha for a step by step guide on how to answer. It then uses OpenAI&apos;s GPT-4 to wrap the answer in a human friendly manner, explaining all the steps.</CardDescription>
                     </CardHeader>
 
                     <CardContent className={"grid grid-rows-1 grid-cols-5 flex flex-col"}>
