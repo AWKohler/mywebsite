@@ -36,27 +36,19 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className={"grid grid-rows-1 grid-cols-5 gap-2"}>
 
-                    {/*<div className={"relative xs:h-8 sm:h-10 md:h-16 lg:h-20 xs:w-8 sm:w-10 md:w-16 lg:w-20"}>*/}
-                    {/*<div className={"relative xs:h-8 sm:h-10 md:h-16 lg:h-20 xs:w-8 sm:w-10 md:w-16 lg:w-20"}>*/}
                     <div className={"relative flex p-0.5"}>
-                        {/*<Image className={""} fill src={"/web/react-2.svg"} alt={"react"}></Image>*/}
                         <img className={"flex justify-self-center"} src={"/web/react-2.svg"} alt={"react"}></img>
                     </div>
                     <div className={"relative flex p-0.5"}>
-                        {/*<Image className={""} fill src={"/web/logo-javascript.svg"} alt={"JS"}></Image>*/}
                         <img className={"flex justify-self-center"} src={"/web/logo-javascript.svg"} alt={"JS"}></img>
                     </div>
                     <div className={"relative flex p-0.5"}>
-                        {/*<Image className={""} fill src={"/web/css-3.svg"} alt={"css"}></Image>*/}
                         <img className={"flex justify-self-center"} src={"/web/css-3.svg"} alt={"css"}></img>
                     </div>
-                    {/*<div className={"relative p-0.5 s\m:mt-3 sm:mt-3 md:mt-5 lg: mt-7"}>*/}
                     <div className={"relative flex p-0.5"}>
-                        {/*<Image className={""} fill src={"/web/tailwindcss.svg"} alt={"tailwind"}></Image>*/}
                         <img className={"flex justify-self-center"} src={"/web/tailwindcss.svg"} alt={"tailwind"}></img>
                     </div>
                     <div className={"relative flex p-0.5"}>
-                        {/*<Image className={""} fill src={"/web/typescript.svg"} alt={"TS"}></Image>*/}
                         <img className={"flex justify-self-center"} src={"/web/typescript.svg"} alt={"TS"}></img>
                     </div>
 
@@ -71,19 +63,26 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className={""}>
 
-                    <div className={"grid grid-rows-1 grid-cols-6"}>
-                        <div className={"relative col-start-1 col-span-1 h-20 w-20"}>
-                            <Image fill src={"/ai/openai-white.svg"} alt={"openai"}></Image>
-                        </div>
+                    <div className={"grid grid-rows-1 grid-cols-5"}>
+                        {/*<div className={"relative col-start-1 col-span-1 h-20 w-20"}>*/}
+                        {/*    <Image fill src={"/ai/openai-white.svg"} alt={"openai"}></Image>*/}
+                        {/*</div>*/}
 
-                        <div className={"relative col-start-2 col-span-1 w-32 h-32 -mt-5"}>
-                            <Image fill src={"/ai/LangChain_Logo-1.png"} alt={"langchain"}></Image>
+                        {/*<div className={"relative col-start-2 col-span-1 w-32 h-32 -mt-5"}>*/}
+                        {/*    <Image fill src={"/ai/LangChain_Logo-1.png"} alt={"langchain"}></Image>*/}
+                        {/*</div>*/}
+
+                        <div className={"relative flex p-0.5"}>
+                            <img className={"flex justify-self-center"} src={"/ai/openai-white.svg"} alt={"openai"}></img>
+                        </div>
+                        <div className={"relative scale-150"}>
+                            <img className={"flex justify-self-center ml-10"} src={"/ai/LangChain_Logo-1.png"} alt={"langchain"}></img>
                         </div>
                     </div>
 
-                    <Separator></Separator>
+                    <Separator className={"relative mt-4"}></Separator>
 
-                    <div className={"pt-8"}>
+                    <div className={"pt-6"}>
                         I have nearly two years of experience using OpenAI&apos;s large language models in projects with the completions API, starting in late 2021 with the release of GPT-3. Since then I have prototyped complex applications that leverage function calling for sophisticated LLM driven automation.                    </div>
                 </CardContent>
                 {/*<CardFooter>*/}
@@ -97,13 +96,13 @@ export default function Home() {
                     <CardTitle>Mobile</CardTitle>
                     {/*<CardDescription>Card Description</CardDescription>*/}
                 </CardHeader>
-                <CardContent className={"grid grid-rows-1 grid-cols-5"}>
+                <CardContent className={"grid grid-rows-1 grid-cols-5 gap-2"}>
 
-                    <div className={"relative h-20 w-20"}>
-                        <Image className={""} fill src={"/mobile/react-native-1.svg"} alt={"react-native"}></Image>
+                    <div className={"relative flex p-0.5"}>
+                        <img className={"flex justify-self-center"} src={"/mobile/react-native-1.svg"} alt={"react-native"}></img>
                     </div>
-                    <div className={"relative h-20 w-20"}>
-                        <Image className={""} fill src={"/mobile/expo-1.svg"} alt={"expo"}></Image>
+                    <div className={"relative flex p-0.5"}>
+                        <img className={"flex justify-self-center"} src={"/mobile/expo-1.svg"} alt={"expo"}></img>
                     </div>
 
                 </CardContent>
