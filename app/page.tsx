@@ -11,13 +11,15 @@ import AboutMe from "@/components/page/aboutMe";
 export default function Home() {
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center">
+    <main className="flex min-h-screen flex-col items-center justify-center overflow-x-clip">
 
         <Hero></Hero>
 
-        <div className={"grid grid-rows-3 grid-cols-2 gap-4 w-3/4 mb-32 py-8"}>
+        {/*<div className={"grid grid-rows-3 grid-cols-2 gap-4 w-3/4 mb-32 py-8"}>*/}
+        <div className={"grid grid-rows-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 max-w-[1400px] mb-32 p-8"}>
 
-            <Card className={"row-start-1 col-span-1 row-span-1 sticky top-80 justify-center items-center"}>
+            {/*<Card className={"row-start-1 col-span-1 row-span-1 sticky top-80 justify-center items-center"}>*/}
+            <Card className={"sm:relative md:relative lg:sticky lg:top-80 row-start-1 col-start-1 col-span-1 row-span-1 justify-center items-center"}>
                 <CardHeader className={"h-fit"}>
                     <CardTitle className={"text-xl"}>Hi, my name is Aronne. Here are some of the technologies I have experience with</CardTitle>
                 </CardHeader>
@@ -28,32 +30,41 @@ export default function Home() {
             </Card>
 
 
-            <Card className={"col-start-2 row-span-1"}>
+            <Card className={"sm:col-start-1 sm:row-start-2 md:col-start-1 md:row-start-2 lg:col-start-2 lg:row-start-1"}>
                 <CardHeader>
                     <CardTitle>Web</CardTitle>
                 </CardHeader>
-                <CardContent className={"grid grid-rows-1 grid-cols-5"}>
+                <CardContent className={"grid grid-rows-1 grid-cols-5 gap-2"}>
 
-                    <div className={"relative h-20 w-20"}>
-                        <Image className={""} fill src={"/web/react-2.svg"} alt={"react"}></Image>
+                    {/*<div className={"relative xs:h-8 sm:h-10 md:h-16 lg:h-20 xs:w-8 sm:w-10 md:w-16 lg:w-20"}>*/}
+                    {/*<div className={"relative xs:h-8 sm:h-10 md:h-16 lg:h-20 xs:w-8 sm:w-10 md:w-16 lg:w-20"}>*/}
+                    <div className={"relative flex p-0.5"}>
+                        {/*<Image className={""} fill src={"/web/react-2.svg"} alt={"react"}></Image>*/}
+                        <img className={"flex justify-self-center"} src={"/web/react-2.svg"} alt={"react"}></img>
                     </div>
-                    <div className={"relative h-20 w-20"}>
-                        <Image className={""} fill src={"/web/logo-javascript.svg"} alt={"JS"}></Image>
+                    <div className={"relative flex p-0.5"}>
+                        {/*<Image className={""} fill src={"/web/logo-javascript.svg"} alt={"JS"}></Image>*/}
+                        <img className={"flex justify-self-center"} src={"/web/logo-javascript.svg"} alt={"JS"}></img>
                     </div>
-                    <div className={"relative h-20 w-20"}>
-                        <Image className={""} fill src={"/web/css-3.svg"} alt={"css"}></Image>
+                    <div className={"relative flex p-0.5"}>
+                        {/*<Image className={""} fill src={"/web/css-3.svg"} alt={"css"}></Image>*/}
+                        <img className={"flex justify-self-center"} src={"/web/css-3.svg"} alt={"css"}></img>
                     </div>
-                    <div className={"relative h-20 w-20"}>
-                        <Image className={""} fill src={"/web/tailwindcss.svg"} alt={"tailwind"}></Image>
+                    {/*<div className={"relative p-0.5 s\m:mt-3 sm:mt-3 md:mt-5 lg: mt-7"}>*/}
+                    <div className={"relative flex p-0.5"}>
+                        {/*<Image className={""} fill src={"/web/tailwindcss.svg"} alt={"tailwind"}></Image>*/}
+                        <img className={"flex justify-self-center"} src={"/web/tailwindcss.svg"} alt={"tailwind"}></img>
                     </div>
-                    <div className={"relative h-20 w-20"}>
-                        <Image className={""} fill src={"/web/typescript.svg"} alt={"TS"}></Image>
+                    <div className={"relative flex p-0.5"}>
+                        {/*<Image className={""} fill src={"/web/typescript.svg"} alt={"TS"}></Image>*/}
+                        <img className={"flex justify-self-center"} src={"/web/typescript.svg"} alt={"TS"}></img>
                     </div>
 
                 </CardContent>
             </Card>
 
-            <Card className={"col-span-1 col-start-2 row-start-2 row-span-2"}>
+            {/*<Card className={"col-span-1 col-start-2 row-start-2 row-span-2"}>*/}
+            <Card className={"sm:col-start-1 sm:row-start-3 md:col-start-1 md:row-start-3 lg:col-start-2 lg:row-start-2"}>
                 <CardHeader>
                     <CardTitle>AI</CardTitle>
                     {/*<CardDescription>I have experience with</CardDescription>*/}
@@ -80,7 +91,8 @@ export default function Home() {
                 {/*</CardFooter>*/}
             </Card>
 
-            <Card className={"col-start-2 row-span-1"}>
+            {/*<Card className={"col-start-2 row-span-1"}>*/}
+            <Card className={"sm:col-start-1 md:col-start-1 lg:col-start-2"}>
                 <CardHeader>
                     <CardTitle>Mobile</CardTitle>
                     {/*<CardDescription>Card Description</CardDescription>*/}
