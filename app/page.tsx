@@ -113,7 +113,7 @@ export default function Home() {
         <AboutMe></AboutMe>
 
 
-        <section className="flex flex-col w-full py-10 md:py-16 lg:py-22 xl:py-32 justify-center items-center">
+        <section className="flex flex-col w-full py-10 sm:hidden md:visible md:py-16 lg:py-22 xl:py-32 justify-center items-center">
             <div className={"font-bold text-5xl"}>
                 Projects
             </div>
