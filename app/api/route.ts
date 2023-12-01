@@ -1,8 +1,9 @@
-import { redirect } from 'next/navigation';
+// import fetch from 'node-fetch';
 
-// export const runtime = 'edge';
+export default async (req, res) => {
+    const response = await fetch('https://raw.githubusercontent.com/AWKohler/test-resources/main/embedai.js');
+    const scriptContent = await response.text();
 
-export async function GET(request: Request) {
-    // redirect('https://nextjs.org/');
-    redirect('https://raw.githubusercontent.com/AWKohler/test-resources/main/embedai.js');
-}
+    res.setHeader('Content-Type', 'application/javascript');
+    res.send(scriptContent);
+};
