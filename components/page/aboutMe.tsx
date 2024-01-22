@@ -21,12 +21,13 @@ export default function AboutMe() {
 
     return (
         <section className="flex flex-col w-full py-12 md:py-24 lg:py-32 xl:py-48 rounded-3xl bg-card justify-center items-center">
-            <div className={"w-3/4 flex grid grid-rows-1 grid-cols-2"}>
-                <div className={"relative h-96 w-96 rounded-full bg-primary ml-52"}>
-                    <Image className={"rounded-full border-secondary border-2"} fill src={"/pfp.png"} alt={"Profile"}></Image>
+            <div className={"w-3/4 flex flex-row"}>
+                <div className={"p-16"}>
+                    {/*<Image className={"rounded-full border-secondary border-2"} fill src={"/pfp.png"} alt={"Profile"}></Image>*/}
+                    <img className={"rounded-full border-secondary border-2"} src={"/pfp.png"} alt={"Profile"}></img>
                 </div>
 
-                <div className={""}>
+                <div className={"grid grid-rows-1 grid-cols-1"}>
                     <div className={"flex flex-row p-6"}>
                         <MapPin className={"mt-1"} />
                         <div className={"font-bold text-2xl ml-2"}>

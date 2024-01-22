@@ -83,7 +83,7 @@ export default function Home() {
                     <Separator className={"relative mt-4"}></Separator>
 
                     <div className={"pt-6"}>
-                        I have nearly two years of experience using OpenAI&apos;s large language models in projects with the completions API, starting in late 2021 with the release of GPT-3. Since then I have prototyped complex applications that leverage function calling for sophisticated LLM driven automation.                    </div>
+                        I have over two years of experience using OpenAI&apos;s large language models in projects with the completions API, starting in late 2021 with the release of GPT-3. Since then I have prototyped complex applications that leverage function calling for sophisticated LLM driven automation.                    </div>
                 </CardContent>
                 {/*<CardFooter>*/}
                 {/*    <p>Card Footer</p>*/}
@@ -113,141 +113,141 @@ export default function Home() {
         <AboutMe></AboutMe>
 
 
-        <section className="flex flex-col w-full py-10 sm:hidden md:visible md:py-16 lg:py-22 xl:py-32 justify-center items-center">
-            <div className={"font-bold text-5xl"}>
-                Projects
-            </div>
-            <div className={"grid grid-cols-2 grid-rows-1 py-16 gap-8 w-2/3"}>
+        {/*<section className="flex flex-col w-full py-10 sm:hidden md:visible md:py-16 lg:py-22 xl:py-32 justify-center items-center">*/}
+        {/*    <div className={"font-bold text-5xl"}>*/}
+        {/*        Projects*/}
+        {/*    </div>*/}
+        {/*    <div className={"grid grid-cols-2 grid-rows-1 py-16 gap-8 w-2/3"}>*/}
 
-                <Card className={"flex flex-col col-start-1 row-start-1 col-span-1 row-span-1"}>
-                    <CardHeader>
-                        <CardTitle>Veer phase 1</CardTitle>
-                        <CardDescription>An app concept by Brandon Lucaci designed to help curb addiction to social media, and redirect users to productive activities.</CardDescription>
-                        {/*<CardDescription>Veer was developed in collaboration with Kyle Wells for Brandon</CardDescription>*/}
-                    </CardHeader>
-                    <CardContent className={"grid grid-rows-1 grid-cols-5"}>
+        {/*        <Card className={"flex flex-col col-start-1 row-start-1 col-span-1 row-span-1"}>*/}
+        {/*            <CardHeader>*/}
+        {/*                <CardTitle>Veer phase 1</CardTitle>*/}
+        {/*                <CardDescription>An app concept by Brandon Lucaci designed to help curb addiction to social media, and redirect users to productive activities.</CardDescription>*/}
+        {/*                /!*<CardDescription>Veer was developed in collaboration with Kyle Wells for Brandon</CardDescription>*!/*/}
+        {/*            </CardHeader>*/}
+        {/*            <CardContent className={"grid grid-rows-1 grid-cols-5"}>*/}
 
-                        <div className={"relative h-60 w-32"}>
-                            <Image className={"rounded-2xl"} fill src={"/veer/veer_home.png"} alt={"veer"}></Image>
-                        </div>
+        {/*                <div className={"relative h-60 w-32"}>*/}
+        {/*                    <Image className={"rounded-2xl"} fill src={"/veer/veer_home.png"} alt={"veer"}></Image>*/}
+        {/*                </div>*/}
 
-                        <div className={"relative h-60 w-32 -ml-3.5 mt-4"}>
-                            <Image className={"rounded-2xl"} fill src={"/veer/veer_selector.png"} alt={"veer"}></Image>
-                        </div>
+        {/*                <div className={"relative h-60 w-32 -ml-3.5 mt-4"}>*/}
+        {/*                    <Image className={"rounded-2xl"} fill src={"/veer/veer_selector.png"} alt={"veer"}></Image>*/}
+        {/*                </div>*/}
 
-                    </CardContent>
+        {/*            </CardContent>*/}
 
-                    <CardFooter>
-                        <p>Veer was developed in collaboration with Kyle Wells for Brandon Lucaci</p>
-                    </CardFooter>
-                </Card>
+        {/*            <CardFooter>*/}
+        {/*                <p>Veer was developed in collaboration with Kyle Wells for Brandon Lucaci</p>*/}
+        {/*            </CardFooter>*/}
+        {/*        </Card>*/}
 
-                <div className={"flex flex-col col-start-2 row-start-1 col-span-1 row-span-1 items-center justify-center font-bold"}>
-                    <div className={"text-xl"}>Status:</div>
-                    <div className={"text-5xl text-primary"}>Completed</div>
-                </div>
+        {/*        <div className={"flex flex-col col-start-2 row-start-1 col-span-1 row-span-1 items-center justify-center font-bold"}>*/}
+        {/*            <div className={"text-xl"}>Status:</div>*/}
+        {/*            <div className={"text-5xl text-primary"}>Completed</div>*/}
+        {/*        </div>*/}
 
-                <Card className={"flex flex-col col-start-1 row-start-2 col-span-1 row-span-1"}>
-                    <CardHeader>
-                        <CardTitle>LU GPT</CardTitle>
-                        <CardDescription>An AI chat-bot designed to help new and perspective Liberty University student learn more about the university, answer their questions and guide them around the website in a familiar ChatGPT style interface.</CardDescription>
-                        <CardDescription>This project uses data scraped from the Liberty University webpage alongside a vector database. It is built on top of OpenAI&apos;s api, and makes use of function calling. It has a front-end written using ReactJS, and a backend built with django.</CardDescription>
-                    </CardHeader>
-                    <CardContent className={"grid grid-rows-1 grid-cols-5"}>
-
-
-                    </CardContent>
-
-                    <CardFooter>
-                        <p>This project is nearly completed</p>
-                    </CardFooter>
-                </Card>
-
-                <div className={"flex flex-col col-start-2 row-start-2 col-span-1 row-span-1 items-center justify-center font-bold"}>
-                    <div className={"text-xl"}>Status:</div>
-                    <div className={"text-5xl text-green-500"}>In development</div>
-                </div>
-
-                <Card className={"flex flex-col col-start-1 row-start-3 col-span-1 row-span-1"}>
-                    <CardHeader>
-                        <CardTitle>Unnamed SAAS</CardTitle>
-                        <CardDescription>A SAAS platform allowing for the automated creation of website OpenAI powered chat-bots for any website</CardDescription>
-                        <CardDescription>This project will use web scraping tools to automatically gather data to feed to a vector database. Allowing for those with limited expertise to leverage the latest AI advancements to create a better web experience.</CardDescription>
-                    </CardHeader>
-                    <CardContent className={"grid grid-rows-1 grid-cols-5"}>
-
-                        <div className={"relative h-32 w-60"}>
-                            <Image className={"rounded-2xl border-secondary border-2"} fill src={"/saas.png"} alt={"saas"}></Image>
-                        </div>
+        {/*        <Card className={"flex flex-col col-start-1 row-start-2 col-span-1 row-span-1"}>*/}
+        {/*            <CardHeader>*/}
+        {/*                <CardTitle>LU GPT</CardTitle>*/}
+        {/*                <CardDescription>An AI chat-bot designed to help new and perspective Liberty University student learn more about the university, answer their questions and guide them around the website in a familiar ChatGPT style interface.</CardDescription>*/}
+        {/*                <CardDescription>This project uses data scraped from the Liberty University webpage alongside a vector database. It is built on top of OpenAI&apos;s api, and makes use of function calling. It has a front-end written using ReactJS, and a backend built with django.</CardDescription>*/}
+        {/*            </CardHeader>*/}
+        {/*            <CardContent className={"grid grid-rows-1 grid-cols-5"}>*/}
 
 
-                    </CardContent>
-                </Card>
+        {/*            </CardContent>*/}
 
-                <div className={"flex flex-col col-start-2 row-start-3 col-span-1 row-span-1 items-center justify-center font-bold"}>
-                    <div className={"text-xl"}>Status:</div>
-                    <div className={"text-5xl text-green-500"}>In development</div>
-                </div>
+        {/*            <CardFooter>*/}
+        {/*                <p>This project is nearly completed</p>*/}
+        {/*            </CardFooter>*/}
+        {/*        </Card>*/}
 
-                <Card className={"flex flex-col col-start-1 row-start-4 col-span-1 row-span-1"}>
-                    <CardHeader>
-                        <CardTitle>Personal Website</CardTitle>
-                        <CardDescription>A Personal website detailing my skills, providing contact info, and showcasing my projects</CardDescription>
-                        <CardDescription>This website was written in ReactJS with typescript, tailwind CSS, and ShadCN UI. It is deployed on Vercel.</CardDescription>
-                    </CardHeader>
-                    <CardContent className={"grid grid-rows-1 grid-cols-5"}>
+        {/*        <div className={"flex flex-col col-start-2 row-start-2 col-span-1 row-span-1 items-center justify-center font-bold"}>*/}
+        {/*            <div className={"text-xl"}>Status:</div>*/}
+        {/*            <div className={"text-5xl text-green-500"}>In development</div>*/}
+        {/*        </div>*/}
 
-                        <div className={"relative h-32 w-60"}>
-                            <Image className={"rounded-2xl border-secondary border-2"} fill src={"/website.png"} alt={"website"}></Image>
-                        </div>
+        {/*        <Card className={"flex flex-col col-start-1 row-start-3 col-span-1 row-span-1"}>*/}
+        {/*            <CardHeader>*/}
+        {/*                <CardTitle>Unnamed SAAS</CardTitle>*/}
+        {/*                <CardDescription>A SAAS platform allowing for the automated creation of website OpenAI powered chat-bots for any website</CardDescription>*/}
+        {/*                <CardDescription>This project will use web scraping tools to automatically gather data to feed to a vector database. Allowing for those with limited expertise to leverage the latest AI advancements to create a better web experience.</CardDescription>*/}
+        {/*            </CardHeader>*/}
+        {/*            <CardContent className={"grid grid-rows-1 grid-cols-5"}>*/}
 
-
-                    </CardContent>
-                </Card>
-
-                <div className={"flex flex-col col-start-2 row-start-4 col-span-1 row-span-1 items-center justify-center font-bold"}>
-                    <div className={"text-xl"}>Status:</div>
-                    <div className={"text-5xl text-primary"}>Completed</div>
-                </div>
-
-                <Card className={"flex flex-col col-start-1 row-start-5 col-span-1 row-span-1"}>
-                    <CardHeader>
-                        <CardTitle>MathGPT / SnapSolve</CardTitle>
-                        <CardDescription>An AI powered replacement for photo-math, allowing users to get much more in depth answers with interactive explanations in a chat-bot style fashion while also being able to tackle difficult word problems that other tools cannot.</CardDescription>
-                        <CardDescription>This project uses MathPix OCR to read problems, and uses wolfram alpha for a step by step guide on how to answer. It then uses OpenAI&apos;s GPT-4 to wrap the answer in a human friendly manner, explaining all the steps.</CardDescription>
-                    </CardHeader>
-
-                    <CardContent className={"grid grid-rows-1 grid-cols-5 flex flex-col"}>
-
-                        <div className={"mb-3"}>
-                            Mockups (no app was made)
-                        </div>
-
-                        <div className={"flex flex-row"}>
-                            <div className={"relative h-60 w-28"}>
-                                <Image className={"rounded-2xl border-secondary border-2"} fill src={"/mathgpt/mathGPT-1.png"} alt={"mgpt-1"}></Image>
-                            </div>
-                            <div className={"relative h-60 w-28"}>
-                                <Image className={"rounded-2xl border-secondary border-2"} fill src={"/mathgpt/mathGPT-2.png"} alt={"mgpt-1"}></Image>
-                            </div>
-                        </div>
+        {/*                <div className={"relative h-32 w-60"}>*/}
+        {/*                    <Image className={"rounded-2xl border-secondary border-2"} fill src={"/saas.png"} alt={"saas"}></Image>*/}
+        {/*                </div>*/}
 
 
+        {/*            </CardContent>*/}
+        {/*        </Card>*/}
+
+        {/*        <div className={"flex flex-col col-start-2 row-start-3 col-span-1 row-span-1 items-center justify-center font-bold"}>*/}
+        {/*            <div className={"text-xl"}>Status:</div>*/}
+        {/*            <div className={"text-5xl text-green-500"}>In development</div>*/}
+        {/*        </div>*/}
+
+        {/*        <Card className={"flex flex-col col-start-1 row-start-4 col-span-1 row-span-1"}>*/}
+        {/*            <CardHeader>*/}
+        {/*                <CardTitle>Personal Website</CardTitle>*/}
+        {/*                <CardDescription>A Personal website detailing my skills, providing contact info, and showcasing my projects</CardDescription>*/}
+        {/*                <CardDescription>This website was written in ReactJS with typescript, tailwind CSS, and ShadCN UI. It is deployed on Vercel.</CardDescription>*/}
+        {/*            </CardHeader>*/}
+        {/*            <CardContent className={"grid grid-rows-1 grid-cols-5"}>*/}
+
+        {/*                <div className={"relative h-32 w-60"}>*/}
+        {/*                    <Image className={"rounded-2xl border-secondary border-2"} fill src={"/website.png"} alt={"website"}></Image>*/}
+        {/*                </div>*/}
 
 
-                    </CardContent>
-                    <CardFooter>
-                        <p>This project was deemed too uneconomical and slow due to the many paid apis at play, and the requirement of the expensive GPT-4. A web version may still be completed as a proof on concept.</p>
-                    </CardFooter>
-                </Card>
+        {/*            </CardContent>*/}
+        {/*        </Card>*/}
 
-                <div className={"flex flex-col col-start-2 row-start-5 col-span-1 row-span-1 items-center justify-center font-bold"}>
-                    <div className={"text-xl"}>Status:</div>
-                    <div className={"text-5xl text-gray-500"}>On hold</div>
-                </div>
+        {/*        <div className={"flex flex-col col-start-2 row-start-4 col-span-1 row-span-1 items-center justify-center font-bold"}>*/}
+        {/*            <div className={"text-xl"}>Status:</div>*/}
+        {/*            <div className={"text-5xl text-primary"}>Completed</div>*/}
+        {/*        </div>*/}
 
-            </div>
-        </section>
+        {/*        <Card className={"flex flex-col col-start-1 row-start-5 col-span-1 row-span-1"}>*/}
+        {/*            <CardHeader>*/}
+        {/*                <CardTitle>MathGPT / SnapSolve</CardTitle>*/}
+        {/*                <CardDescription>An AI powered replacement for photo-math, allowing users to get much more in depth answers with interactive explanations in a chat-bot style fashion while also being able to tackle difficult word problems that other tools cannot.</CardDescription>*/}
+        {/*                <CardDescription>This project uses MathPix OCR to read problems, and uses wolfram alpha for a step by step guide on how to answer. It then uses OpenAI&apos;s GPT-4 to wrap the answer in a human friendly manner, explaining all the steps.</CardDescription>*/}
+        {/*            </CardHeader>*/}
+
+        {/*            <CardContent className={"grid grid-rows-1 grid-cols-5 flex flex-col"}>*/}
+
+        {/*                <div className={"mb-3"}>*/}
+        {/*                    Mockups (no app was made)*/}
+        {/*                </div>*/}
+
+        {/*                <div className={"flex flex-row"}>*/}
+        {/*                    <div className={"relative h-60 w-28"}>*/}
+        {/*                        <Image className={"rounded-2xl border-secondary border-2"} fill src={"/mathgpt/mathGPT-1.png"} alt={"mgpt-1"}></Image>*/}
+        {/*                    </div>*/}
+        {/*                    <div className={"relative h-60 w-28"}>*/}
+        {/*                        <Image className={"rounded-2xl border-secondary border-2"} fill src={"/mathgpt/mathGPT-2.png"} alt={"mgpt-1"}></Image>*/}
+        {/*                    </div>*/}
+        {/*                </div>*/}
+
+
+
+
+        {/*            </CardContent>*/}
+        {/*            <CardFooter>*/}
+        {/*                <p>This project was deemed too uneconomical and slow due to the many paid apis at play, and the requirement of the expensive GPT-4. A web version may still be completed as a proof on concept.</p>*/}
+        {/*            </CardFooter>*/}
+        {/*        </Card>*/}
+
+        {/*        <div className={"flex flex-col col-start-2 row-start-5 col-span-1 row-span-1 items-center justify-center font-bold"}>*/}
+        {/*            <div className={"text-xl"}>Status:</div>*/}
+        {/*            <div className={"text-5xl text-gray-500"}>On hold</div>*/}
+        {/*        </div>*/}
+
+        {/*    </div>*/}
+        {/*</section>*/}
     </main>
   )
 }
