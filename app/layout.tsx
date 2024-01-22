@@ -19,8 +19,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {/*<div className={"bg-background"}>*/}
         <div className={"bg-background"}>
-          <div className={"text-white"}>Domain parked</div>
-          {/*{children}*/}
+          {children}
         </div>
       </body>
     </html>
