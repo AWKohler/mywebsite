@@ -18,7 +18,6 @@ export default function AboutMe() {
         window.location.href = 'https://www.instagram.com/aronnekohler/';
     };
 
-
     return (
         <section className="flex flex-col w-full py-12 md:py-24 lg:py-32 xl:py-48 rounded-3xl bg-card justify-center items-center">
             <div className={"w-3/4 flex flex-row"}>
