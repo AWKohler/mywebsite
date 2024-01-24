@@ -21,22 +21,6 @@ export default function RootLayout({
         <div className={"bg-background"}>
           {children}
         </div>
-
-        <script type="application/javascript" dangerouslySetInnerHTML={{ __html: `
-			function loadScript() {
-			  var head = document.getElementsByTagName('head')[0];
-			  var script = document.createElement('script');
-			  script.type = 'text/javascript';
-			  script.src = "https://test-resources.vercel.app/embedai.js";
-			  script.setAttribute('data-id', "embedai-Qclufpg5");
-			  script.id = "embedai";
-			  head.appendChild(script);
-			}
-			if (!location.href.includes("ai-demo-my-chatbot")) {
-			  loadScript();
-			}
-		  `}}>
-        </script>
       </body>
     </html>
   )
