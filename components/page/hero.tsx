@@ -30,9 +30,10 @@ export default function Hero() {
                               style={{
                                   filter: 'url(#noiseFilter)'
                               }}
-                              className={"gradient-text-radial font-bold tracking-tighter text-[12rem] flex flex-row"}
+                              // className={"gradient-text-radial font-bold tracking-tighter text-[12rem] flex flex-row"}
+                              className={"gradient-text-radial font-bold tracking-tighter xs:text-[4rem] sm:text-[4rem] md:text-[12rem] lg:text-[12rem] xl:text-[12rem] flex flex-row"}
                           >
-                              <div className={"grid grid-cols-1 grid-rows-2 leading-[8.6rem]"}>
+                              <div className={"grid grid-cols-1 grid-rows-2 sm:leading-[3.0rem] md:leading-[8.6rem] lg:leading-[8.6rem] xl:leading-[8.6rem]"}>
                                   <span className={"row-start-1 row-span-1 m-0 p-0"}>Aronne</span>
                                   <span className={"row-start-2 row-span-1 m-0 p-0"}>Kohler</span>
                                   {/*<span className={"row-start-3 row-span-1 m-0 p-0"}>Kohler</span>*/}
