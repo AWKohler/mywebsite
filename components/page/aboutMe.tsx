@@ -120,20 +120,20 @@ export default function AboutMe() {
 
             <div className={"flex flex-row pt-24"}>
 
-                <div className={"px-5 flex flex-col items-center"}>
-                    <div className={"relative h-56 w-56 rounded-full bg-primary"}>
-                        <Image className={"rounded-full border-secondary border-2"} fill src={"/igpfp.jpeg"} alt={"Profile"}></Image>
-                    </div>
+                {/*<div className={"px-5 flex flex-col items-center"}>*/}
+                {/*    <div className={"relative h-56 w-56 rounded-full bg-primary"}>*/}
+                {/*        <Image className={"rounded-full border-secondary border-2"} fill src={"/igpfp.jpeg"} alt={"Profile"}></Image>*/}
+                {/*    </div>*/}
 
-                    {/*<div className={"pt-5"}>*/}
-                    {/*    <Button*/}
-                    {/*        className={""}*/}
-                    {/*        onClick={redirectToInstagram}*/}
-                    {/*    >*/}
-                    {/*        My Instagram*/}
-                    {/*    </Button>*/}
-                    {/*</div>*/}
-                </div>
+                {/*    /!*<div className={"pt-5"}>*!/*/}
+                {/*    /!*    <Button*!/*/}
+                {/*    /!*        className={""}*!/*/}
+                {/*    /!*        onClick={redirectToInstagram}*!/*/}
+                {/*    /!*    >*!/*/}
+                {/*    /!*        My Instagram*!/*/}
+                {/*    /!*    </Button>*!/*/}
+                {/*    /!*</div>*!/*/}
+                {/*</div>*/}
 
 
                 <div className={"px-5 flex flex-col items-center"}>
