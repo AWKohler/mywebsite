@@ -125,14 +125,14 @@ export default function AboutMe() {
                         <Image className={"rounded-full border-secondary border-2"} fill src={"/igpfp.jpeg"} alt={"Profile"}></Image>
                     </div>
 
-                    <div className={"pt-5"}>
-                        <Button
-                            className={""}
-                            onClick={redirectToInstagram}
-                        >
-                            My Instagram
-                        </Button>
-                    </div>
+                    {/*<div className={"pt-5"}>*/}
+                    {/*    <Button*/}
+                    {/*        className={""}*/}
+                    {/*        onClick={redirectToInstagram}*/}
+                    {/*    >*/}
+                    {/*        My Instagram*/}
+                    {/*    </Button>*/}
+                    {/*</div>*/}
                 </div>
 
 
