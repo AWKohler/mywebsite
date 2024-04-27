@@ -80,7 +80,7 @@ export default function AboutMe() {
                     <img className={"rounded-full border-secondary border-2"} src={"/pfp.png"} alt={"Profile"}></img>
                 </div>
 
-                <div className={"grid grid-rows-1 grid-cols-1"}>
+                <div className={"grid grid-rows-1 grid-cols-1 h-[27rem] min-w-[35rem]"}>
                     <div className={"flex flex-row p-6"}>
                         <MapPin className={"mt-1"} />
                         <div className={"font-bold text-2xl ml-2"}>
@@ -110,7 +110,7 @@ export default function AboutMe() {
 
                     <div className={"flex p-6"}>
                         <div className={"ml-3 w-10/12"}>
-                            I am a 19 year old college student attending Liberty University pursuing a computer science, software engineering degree.
+                            I am a 20 year old college student attending Liberty University pursuing a computer science, software engineering degree.
                         </div>
                     </div>
 
@@ -119,22 +119,6 @@ export default function AboutMe() {
             </div>
 
             <div className={"flex flex-row pt-24"}>
-
-                {/*<div className={"px-5 flex flex-col items-center"}>*/}
-                {/*    <div className={"relative h-56 w-56 rounded-full bg-primary"}>*/}
-                {/*        <Image className={"rounded-full border-secondary border-2"} fill src={"/igpfp.jpeg"} alt={"Profile"}></Image>*/}
-                {/*    </div>*/}
-
-                {/*    /!*<div className={"pt-5"}>*!/*/}
-                {/*    /!*    <Button*!/*/}
-                {/*    /!*        className={""}*!/*/}
-                {/*    /!*        onClick={redirectToInstagram}*!/*/}
-                {/*    /!*    >*!/*/}
-                {/*    /!*        My Instagram*!/*/}
-                {/*    /!*    </Button>*!/*/}
-                {/*    /!*</div>*!/*/}
-                {/*</div>*/}
-
 
                 <div className={"px-5 flex flex-col items-center"}>
                     <div className={"relative h-56 w-56 rounded-full bg-primary"}>

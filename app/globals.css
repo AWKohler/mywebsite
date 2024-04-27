@@ -72,12 +72,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-/*.gradient-text-radial {*/
-/*  background: radial-gradient(circle, #f3ec78, #fc4192, #af4261);*/
-/*  -webkit-background-clip: text;*/
-/*  -webkit-text-fill-color: transparent;*/
-/*}*/
-
 .gradient-text-radial {
   /*background: radial-gradient(circle, #ec7317, #c7a1b2, #af4261);*/
   /*background: radial-gradient(circle, #e70747, #c7a1b2, #ec7317);*/
@@ -85,24 +79,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-/*.gradient-text-radial {*/
-/*  background: radial-gradient(circle, #ec7317, #fc4192, #af4261);*/
-/*  -webkit-background-clip: text;*/
-/*  -webkit-text-fill-color: transparent;*/
-/*}*/
-
-/*.gradient-text-radial {*/
-/*  background: radial-gradient(circle, #ec7317, #de0e68, #b20e3d);*/
-/*  -webkit-background-clip: text;*/
-/*  -webkit-text-fill-color: transparent;*/
-/*}*/
-
- /*.gradient-text-conic {*/
- /*  background: conic-gradient(#f3ec78, #fc4192, #af4261);*/
- /*  -webkit-background-clip: text;*/
- /*  -webkit-text-fill-color: transparent;*/
- /*}*/
 
 .gradient-text-conic {
   background: conic-gradient(from -35deg, #f3ec78, #fc4192, #af4261);
