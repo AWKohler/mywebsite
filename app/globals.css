@@ -27,7 +27,7 @@
   }
 
 }
- 
+
 @layer base {
   * {
     @apply border-border;
@@ -35,10 +35,6 @@
   body {
     @apply bg-background text-foreground;
   }
-}
-
-@font-face {
-  font-family: 'Clash Display', sans-serif;
 }
 
 .parallax {
@@ -73,8 +69,6 @@
 }
 
 .gradient-text-radial {
-  /*background: radial-gradient(circle, #ec7317, #c7a1b2, #af4261);*/
-  /*background: radial-gradient(circle, #e70747, #c7a1b2, #ec7317);*/
   background: radial-gradient(circle, #ec7317, #c7a1b2, #e70747);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
