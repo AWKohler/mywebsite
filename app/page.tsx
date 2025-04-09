@@ -159,7 +159,7 @@ export default function SwingInSticky() {
           <h2 className="mb-4">Aronne Kohler</h2>
           <div className="text-2xl md:text-5xl">
             <p>Full stack developer, AI integrator</p>
-            <p>Liberty University '26</p>
+            <p>Liberty University &apos;26</p>
           </div>
         </motion.div>
 
