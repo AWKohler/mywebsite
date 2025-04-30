@@ -15,6 +15,7 @@ type AnimationVariant =
   | "slideLeft"
   | "slideRight"
   | "scaleUp"
+  | "hinge"
   | "scaleDown";
 
 interface TextAnimateProps extends MotionProps {
@@ -185,7 +186,7 @@ const defaultItemAnimationVariants: Record<
   slideUp: {
     container: defaultContainerVariants,
     item: {
-      hidden: { y: 20, opacity: 0 },
+      hidden: { y: 120, opacity: 0 },
       show: (delay: number) => ({
         y: 0,
         opacity: 1,
@@ -198,7 +199,7 @@ const defaultItemAnimationVariants: Record<
         y: -20,
         opacity: 0,
         transition: {
-          duration: 0.3,
+          duration: 1.3,
         },
       },
     },
@@ -277,23 +278,57 @@ const defaultItemAnimationVariants: Record<
   scaleDown: {
     container: defaultContainerVariants,
     item: {
-      hidden: { scale: 1.5, opacity: 0 },
+      hidden: { scale: 5, opacity: 0 },
       show: (delay: number) => ({
         scale: 1,
         opacity: 1,
         transition: {
           delay,
-          duration: 0.3,
-          scale: {
+          duration: 0.4,
+          // scale: {
+          //   type: "spring",
+          //   damping: 15,
+          //   stiffness: 300,
+          // },
+        },
+      }),
+      // exit: {
+      //   scale: 1.5,
+      //   opacity: 0,
+      //   transition: { duration: 0.3 },
+      // },
+    },
+  },
+  hinge: {
+    container: defaultContainerVariants,
+    item: {
+      hidden: { 
+        opacity: 0.2, 
+        rotate: 90, 
+        originX: 0, 
+        originY: 0 
+      },
+      show: (delay: number) => ({
+        opacity: 1,
+        rotate: 0,
+        originX: 0,
+        originY: 0,
+        transition: {
+          delay,
+          duration: 0.5,
+          rotate: {
             type: "spring",
-            damping: 15,
-            stiffness: 300,
+            damping: 12,
+            stiffness: 150,
           },
+          opacity: { duration: 0.4 }
         },
       }),
       exit: {
-        scale: 1.5,
         opacity: 0,
+        rotate: 45,
+        originX: 0,
+        originY: 0,
         transition: { duration: 0.3 },
       },
     },
@@ -356,12 +391,21 @@ export function TextAnimate({
       break;
   }
 
+  const viewportOptions =
+  animation === "slideUp"
+    ? { amount: 0.5, once }
+    : animation === "scaleDown"
+    ? { amount: 0.9, once }
+    : { once };
+
+
   return (
     <AnimatePresence mode="popLayout">
       <MotionComponent
         variants={finalVariants.container}
         initial="hidden"
         whileInView={startOnView ? "show" : undefined}
+        viewport={startOnView ? viewportOptions : undefined}
         animate={startOnView ? undefined : "show"}
         exit="exit"
         className={cn("whitespace-pre-wrap", className)}
