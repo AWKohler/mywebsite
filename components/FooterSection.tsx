@@ -16,9 +16,9 @@ const FooterSection = () => {
           <div className="col-span-1 bg-black border p-4 border-[#444444] border-1">
             <h3 className="text-[#f7f2e1] font-semibold mb-4">Projects</h3>
             <ul className="space-y-2">
-              <li><Link href="/botflow" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Botflow</Link></li>
-              <li><Link href="/portfolio" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Portfolio</Link></li>
-              <li><Link href="/linkme" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Linkme QR</Link></li>
+              <li><Link href="https://botflow.io/" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Botflow</Link></li>
+              <li><Link href="/" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Portfolio</Link></li>
+              <li><Link href="https://www.linkme.ltd/" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Linkme QR</Link></li>
             </ul>
           </div>
 
@@ -33,12 +33,12 @@ const FooterSection = () => {
           </div>
 
           <div className="col-span-1 bg-black border p-4 border-[#444444] border-1">
-            <h3 className="text-[#f7f2e1] font-semibold mb-4">Tools</h3>
+            <h3 className="text-[#f7f2e1] font-semibold mb-4">This stack</h3>
             <ul className="space-y-2">
-              <li><Link href="/next" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Next.js</Link></li>
-              <li><Link href="/react" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">React</Link></li>
-              <li><Link href="/typescript" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">TypeScript</Link></li>
-              <li><Link href="/framer" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Framer Motion</Link></li>
+              <li><Link href="https://nextjs.org/" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Next.js</Link></li>
+              <li><Link href="https://react.dev/" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">React</Link></li>
+              <li><Link href="https://www.typescriptlang.org/" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">TypeScript</Link></li>
+              <li><Link href="https://motion.dev/" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Motion</Link></li>
             </ul>
           </div>
 

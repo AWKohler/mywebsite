@@ -159,8 +159,8 @@ export function Navbar() {
 
   const navItems = [
     { href: "/resume.png", label: "Resume" },
-    { href: "/jquery-showcase", label: "jQuery Demo" },
-    { href: "/d3-showcase", label: "D3.js Showcase" },
+    // { href: "/jquery-showcase", label: "jQuery Demo" },
+    // { href: "/d3-showcase", label: "D3.js Showcase" },
     // { href: "#", label: "QR Code" },
     { href: "https://botflow.io/", label: "Botflow" },
   ];

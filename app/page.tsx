@@ -18,6 +18,7 @@ import { Navbar } from "@/components/ui/navbar";
 import { GitHubButton } from "@/components/github-button";
 import FooterSection from "@/components/FooterSection";
 import { SparklesText } from "@/components/ui/sparkles-text";
+import { cn } from "@/lib/utils";
 
 export default function SwingInSticky() {
   const ref = useRef(null);
@@ -141,7 +142,9 @@ export default function SwingInSticky() {
               <TextAnimate animation="blurInUp" by="character">
                 Aronne Kohler
               </TextAnimate>
+
             </motion.div>
+
           </motion.div>
         </div>
       </motion.section>
@@ -1023,11 +1026,11 @@ export default function SwingInSticky() {
                     </li>
                     <li className="flex items-center gap-4">
                       <Image src="/lang/python-5.svg" alt="Python" width={40} height={40} />
-                      Python
+                      Python / Django
                     </li>
                     <li className="flex items-center gap-4">
                       <Image src="/web/prisma-3.svg" alt="Prisma" width={40} height={40} />
-                      PostgreSQL/MySQL
+                      PostgreSQL / MySQL
                     </li>
                     <li className="flex items-center gap-4">
                       <Image src="/web/aws-logo.svg" alt="AWS" width={40} height={40} />
@@ -1059,36 +1062,39 @@ export default function SwingInSticky() {
               <h2 className="text-6xl md:text-8xl font-bold mb-8">Projects</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+
+{/*                 
                 <motion.div 
-                  className="bg-[#f5f5f5] p-6 rounded-lg shadow-md"
+                  className="bg-[#f5f5f5] p-6 shadow-md"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <h3 className="text-2xl font-bold">Botflow.io</h3>
                   <p className="text-sm text-gray-500">2023 - present</p>
                   <p className="mt-2">A SAAS platform for creating AI Chatbots, embeddable on any website</p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">React</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Next.js</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">OpenAI</span>
+                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-blue-300">React</span>
+                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-slate-800 text-white">Next.js</span>
+                    <span className="px-2 py-1 rounded-full text-xs bg-gray-200">OpenAI</span>
                   </div>
                 </motion.div>
 
                 <motion.div 
-                  className="bg-[#f5f5f5] p-6 rounded-lg shadow-md"
+                  className="bg-[#f5f5f5] p-6 shadow-md"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <h3 className="text-2xl font-bold">Linkme.tld</h3>
                   <p className="text-sm text-gray-500">2024 - present</p>
                   <p className="mt-2">QR Code Generator - an open source alternative to Flowcode</p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">TypeScript</span>
+                    <span className="px-2 py-1 rounded-full text-xs bg-blue-500 text-white">TypeScript</span>
                     <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">ShadCN UI</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Stripe</span>
+                    <span className="px-2 py-1 bg-blue-500 rounded-full text-xs text-white">Stripe</span>
                   </div>
                 </motion.div>
 
                 <motion.div 
-                  className="bg-[#f5f5f5] p-6 rounded-lg shadow-md"
+                  className="bg-[#f5f5f5] p-6 shadow-md"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <h3 className="text-2xl font-bold">SQL-MCP</h3>
@@ -1096,70 +1102,182 @@ export default function SwingInSticky() {
                   <p className="mt-2">SQL Management Control Platform</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">PostgreSQL</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">MongoDB</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Prisma</span>
+                    <span className="px-2 py-1 bg-green-400 rounded-full text-xs">MongoDB</span>
+                    <span className="px-2 py-1 rounded-full text-xs bg-slate-900 text-white">Prisma</span>
                   </div>
                 </motion.div>
 
                 <motion.div 
-                  className="bg-[#f5f5f5] p-6 rounded-lg shadow-md"
+                  className="bg-[#f5f5f5] p-6 shadow-md"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <h3 className="text-2xl font-bold">Buddy AI</h3>
                   <p className="text-sm text-gray-500">2024 - present</p>
                   <p className="mt-2">AI companion for personal tasks</p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Anthropic</span>
+                    <span className="px-2 py-1 bg-orange-400 rounded-full text-xs">Anthropic</span>
                     <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Groq API</span>
                     <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">RAG</span>
                   </div>
                 </motion.div>
 
                 <motion.div 
-                  className="bg-[#f5f5f5] p-6 rounded-lg shadow-md"
+                  className="bg-[#f5f5f5] p-6 shadow-md"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <h3 className="text-2xl font-bold">Liberty University AI</h3>
                   <p className="text-sm text-gray-500">2023 - 2024</p>
                   <p className="mt-2">Chatbot for Liberty University</p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">React</span>
+                    <span className="px-2 py-1 rounded-full text-xs bg-blue-300">React</span>
                     <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">OpenAI</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Supabase</span>
+                    <span className="px-2 py-1 bg-green-600 rounded-full text-xs">Supabase</span>
                   </div>
                 </motion.div>
 
                 <motion.div 
-                  className="bg-[#f5f5f5] p-6 rounded-lg shadow-md"
+                  className="bg-[#f5f5f5] p-6 shadow-md"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <h3 className="text-2xl font-bold">This Website</h3>
                   <p className="text-sm text-gray-500">2023 - present</p>
                   <p className="mt-2">Personal portfolio with advanced animations</p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Framer Motion</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Next.js</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Tailwind</span>
+                    <span className="px-2 py-1 bg-yellow-300 rounded-full text-xs">Motion</span>
+                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-slate-800 text-white">Next.js</span>
+                    <span className="px-2 py-1 bg-blue-400 rounded-full text-xs">Tailwind</span>
                   </div>
-                  <GitHubButton className="mt-4 text-xl" />
-                </motion.div>
+
+                </motion.div> */}
+
+
+
+              <motion.div 
+                className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              >
+                <div>
+                  <h3 className="text-2xl font-bold">Botflow.io</h3>
+                  <p className="text-sm text-gray-500">2023 - present</p>
+                  <p className="mt-2">A SAAS platform for creating AI Chatbots, embeddable on any website</p>
+                </div>
+                <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-blue-300">React</span>
+                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-slate-800 text-white">Next.js</span>
+                  <span className="px-2 py-1 rounded-full text-xs bg-gray-200">OpenAI</span>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              >
+                <div>
+                  <h3 className="text-2xl font-bold">Linkme.tld</h3>
+                  <p className="text-sm text-gray-500">2024 - present</p>
+                  <p className="mt-2">QR Code Generator - an open source alternative to Flowcode</p>
+                </div>
+                <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                  <span className="px-2 py-1 rounded-full text-xs bg-blue-500 text-white">TypeScript</span>
+                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">ShadCN UI</span>
+                  <span className="px-2 py-1 bg-blue-500 rounded-full text-xs text-white">Stripe</span>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              >
+                <div>
+                  <h3 className="text-2xl font-bold">SQL-MCP</h3>
+                  <p className="text-sm text-gray-500">2025 - present</p>
+                  <p className="mt-2">SQL Management Control Platform</p>
+                </div>
+                <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">PostgreSQL</span>
+                  <span className="px-2 py-1 bg-green-400 rounded-full text-xs">MongoDB</span>
+                  <span className="px-2 py-1 rounded-full text-xs bg-slate-900 text-white">Prisma</span>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              >
+                <div>
+                  <h3 className="text-2xl font-bold">Buddy AI</h3>
+                  <p className="text-sm text-gray-500">2024 - present</p>
+                  <p className="mt-2">AI companion for personal tasks</p>
+                </div>
+                <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                  <span className="px-2 py-1 bg-orange-400 rounded-full text-xs">Anthropic</span>
+                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Groq API</span>
+                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">RAG</span>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              >
+                <div>
+                  <h3 className="text-2xl font-bold">Liberty University AI</h3>
+                  <p className="text-sm text-gray-500">2023 - 2024</p>
+                  <p className="mt-2">Chatbot for Liberty University</p>
+                </div>
+                <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                  <span className="px-2 py-1 rounded-full text-xs bg-blue-300">React</span>
+                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">OpenAI</span>
+                  <span className="px-2 py-1 bg-green-600 rounded-full text-xs">Supabase</span>
+                </div>
+              </motion.div>
+
+              <motion.div 
+                className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              >
+                <div>
+                  <h3 className="text-2xl font-bold">This Website</h3>
+                  <p className="text-sm text-gray-500">2023 - present</p>
+                  <p className="mt-2">Personal portfolio with advanced animations</p>
+                </div>
+                <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                  <span className="px-2 py-1 bg-yellow-300 rounded-full text-xs">Motion</span>
+                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-slate-800 text-white">Next.js</span>
+                  <span className="px-2 py-1 bg-blue-400 rounded-full text-xs">Tailwind</span>
+                </div>
+              </motion.div>
+
+
+
+
               </div>
             </div>
           </motion.div>
         </section>
 
         {/* AI Section */}
-        <section className="relative text-[#0e100f] h-screen sticky top-0 overflow-hidden">
+        <section className="relative h-screen sticky top-0 overflow-hidden">
+        {/* <section className="relative text-[#0e100f] h-screen sticky top-0 overflow-hidden"> */}
+
           <div className="h-20" />
           <div className="h-10 flex flex-row grid grid-cols-6 ml-[3.5rem]">
-            <div className="bg-[#d9d9d9] h-full rounded-tl-md col-start-3 col-span-1"></div>
+            <div className="bg-[#e07a5f] h-full rounded-tl-md col-start-3 col-span-1"></div>
+            {/* <div className="bg-[#d9d9d9] h-full rounded-tl-md col-start-3 col-span-1"></div> */}
+
             <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" className="h-[100%]">
-              <path d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z" fill="#d9d9d9" />
+              {/* <path d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z" fill="#2196F3" /> */}
+              <path d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z" fill="#e07a5f" />
+
+              {/* <path d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z" fill="#d9d9d9" /> */}
+
             </svg>
           </div>
 
           <motion.div
-            className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#d9d9d9] overflow-auto"
+            // className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#d9d9d9] overflow-auto"
+            className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#e07a5f] overflow-auto"
+            // className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#672A4E] overflow-auto" C08497 F7AF9D 
             transition={{ duration: 1.2 }}
             viewport={{ once: true, amount: 0.3 }}
           >
@@ -1169,35 +1287,74 @@ export default function SwingInSticky() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
                   <h3 className="text-3xl font-semibold mb-6">AI Technologies</h3>
-                  <div className="grid grid-cols-2 gap-y-4 gap-x-2">
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Retrieval Augmented Generation</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">LLM Streaming</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Agentic AI</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Multimodal Embeddings</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">LLM Driven Development</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Hybrid Search</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">OpenAI API</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Anthropic Claude</div>
+                  <div className="grid grid-cols-2 gap-y-4 gap-x-2 text-black">
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Retrieval Augmented Generation</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">LLM Streaming</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Agentic AI</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Multimodal Embeddings</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">LLM Driven Development</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Hybrid Search</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">OpenAI API</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Anthropic Claude</div>
                   </div>
                 </div>
 
                 <div>
                   <h3 className="text-3xl font-semibold mb-6">Concepts & Architecture</h3>
-                  <div className="grid grid-cols-2 gap-y-4 gap-x-2">
-                    <div className="bg-white p-4 rounded-lg shadow-sm">React Server Components</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Static Site Generation</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">CDN Distribution</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Containerization</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Microservices</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Cross-site Embedding</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Authentication</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Serverless Deployment</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Rate Limiting</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">KV Storage</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Headless CMS</div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm">Github Actions</div>
+                  <div className="grid grid-cols-2 gap-y-4 gap-x-2 text-black">
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">React Server Components</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Static Site Generation</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">CDN Distribution</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Containerization</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Microservices</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Cross-site Embedding</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Authentication</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Serverless Deployment</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Rate Limiting</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">KV Storage</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Headless CMS</div>
+                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Github Actions</div>
                   </div>
                 </div>
+
+
+                {/* <div>
+                  <h3 className="text-3xl font-semibold mb-6">Concepts & Architecture</h3>
+                  <div className="grid grid-cols-2 gap-y-4 text-xl">
+                    <div className="p-2">React Server Components</div>
+                    <div className="p-2">Static Site Generation</div>
+                    <div className="p-2">CDN Distribution</div>
+                    <div className="p-2">Containerization</div>
+                    <div className="p-2">Microservices</div>
+                    <div className="p-2">Cross-site Embedding</div>
+                    <div className="p-2">Authentication</div>
+                    <div className="p-2">Serverless Deployment</div>
+                    <div className="p-2">Rate Limiting</div>
+                    <div className="p-2">KV Storage</div>
+                    <div className="p-2">Headless CMS</div>
+                    <div className="p-2">Github Actions</div>
+                  </div>
+                </div> */}
+
+
+                {/* <div>
+                  <h3 className="text-3xl font-semibold mb-6">Concepts & Architecture</h3>
+                  <div className="grid grid-cols-2 text-xl border border-dotted rounded">
+                    <div className="px-2 py-4 border-y border-dotted">React Server Components</div>
+                    <div className="px-2 py-4 border-y border-dotted">Static Site Generation</div>
+                    <div className="px-2 py-4 border-y border-dotted">CDN Distribution</div>
+                    <div className="px-2 py-4 border-y border-dotted">Containerization</div>
+                    <div className="px-2 py-4 border-y border-dotted">Microservices</div>
+                    <div className="px-2 py-4 border-y border-dotted">Cross-site Embedding</div>
+                    <div className="px-2 py-4 border-y border-dotted">Authentication</div>
+                    <div className="px-2 py-4 border-y border-dotted">Serverless Deployment</div>
+                    <div className="px-2 py-4 border-y border-dotted">Rate Limiting</div>
+                    <div className="px-2 py-4 border-y border-dotted">KV Storage</div>
+                    <div className="px-2 py-4 border-y border-dotted">Headless CMS</div>
+                    <div className="px-2 py-4 border-y border-dotted">Github Actions</div>
+                  </div>
+                </div> */}
+
               </div>
             </div>
           </motion.div>
@@ -1224,7 +1381,13 @@ export default function SwingInSticky() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="flex items-center justify-center">
                   <div className="w-64 h-64 rounded-full overflow-hidden bg-gray-300 flex items-center justify-center">
-                    <span className="text-6xl">AK</span>
+                    <Image 
+                      src="/ako.png" 
+                      alt="Profile picture" 
+                      width={256} 
+                      height={256} 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
 
