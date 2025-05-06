@@ -163,6 +163,9 @@ export function Navbar() {
     // { href: "/d3-showcase", label: "D3.js Showcase" },
     // { href: "#", label: "QR Code" },
     { href: "https://botflow.io/", label: "Botflow" },
+
+    { href: "https://linkme.ltd/", label: "Linkme" },
+
   ];
 
   return (

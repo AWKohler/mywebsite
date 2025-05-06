@@ -167,12 +167,12 @@ export default function D3Showcase() {
             >
               Home
             </Link>
-            <Link
+            {/* <Link
               href="/jquery-showcase"
               className="px-6 py-3 bg-gray-100 hover:bg-gray-200 transition rounded-full"
             >
               jQuery Showcase
-            </Link>
+            </Link> */}
             <Link
               href="/resume"
               className="px-6 py-3 bg-gray-100 hover:bg-gray-200 transition rounded-full"

@@ -277,7 +277,7 @@ export default function JQueryShowcase() {
           <nav>
             <ul className="space-y-2">
               <li><Link href="/" className="block py-2 hover:bg-gray-100 rounded px-2">Home</Link></li>
-              <li><Link href="/d3-showcase" className="block py-2 hover:bg-gray-100 rounded px-2">D3 Showcase</Link></li>
+              {/* <li><Link href="/d3-showcase" className="block py-2 hover:bg-gray-100 rounded px-2">D3 Showcase</Link></li> */}
               <li><Link href="/resume" className="block py-2 hover:bg-gray-100 rounded px-2">Resume</Link></li>
               <li><Link href="#" className="block py-2 hover:bg-gray-100 rounded px-2">Contact</Link></li>
               {/* <li><link href="/" className="block py-2 hover:bg-gray-100 rounded px-2">Home</link></li>
