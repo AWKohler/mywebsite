@@ -1,12 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  Variants,
-} from "framer-motion";
+import React, { useRef, useState } from "react";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,27 +15,26 @@ import FooterSection from "@/components/FooterSection";
 import { SparklesText } from "@/components/ui/sparkles-text";
 import { cn } from "@/lib/utils";
 
-export default function SwingInSticky() {
-  const ref = useRef(null);
+export default function HomePage() {
+  // Profile section refs and animations
+  const profileRef = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: profileRef,
     offset: ["start start", "end start"],
   });
 
-  const scale = useTransform(
-    scrollYProgress,
-    [0, 0.3, 0.6, 1],
-    [1, 1, 0.8, 0.5],
-  );
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [1, 1, 0.8, 0.5]);
   const rotate = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 0, 10, 20]);
 
-  const reft = useRef(null);
-  const { scrollYProgress: progress } = useScroll({
-    target: reft,
+  // Header section refs and animations
+  const headerRef = useRef(null);
+  const { scrollYProgress: headerProgress } = useScroll({
+    target: headerRef,
     offset: ["start start", "end start"],
   });
-  const textYt = useTransform(progress, [0, 1], ["0%", "200%"]);
+  const textY = useTransform(headerProgress, [0, 1], ["0%", "200%"]);
 
+  // Animation variants
   const titleVariants: Variants = {
     offscreen: { y: 300 },
     onscreen: {
@@ -69,46 +63,49 @@ export default function SwingInSticky() {
     },
   };
 
-  const pinnedRef = useRef(null);
-  const pinnedProgressRef = useRef(null);
+  // Projects section refs and animations
+  const projectsSectionRef = useRef(null);
+  const projectsScrollRef = useRef(null);
 
-  const { scrollYProgress: pinnedProgress } = useScroll({
-    target: pinnedRef,
+  const { scrollYProgress: projectsProgress } = useScroll({
+    target: projectsSectionRef,
     offset: ["start end", "end end"],
   });
 
-  const rotateNewSection = useTransform(pinnedProgress, [0, 1], [45, 0]);
-  const yNewSection = useTransform(pinnedProgress, [0, 1], ["100%", "0%"]);
+  const rotateProjects = useTransform(projectsProgress, [0, 1], [45, 0]);
+  const yProjects = useTransform(projectsProgress, [0, 1], ["100%", "0%"]);
 
-  const { scrollYProgress: pinnedProgress2 } = useScroll({
-    target: pinnedProgressRef,
+  const { scrollYProgress: projectsHorizontalProgress } = useScroll({
+    target: projectsScrollRef,
     offset: ["start end", "end start"],
   });
 
-  const horizontalX = useTransform(pinnedProgress2, [0.3, 1], ["0%", "-100%"]);
-
-  const containerRef = useRef(null);
-  const textRef = useRef(null);
-
-  const { scrollYProgress: newsp } = useScroll({
-    target: containerRef,
+  // Projects horizontal scroll animations
+  const projectsContainerRef = useRef(null);
+  const { scrollYProgress: projectsHScroll } = useScroll({
+    target: projectsContainerRef,
     offset: ["start start", "end end"],
   });
 
-  const horizontalScroll = useTransform(newsp, [0.1, 0.9], ["0%", "-75%"]);
+  const horizontalScroll = useTransform(projectsHScroll, [0.1, 0.9], ["0%", "-75%"]);
 
-  const targetRef = useRef(null);
-  const { scrollYProgress: scrollYProgress2 } = useScroll({
-    target: targetRef,
+  // Projects carousel refs and animations
+  const carouselRef = useRef(null);
+  const { scrollYProgress: carouselProgress } = useScroll({
+    target: carouselRef,
   });
 
-  const x = useTransform(scrollYProgress2, [0, 1], ["0%", "-108.5%"]);
+  const x = useTransform(carouselProgress, [0, 1], ["0%", "-108.5%"]);
+  
+  // Tab state
+  const [activeTab, setActiveTab] = useState(4);
 
   return (
     <div style={{ background: "#f0f0f0", margin: 0 }} className="overflow-clip">
       <ScrollProgress className="top-[0px]" />
       <Navbar />
 
+      {/* Hero Section */}
       <motion.section
         className="-mb-[10rem]"
         style={{
@@ -120,7 +117,7 @@ export default function SwingInSticky() {
       >
         <div>
           <motion.div
-            ref={reft}
+            ref={headerRef}
             className="w-screen border-b top-[5rem] lg:pb-0 md:pb-10 pb-14"
             style={{
               overflow: "hidden",
@@ -138,21 +135,21 @@ export default function SwingInSticky() {
               variants={titleVariants}
               className="text-[#df0939] font-bold text-[5rem] md:text-[9rem] lg:text-[14rem]"
             >
-              <SVGKeyboard y={textYt} />
+              <SVGKeyboard y={textY} />
               <TextAnimate animation="blurInUp" by="character">
                 Aronne Kohler
               </TextAnimate>
-
             </motion.div>
-
           </motion.div>
         </div>
       </motion.section>
 
+      {/* About Section */}
       <motion.div
-        ref={ref}
+        ref={profileRef}
         className="w-full px-6 md:px-20 text-black text-4xl md:text-7xl grid grid-cols-2 grid-rows-3 justify-center items-center gap-x-10 gap-y-60 border-b overflow-clip"
       >
+        {/* Intro */}
         <motion.div
           className="w-full flex flex-col justify-center"
           initial={{ x: -150, opacity: 0 }}
@@ -167,6 +164,7 @@ export default function SwingInSticky() {
           </div>
         </motion.div>
 
+        {/* Profile Image */}
         <motion.div
           className="w-full sticky top-20 flex items-center justify-center mt-8 md:mt-0"
           style={{ scale, rotate }}
@@ -186,12 +184,14 @@ export default function SwingInSticky() {
           </BlurFade>
         </motion.div>
 
+        {/* Mission Statement */}
         <div className="w-full flex flex-col justify-center text-justify">
           <h2 className="mb-4">
             Creating Beautiful Interfaces That Serve People And Solve Problems
           </h2>
         </div>
 
+        {/* Resume Section */}
         <div className="w-full flex flex-col justify-center row-start-3">
           <h2 className="mb-4">Resume</h2>
         </div>
@@ -223,10 +223,9 @@ export default function SwingInSticky() {
                 >
                   View Resume
                 </Link>
-
                 <Image
                   src="/resume.png"
-                  alt="Profile"
+                  alt="Resume"
                   width={500}
                   height={100}
                   className="w-full h-auto"
@@ -237,8 +236,9 @@ export default function SwingInSticky() {
         </motion.section>
       </motion.div>
 
+      {/* Projects Showcase Section */}
       <motion.section
-        ref={pinnedRef}
+        ref={projectsSectionRef}
         style={{
           position: "relative",
           height: "200vh",
@@ -253,11 +253,11 @@ export default function SwingInSticky() {
           }}
         >
           <motion.div
-            ref={containerRef}
+            ref={projectsContainerRef}
             className="flex-col overflow-hidden sticky top-0"
             style={{
-              rotate: rotateNewSection,
-              y: yNewSection,
+              rotate: rotateProjects,
+              y: yProjects,
               background: "#0e100f",
               height: "100vh",
               display: "flex",
@@ -269,7 +269,7 @@ export default function SwingInSticky() {
           </motion.div>
 
           <section
-            ref={targetRef}
+            ref={carouselRef}
             className="relative h-[800vh] bg-[#0e100f] w-full sticky top-0"
           >
             <div className="sticky top-0 flex h-screen items-center overflow-hidden w-full">
@@ -287,36 +287,19 @@ export default function SwingInSticky() {
                 <div className="font-tomato-sans tracking-tighter pl-[20rem] text-[38rem] font-extrabold">
                   1
                 </div>
-                {/* <div className="font-tomato-sans tracking-tighter px-8 pl-[8rem] pr-[8rem]">
-                  Botflow.io
-                </div> */}
-
-
+                
                 <SparklesText className="font-tomato-sans tracking-tighter px-8 pl-[8rem] pr-[8rem] flex flex-row font-extrabold">
                   Botflow.io
                 </SparklesText>
                 
                 A{" "}
-
-                
                 <span className="font-tomato-sans tracking-tighter px-8 bg-gradient-to-r from-[#f7f2e1] to-[#f48e47] text-transparent bg-clip-text">
                   SAAS
                 </span>{" "}
 
-                {/* <TextAnimate className="font-tomato-sans tracking-tighter pr-8 flex flex-row font-extrabold" animation="blurInDown" by="character">
-                  SAAS
-                </TextAnimate> */}
-
-                {/* <SparklesText className="font-tomato-sans tracking-tighter pr-8 flex flex-row font-extrabold">
-                  hey hi
-                </SparklesText> */}
-
-                {/* {" "}platform for creating{" "} */}
-
                 <TextAnimate className="pl-8 flex flex-row" animation="slideUp" by="word">
                   platform for creating
                 </TextAnimate>
-
 
                 <span className="font-tomato-sans tracking-tighter px-8 bg-gradient-to-r from-[#f7f2e1] to-[#f48e47] text-transparent bg-clip-text pr-[4rem]">
                   AI Chatbots
@@ -329,9 +312,9 @@ export default function SwingInSticky() {
                   className="w-full h-auto border rounded-2xl border-[#f7f2e1] border-8"
                 />
 
-              <TextAnimate className="pl-[4rem] flex flex-row" animation="hinge" by="word">
-                Embedable
-              </TextAnimate>
+                <TextAnimate className="pl-[4rem] flex flex-row" animation="hinge" by="word">
+                  Embedable
+                </TextAnimate>
 
                 <span className="pl-[2rem]">on</span>
 
@@ -351,9 +334,6 @@ export default function SwingInSticky() {
                 <div className="font-tomato-sans tracking-tighter pl-[20rem] pr-[10rem] text-[38rem] font-extrabold">
                   2
                 </div>
-                {/* <span className="font-tomato-sans tracking-tighter pl-8 pr-14">
-                  This website lol 💀
-                </span> */}
 
                 <TextAnimate className="font-tomato-sans tracking-tighter pr-8 flex flex-row" animation="slideUp" by="word">
                   This website lol
@@ -378,14 +358,8 @@ export default function SwingInSticky() {
                   className="w-full h-auto drop-shadow-2xl drop-shadow-white"
                 />
                 <span className="pl-8 pr-6">
-                {/* <span className="pl-8 pr-14"> */}
-
                   An
                 </span>
-
-                {/* <span className="pl-8 pr-14">
-                  open source
-                </span> */}
 
                 <TextAnimate className="flex flex-row" animation="blurInUp" by="character">
                   open source
@@ -404,545 +378,25 @@ export default function SwingInSticky() {
         </div>
       </motion.section>
 
-      {/* <div className="relative mt-[800vh]" style={{ zIndex: 20 }}>
-        <section className="relative text-[#0e100f] h-screen sticky top-0 overflow-hidden bg-[#0e100f]">
+      {/* Skills Tab Sections */}
+      <div className="relative mt-[800vh] bg-black" style={{ zIndex: 20 }}>
+        {/* Fullstack Development Tab */}
+        <section className={cn(
+          "relative text-[#0e100f] h-screen sticky top-0 overflow-hidden pointer-events-none",
+          activeTab === 1 ? "z-10" : ""
+        )}>
           <div className="h-20" />
-          <div className="h-10 flex flex-row grid grid-cols-6 w-full">
-            <div className="bg-[#f7f2e1] h-full rounded-tl-md col-start-1 col-span-1"></div>
-            <svg
-              viewBox="0 0 40 40"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-[100%]"
+          <div className="h-10 flex flex-row grid grid-cols-6 w-full pointer-events-none">
+            <div 
+              className="bg-[#f7f2e1] h-full rounded-tl-md col-start-1 col-span-1 cursor-pointer pointer-events-auto"
+              onClick={() => setActiveTab(1)}
+            ></div>
+            <svg 
+              viewBox="0 0 40 40" 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-[100%] cursor-pointer z-15 pointer-events-auto" 
+              onClick={() => setActiveTab(1)}
             >
-              <path
-                d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z"
-                fill="#f7f2e1"
-              />
-            </svg>
-          </div>
-
-          <motion.div
-            className="py-20 px-12 h-[calc(100vh-2.5rem)] flex flex-col justify-start items-center bg-[#f7f2e1]"
-            transition={{ duration: 1.2 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="mx-auto flex flex-col justify-start items-start w-full h-full border-double border-x-4 border-t-4 pt-2.5 bg-[repeating-linear-gradient(45deg,#f7f2e1,#f7f2e1_10px,#444444_10px,#444444_11px)]">
-              <div className="mb-16 border-double border-b-4 w-full">
-                <h2 className="text-6xl md:text-8xl font-bold border-double border-r-4 border-t-4 px-6 w-fit bg-[#f7f2e1]">
-                  Fullstack development
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-3 w-full">
-                <div className="border-double border-4 px-6 bg-[#f7f2e1] w-2/3">
-                  <h3 className="text-6xl font-semibold">Web</h3>
-                  <p className="text-2xl">
-                    My strongest skill. I have several years of experience across
-                    several projects. From CSS to REST APIs, CRUD, to security
-                    and resilience, I am a strong fullstack developer.
-                  </p>
-                </div>
-
-                <div className="border-double border-4 px-6 bg-[#f7f2e1]">
-                  <h3 className="text-6xl font-semibold mb-6">Frontend</h3>
-
-                  <div className="flex flex-row">
-                    <ul className="space-y-4 text-2xl">
-                      <li className="flex items-center gap-4">
-                        <Image
-                          src="/web/react-2.svg"
-                          alt="React"
-                          width={50}
-                          height={50}
-                        />
-                        React & Next.js
-                      </li>
-                      <li className="flex items-center gap-4">
-                        <Image
-                          src="/web/typescript.svg"
-                          alt="TypeScript"
-                          width={50}
-                          height={50}
-                        />
-                        TypeScript
-                      </li>
-                      <li className="flex items-center gap-4">
-                        <Image
-                          src="/web/tailwindcss.svg"
-                          alt="Tailwind"
-                          width={50}
-                          height={50}
-                        />
-                        Tailwind CSS
-                      </li>
-                      <li className="flex items-center gap-4">
-                        <svg
-                          viewBox="0 0 84 30"
-                          className="transform scale-[0.6] origin-top-left"
-                        >
-                          <path
-                            d="M 31.717 0 L 15.12 29.974 L 0 29.974 L 12.959 6.569 C 14.968 2.941 19.982 0 24.157 0 Z M 68.795 7.493 C 68.795 3.355 72.18 0 76.355 0 C 80.531 0 83.915 3.355 83.915 7.493 C 83.915 11.632 80.531 14.987 76.355 14.987 C 72.18 14.987 68.795 11.632 68.795 7.493 Z M 34.552 0 L 49.672 0 L 33.075 29.974 L 17.955 29.974 Z M 52.41 0 L 67.53 0 L 54.57 23.404 C 52.561 27.033 47.548 29.974 43.373 29.974 L 35.813 29.974 Z"
-                            fill="var(--token-f32baa44-90b8-42a5-8bca-ffba9d95b23a, rgb(15, 17, 21))"
-                          />
-                        </svg>
-                        Framer Motion
-                      </li>
-                    </ul>
-
-                    <ul className="space-y-4 text-2xl">
-                      <li className="flex items-center gap-4">
-                        <Image
-                          src="/web/stripe-4.svg"
-                          alt="React"
-                          width={50}
-                          height={50}
-                        />
-                        Stripe
-                      </li>
-                      <li className="flex items-center gap-4">
-                        <Image
-                          src="/web/supabase-logo.svg"
-                          alt="TypeScript"
-                          width={50}
-                          height={50}
-                        />
-                        Supabase
-                      </li>
-                      <li className="flex items-center gap-4">
-                        <Image
-                          src="/web/aws-logo.svg"
-                          alt="Tailwind"
-                          width={50}
-                          height={50}
-                        />
-                        AWS
-                      </li>
-                      <li className="flex items-center gap-4">
-                        <span className="text-4xl">🔥</span>
-                        Framer Motion
-                      </li>
-
-                      <li className="flex items-center gap-4">
-                        <div className="bg-black rounded-full p-1.5">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 256 256"
-                            className="h-6 w-6 text-white"
-                          >
-                            <rect width="256" height="256" fill="none"></rect>
-                            <line
-                              x1="208"
-                              y1="128"
-                              x2="128"
-                              y2="208"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="32"
-                            ></line>
-                            <line
-                              x1="192"
-                              y1="40"
-                              x2="40"
-                              y2="192"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="32"
-                            ></line>
-                          </svg>
-                        </div>
-                        ShadCN UI
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="border-double border-4 px-6 bg-[#f7f2e1]">
-                  <h3 className="text-6xl font-semibold mb-6">Backend</h3>
-                  <ul className="space-y-4 text-2xl">
-                    <li className="flex items-center gap-4">
-                      <Image
-                        src="/web/logo-javascript.svg"
-                        alt="JavaScript"
-                        width={50}
-                        height={50}
-                      />
-                      Node.js
-                    </li>
-                    <li className="flex items-center gap-4">
-                      <Image
-                        src="/lang/python-5.svg"
-                        alt="Python"
-                        width={50}
-                        height={50}
-                      />
-                      Python
-                    </li>
-                    <li className="flex items-center gap-4">
-                      <Image
-                        src="/web/prisma-3.svg"
-                        alt="Prisma"
-                        width={50}
-                        height={50}
-                      />
-                      PostgreSQL
-                    </li>
-                    <li className="flex items-center gap-4">
-                      <Image
-                        src="/web/vercel.svg"
-                        alt="Vercel"
-                        width={50}
-                        height={50}
-                      />
-                      AWS & Vercel
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </section>
-
-        <section className="relative text-[#0e100f] h-screen sticky top-0 overflow-hidden">
-          <div className="h-20" />
-          <div className="h-10 flex flex-row grid grid-cols-6 ml-[1.5rem]">
-            <div className="bg-[#EDD230] h-full rounded-tl-md col-start-2 col-span-1"></div>
-            <svg
-              viewBox="0 0 40 40"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-[100%]"
-            >
-              <path
-                d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z"
-                fill="#EDD230"
-              />
-            </svg>
-          </div>
-
-          <motion.div
-            className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#EDD230]"
-            transition={{ duration: 1.2 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-6xl md:text-8xl font-bold mb-16">
-                Technical Skills
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                  <h3 className="text-3xl font-semibold mb-6">Frontend</h3>
-                  <ul className="space-y-4 text-xl">
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/react-2.svg"
-                        alt="React"
-                        width={30}
-                        height={30}
-                      />
-                      React & Next.js
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/typescript.svg"
-                        alt="TypeScript"
-                        width={30}
-                        height={30}
-                      />
-                      TypeScript
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/tailwindcss.svg"
-                        alt="Tailwind"
-                        width={30}
-                        height={30}
-                      />
-                      Tailwind CSS
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <span className="text-2xl">🔥</span>
-                      Framer Motion
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-3xl font-semibold mb-6">Backend</h3>
-                  <ul className="space-y-4 text-xl">
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/logo-javascript.svg"
-                        alt="JavaScript"
-                        width={30}
-                        height={30}
-                      />
-                      Node.js
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/lang/python-5.svg"
-                        alt="Python"
-                        width={30}
-                        height={30}
-                      />
-                      Python
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/prisma-3.svg"
-                        alt="Prisma"
-                        width={30}
-                        height={30}
-                      />
-                      PostgreSQL
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/vercel.svg"
-                        alt="Vercel"
-                        width={30}
-                        height={30}
-                      />
-                      AWS & Vercel
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </section>
-
-        <section className="relative text-[#0e100f] h-screen sticky top-0 overflow-hidden">
-          <div className="h-20" />
-          <div className="h-10 flex flex-row grid grid-cols-6 ml-[3.5rem]">
-            <div className="bg-[#d9d9d9] h-full rounded-tl-md col-start-3 col-span-1"></div>
-            <svg
-              viewBox="0 0 40 40"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-[100%]"
-            >
-              <path
-                d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z"
-                fill="#d9d9d9"
-              />
-            </svg>
-          </div>
-
-          <motion.div
-            className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#d9d9d9]"
-            transition={{ duration: 1.2 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-6xl md:text-8xl font-bold mb-16">AI</h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                  <h3 className="text-3xl font-semibold mb-6">Frontend</h3>
-                  <ul className="space-y-4 text-xl">
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/react-2.svg"
-                        alt="React"
-                        width={30}
-                        height={30}
-                      />
-                      React & Next.js
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/typescript.svg"
-                        alt="TypeScript"
-                        width={30}
-                        height={30}
-                      />
-                      TypeScript
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/tailwindcss.svg"
-                        alt="Tailwind"
-                        width={30}
-                        height={30}
-                      />
-                      Tailwind CSS
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <span className="text-2xl">🔥</span>
-                      Framer Motion
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-3xl font-semibold mb-6">Backend</h3>
-                  <ul className="space-y-4 text-xl">
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/logo-javascript.svg"
-                        alt="JavaScript"
-                        width={30}
-                        height={30}
-                      />
-                      Node.js
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/lang/python-5.svg"
-                        alt="Python"
-                        width={30}
-                        height={30}
-                      />
-                      Python
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/prisma-3.svg"
-                        alt="Prisma"
-                        width={30}
-                        height={30}
-                      />
-                      PostgreSQL
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/vercel.svg"
-                        alt="Vercel"
-                        width={30}
-                        height={30}
-                      />
-                      AWS & Vercel
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </section>
-
-        <section className="relative text-[#0e100f] h-screen sticky top-0 overflow-hidden">
-          <div className="h-20" />
-          <div className="h-10 flex flex-row grid grid-cols-6 ml-[6rem]">
-            <div className="bg-[#f5f5f5] h-full rounded-tl-md col-start-4 col-span-1"></div>
-            <svg
-              viewBox="0 0 40 40"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-[100%]"
-            >
-              <path
-                d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z"
-                fill="#f5f5f5"
-              />
-            </svg>
-          </div>
-
-          <motion.div
-            className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#f5f5f5]"
-            transition={{ duration: 1.2 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-6xl md:text-8xl font-bold mb-16">
-                Contact me
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                  <h3 className="text-3xl font-semibold mb-6">Frontend</h3>
-                  <ul className="space-y-4 text-xl">
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/react-2.svg"
-                        alt="React"
-                        width={30}
-                        height={30}
-                      />
-                      React & Next.js
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/typescript.svg"
-                        alt="TypeScript"
-                        width={30}
-                        height={30}
-                      />
-                      TypeScript
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/tailwindcss.svg"
-                        alt="Tailwind"
-                        width={30}
-                        height={30}
-                      />
-                      Tailwind CSS
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <span className="text-2xl">🔥</span>
-                      Framer Motion
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-3xl font-semibold mb-6">Backend</h3>
-                  <ul className="space-y-4 text-xl">
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/logo-javascript.svg"
-                        alt="JavaScript"
-                        width={30}
-                        height={30}
-                      />
-                      Node.js
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/lang/python-5.svg"
-                        alt="Python"
-                        width={30}
-                        height={30}
-                      />
-                      Python
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/prisma-3.svg"
-                        alt="Prisma"
-                        width={30}
-                        height={30}
-                      />
-                      PostgreSQL
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <Image
-                        src="/web/vercel.svg"
-                        alt="Vercel"
-                        width={30}
-                        height={30}
-                      />
-                      AWS & Vercel
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </section>
-      </div> */}
-
-
-      <div className="relative mt-[800vh]" style={{ zIndex: 20 }}>
-        {/* Fullstack Development Section */}
-        <section className="relative text-[#0e100f] h-screen sticky top-0 overflow-hidden bg-[#0e100f]">
-          <div className="h-20" />
-          <div className="h-10 flex flex-row grid grid-cols-6 w-full">
-            <div className="bg-[#f7f2e1] h-full rounded-tl-md col-start-1 col-span-1"></div>
-            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" className="h-[100%]">
               <path d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z" fill="#f7f2e1"/>
             </svg>
           </div>
@@ -1043,12 +497,23 @@ export default function SwingInSticky() {
           </motion.div>
         </section>
 
-        {/* Projects Section */}
-        <section className="relative text-[#0e100f] h-screen sticky top-0 overflow-hidden">
+        {/* Projects Tab */}
+        <section className={cn(
+          "relative text-[#0e100f] h-screen sticky top-0 overflow-hidden pointer-events-none",
+          activeTab === 2 ? "z-10" : ""
+        )}>
           <div className="h-20" />
-          <div className="h-10 flex flex-row grid grid-cols-6 ml-[1.5rem]">
-            <div className="bg-[#EDD230] h-full rounded-tl-md col-start-2 col-span-1"></div>
-            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" className="h-[100%]">
+          <div className="h-10 flex flex-row grid grid-cols-6 ml-[1.5rem] pointer-events-none">
+            <div 
+              className="bg-[#EDD230] h-full rounded-tl-md col-start-2 col-span-1 cursor-pointer pointer-events-auto" 
+              onClick={() => setActiveTab(2)}
+            ></div>
+            <svg 
+              viewBox="0 0 40 40" 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-[100%] cursor-pointer pointer-events-auto" 
+              onClick={() => setActiveTab(2)}
+            >
               <path d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z" fill="#EDD230" />
             </svg>
           </div>
@@ -1062,59 +527,64 @@ export default function SwingInSticky() {
               <h2 className="text-6xl md:text-8xl font-bold mb-8">Projects</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-
-{/*                 
                 <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md"
+                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <h3 className="text-2xl font-bold">Botflow.io</h3>
-                  <p className="text-sm text-gray-500">2023 - present</p>
-                  <p className="mt-2">A SAAS platform for creating AI Chatbots, embeddable on any website</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-blue-300">React</span>
+                  <div>
+                    <h3 className="text-2xl font-bold">Botflow.io</h3>
+                    <p className="text-sm text-gray-500">2023 - present</p>
+                    <p className="mt-2">A SAAS platform for creating AI Chatbots, embeddable on any website</p>
+                  </div>
+                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
                     <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-slate-800 text-white">Next.js</span>
                     <span className="px-2 py-1 rounded-full text-xs bg-gray-200">OpenAI</span>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md"
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                >
-                  <h3 className="text-2xl font-bold">Linkme.tld</h3>
-                  <p className="text-sm text-gray-500">2024 - present</p>
-                  <p className="mt-2">QR Code Generator - an open source alternative to Flowcode</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
                     <span className="px-2 py-1 rounded-full text-xs bg-blue-500 text-white">TypeScript</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">ShadCN UI</span>
                     <span className="px-2 py-1 bg-blue-500 rounded-full text-xs text-white">Stripe</span>
                   </div>
                 </motion.div>
 
                 <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md"
+                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <h3 className="text-2xl font-bold">SQL-MCP</h3>
-                  <p className="text-sm text-gray-500">2025 - present</p>
-                  <p className="mt-2">SQL Management Control Platform</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">PostgreSQL</span>
-                    <span className="px-2 py-1 bg-green-400 rounded-full text-xs">MongoDB</span>
-                    <span className="px-2 py-1 rounded-full text-xs bg-slate-900 text-white">Prisma</span>
+                  <div>
+                    <h3 className="text-2xl font-bold">Linkme.tld</h3>
+                    <p className="text-sm text-gray-500">2024 - present</p>
+                    <p className="mt-2">QR Code Generator - an open source alternative to Flowcode</p>
+                  </div>
+                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                    <span className="px-2 py-1 rounded-full text-xs bg-blue-500 text-white">TypeScript</span>
+                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">ShadCN UI</span>
                   </div>
                 </motion.div>
 
                 <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md"
+                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <h3 className="text-2xl font-bold">Buddy AI</h3>
-                  <p className="text-sm text-gray-500">2024 - present</p>
-                  <p className="mt-2">AI companion for personal tasks</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div>
+                    <h3 className="text-2xl font-bold">SQL-MCP</h3>
+                    <p className="text-sm text-gray-500">2025 - present</p>
+                    <p className="mt-2">SQL Management Control Platform</p>
+                  </div>
+                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">PostgreSQL</span>
+                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">MySQL</span>
+                    <span className="px-2 py-1 bg-green-600 rounded-full text-xs">Supabase</span>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
+                  <div>
+                    <h3 className="text-2xl font-bold">Buddy AI</h3>
+                    <p className="text-sm text-gray-500">2024 - present</p>
+                    <p className="mt-2">AI companion for personal tasks</p>
+                  </div>
+                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
                     <span className="px-2 py-1 bg-orange-400 rounded-full text-xs">Anthropic</span>
                     <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Groq API</span>
                     <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">RAG</span>
@@ -1122,162 +592,64 @@ export default function SwingInSticky() {
                 </motion.div>
 
                 <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md"
+                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <h3 className="text-2xl font-bold">Liberty University AI</h3>
-                  <p className="text-sm text-gray-500">2023 - 2024</p>
-                  <p className="mt-2">Chatbot for Liberty University</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div>
+                    <h3 className="text-2xl font-bold">Liberty University AI</h3>
+                    <p className="text-sm text-gray-500">2023 - 2024</p>
+                    <p className="mt-2">Chatbot for Liberty University</p>
+                  </div>
+                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
                     <span className="px-2 py-1 rounded-full text-xs bg-blue-300">React</span>
                     <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">OpenAI</span>
-                    <span className="px-2 py-1 bg-green-600 rounded-full text-xs">Supabase</span>
+                    <span className="px-2 py-1 bg-purple-600 rounded-full text-xs text-white">Botflow</span>
                   </div>
                 </motion.div>
 
                 <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md"
+                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <h3 className="text-2xl font-bold">This Website</h3>
-                  <p className="text-sm text-gray-500">2023 - present</p>
-                  <p className="mt-2">Personal portfolio with advanced animations</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div>
+                    <h3 className="text-2xl font-bold">This Website</h3>
+                    <p className="text-sm text-gray-500">2023 - present</p>
+                    <p className="mt-2">Personal portfolio with advanced animations</p>
+                  </div>
+                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
                     <span className="px-2 py-1 bg-yellow-300 rounded-full text-xs">Motion</span>
                     <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-slate-800 text-white">Next.js</span>
                     <span className="px-2 py-1 bg-blue-400 rounded-full text-xs">Tailwind</span>
                   </div>
-
-                </motion.div> */}
-
-
-
-              <motion.div 
-                className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div>
-                  <h3 className="text-2xl font-bold">Botflow.io</h3>
-                  <p className="text-sm text-gray-500">2023 - present</p>
-                  <p className="mt-2">A SAAS platform for creating AI Chatbots, embeddable on any website</p>
-                </div>
-                <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-blue-300">React</span>
-                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-slate-800 text-white">Next.js</span>
-                  <span className="px-2 py-1 rounded-full text-xs bg-gray-200">OpenAI</span>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div>
-                  <h3 className="text-2xl font-bold">Linkme.tld</h3>
-                  <p className="text-sm text-gray-500">2024 - present</p>
-                  <p className="mt-2">QR Code Generator - an open source alternative to Flowcode</p>
-                </div>
-                <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                  <span className="px-2 py-1 rounded-full text-xs bg-blue-500 text-white">TypeScript</span>
-                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">ShadCN UI</span>
-                  <span className="px-2 py-1 bg-blue-500 rounded-full text-xs text-white">Stripe</span>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div>
-                  <h3 className="text-2xl font-bold">SQL-MCP</h3>
-                  <p className="text-sm text-gray-500">2025 - present</p>
-                  <p className="mt-2">SQL Management Control Platform</p>
-                </div>
-                <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">PostgreSQL</span>
-                  <span className="px-2 py-1 bg-green-400 rounded-full text-xs">MongoDB</span>
-                  <span className="px-2 py-1 rounded-full text-xs bg-slate-900 text-white">Prisma</span>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div>
-                  <h3 className="text-2xl font-bold">Buddy AI</h3>
-                  <p className="text-sm text-gray-500">2024 - present</p>
-                  <p className="mt-2">AI companion for personal tasks</p>
-                </div>
-                <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-orange-400 rounded-full text-xs">Anthropic</span>
-                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Groq API</span>
-                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">RAG</span>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div>
-                  <h3 className="text-2xl font-bold">Liberty University AI</h3>
-                  <p className="text-sm text-gray-500">2023 - 2024</p>
-                  <p className="mt-2">Chatbot for Liberty University</p>
-                </div>
-                <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                  <span className="px-2 py-1 rounded-full text-xs bg-blue-300">React</span>
-                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">OpenAI</span>
-                  <span className="px-2 py-1 bg-green-600 rounded-full text-xs">Supabase</span>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div>
-                  <h3 className="text-2xl font-bold">This Website</h3>
-                  <p className="text-sm text-gray-500">2023 - present</p>
-                  <p className="mt-2">Personal portfolio with advanced animations</p>
-                </div>
-                <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                  <span className="px-2 py-1 bg-yellow-300 rounded-full text-xs">Motion</span>
-                  <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-slate-800 text-white">Next.js</span>
-                  <span className="px-2 py-1 bg-blue-400 rounded-full text-xs">Tailwind</span>
-                </div>
-              </motion.div>
-
-
-
-
+                </motion.div>
               </div>
             </div>
           </motion.div>
         </section>
 
-        {/* AI Section */}
-        <section className="relative h-screen sticky top-0 overflow-hidden">
-        {/* <section className="relative text-[#0e100f] h-screen sticky top-0 overflow-hidden"> */}
-
+        {/* AI & Concepts Tab */}
+        <section className={cn(
+          "relative h-screen sticky top-0 overflow-hidden pointer-events-none",
+          activeTab === 3 ? "z-10" : ""
+        )}>
           <div className="h-20" />
-          <div className="h-10 flex flex-row grid grid-cols-6 ml-[3.5rem]">
-            <div className="bg-[#e07a5f] h-full rounded-tl-md col-start-3 col-span-1"></div>
-            {/* <div className="bg-[#d9d9d9] h-full rounded-tl-md col-start-3 col-span-1"></div> */}
-
-            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" className="h-[100%]">
-              {/* <path d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z" fill="#2196F3" /> */}
+          <div className="h-10 flex flex-row grid grid-cols-6 ml-[3.5rem] pointer-events-none">
+          <div 
+              className="bg-[#e07a5f] h-full rounded-tl-md col-start-3 col-span-1 cursor-pointer pointer-events-auto" 
+              onClick={() => setActiveTab(3)}
+            ></div>
+            <svg 
+              viewBox="0 0 40 40" 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-[100%] cursor-pointer pointer-events-auto" 
+              onClick={() => setActiveTab(3)}
+            >
               <path d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z" fill="#e07a5f" />
-
-              {/* <path d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z" fill="#d9d9d9" /> */}
-
             </svg>
           </div>
 
           <motion.div
-            // className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#d9d9d9] overflow-auto"
             className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#e07a5f] overflow-auto"
-            // className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#672A4E] overflow-auto" C08497 F7AF9D 
             transition={{ duration: 1.2 }}
             viewport={{ once: true, amount: 0.3 }}
           >
@@ -1316,56 +688,28 @@ export default function SwingInSticky() {
                     <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Github Actions</div>
                   </div>
                 </div>
-
-
-                {/* <div>
-                  <h3 className="text-3xl font-semibold mb-6">Concepts & Architecture</h3>
-                  <div className="grid grid-cols-2 gap-y-4 text-xl">
-                    <div className="p-2">React Server Components</div>
-                    <div className="p-2">Static Site Generation</div>
-                    <div className="p-2">CDN Distribution</div>
-                    <div className="p-2">Containerization</div>
-                    <div className="p-2">Microservices</div>
-                    <div className="p-2">Cross-site Embedding</div>
-                    <div className="p-2">Authentication</div>
-                    <div className="p-2">Serverless Deployment</div>
-                    <div className="p-2">Rate Limiting</div>
-                    <div className="p-2">KV Storage</div>
-                    <div className="p-2">Headless CMS</div>
-                    <div className="p-2">Github Actions</div>
-                  </div>
-                </div> */}
-
-
-                {/* <div>
-                  <h3 className="text-3xl font-semibold mb-6">Concepts & Architecture</h3>
-                  <div className="grid grid-cols-2 text-xl border border-dotted rounded">
-                    <div className="px-2 py-4 border-y border-dotted">React Server Components</div>
-                    <div className="px-2 py-4 border-y border-dotted">Static Site Generation</div>
-                    <div className="px-2 py-4 border-y border-dotted">CDN Distribution</div>
-                    <div className="px-2 py-4 border-y border-dotted">Containerization</div>
-                    <div className="px-2 py-4 border-y border-dotted">Microservices</div>
-                    <div className="px-2 py-4 border-y border-dotted">Cross-site Embedding</div>
-                    <div className="px-2 py-4 border-y border-dotted">Authentication</div>
-                    <div className="px-2 py-4 border-y border-dotted">Serverless Deployment</div>
-                    <div className="px-2 py-4 border-y border-dotted">Rate Limiting</div>
-                    <div className="px-2 py-4 border-y border-dotted">KV Storage</div>
-                    <div className="px-2 py-4 border-y border-dotted">Headless CMS</div>
-                    <div className="px-2 py-4 border-y border-dotted">Github Actions</div>
-                  </div>
-                </div> */}
-
               </div>
             </div>
           </motion.div>
         </section>
 
-        {/* Contact Section */}
-        <section className="relative text-[#0e100f] h-screen sticky top-0 overflow-hidden">
+        {/* Contact Tab */}
+        <section className={cn(
+          "relative text-[#0e100f] h-screen sticky top-0 overflow-hidden pointer-events-none",
+          activeTab === 4 ? "z-10" : ""
+        )}>
           <div className="h-20" />
-          <div className="h-10 flex flex-row grid grid-cols-6 ml-[6rem]">
-            <div className="bg-[#f5f5f5] h-full rounded-tl-md col-start-4 col-span-1"></div>
-            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" className="h-[100%]">
+          <div className="h-10 flex flex-row grid grid-cols-6 ml-[6rem] pointer-events-none">
+            <div 
+              className="bg-[#f5f5f5] h-full rounded-tl-md col-start-4 col-span-1 cursor-pointer pointer-events-auto" 
+              onClick={() => setActiveTab(4)}
+            ></div>
+            <svg 
+              viewBox="0 0 40 40"
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-[100%] cursor-pointer pointer-events-auto" 
+              onClick={() => setActiveTab(4)}
+            >
               <path d="M 0 40 L 40 40 L 5.788 1.986 C 4.65 0.722 3.029 0 1.328 0 L 0 0 Z" fill="#f5f5f5" />
             </svg>
           </div>
