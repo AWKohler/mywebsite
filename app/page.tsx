@@ -175,7 +175,7 @@ export default function HomePage() {
         >
           <BlurFade delay={0.25} inView>
             <Image
-              src="/ako.png"
+              src="/profile.png"
               alt="Profile"
               width={500}
               height={500}
@@ -726,7 +726,7 @@ export default function HomePage() {
                 <div className="flex items-center justify-center">
                   <div className="w-64 h-64 rounded-full overflow-hidden bg-gray-300 flex items-center justify-center">
                     <Image 
-                      src="/ako.png" 
+                      src="/profile.png" 
                       alt="Profile picture" 
                       width={256} 
                       height={256} 
