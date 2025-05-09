@@ -217,7 +217,7 @@ export default function HomePage() {
                 className="text-[#df0939] font-bold text-[14rem] p-0 border h-1/3 justify-center items-center"
               >
                 <Link
-                  href="/resume.png"
+                  href="/resume"
                   passHref
                   className="border text-center text-xl md:text-2xl px-4 md:px-6 py-2 md:py-3 gap-0 bg-gradient-to-br from-[#df0939] to-[#eb385f] items-center justify-center border-[#ff6b8e] rounded-full text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 shadow-md hover:brightness-110 transition-all duration-300 ease-in-out"
                 >
