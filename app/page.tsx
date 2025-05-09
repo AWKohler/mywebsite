@@ -208,9 +208,9 @@ export default function HomePage() {
         >
           <div>
             <motion.div
-              initial="offscreen"
-              whileInView="onscreen"
-              viewport={{ amount: 0.5 }}
+              // initial="offscreen"
+              // whileInView="onscreen"
+              // viewport={{ amount: 0.5 }}
             >
               <motion.div
                 variants={resumeVariants}
