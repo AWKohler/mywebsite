@@ -87,7 +87,7 @@ export default function MobileHomePage() {
               justifyContent: "center",
               position: "relative",
               paddingTop: 20,
-              // marginBottom: -120,
+              marginBottom: -60,
             }}
             initial="offscreen"
             whileInView="onscreen"
