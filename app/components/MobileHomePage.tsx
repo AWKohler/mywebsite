@@ -133,7 +133,7 @@ export default function MobileHomePage() {
             alt="Profile"
             width={240}
             height={240}
-            className="rounded-full shadow-lg"
+            className="shadow-lg border-4 border-black/10"
           />
         </motion.div>
 
