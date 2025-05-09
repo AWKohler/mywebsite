@@ -93,14 +93,40 @@ export default function MobileHomePage() {
             whileInView="onscreen"
             viewport={{ amount: 0.5 }}
           >
-            <motion.div
+
+
+
+            {/* <motion.div
               variants={titleVariants}
               className="text-[#df0939] font-bold text-[5rem] md:text-[9rem] lg:text-[14rem] gap-y-0 text-center break-words leading-none"
             >
-              <SVGKeyboard className="z-9" />
-              <h1 className="whitespace-normal z-10">Aronne Kohler</h1>
+              <SVGKeyboard className="" />
+              <h1 className="whitespace-normal opacity-[100%]">Aronne Kohler</h1>
 
+            </motion.div> */}
+
+
+            <motion.div
+              variants={titleVariants}
+              className="relative text-[#df0939] font-bold text-[8rem] md:text-[9rem] lg:text-[14rem] text-center leading-none"
+            >
+              {/* SVG sits behind */}
+              {/* <SVGKeyboard
+                className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+                aria-hidden="true"
+              /> */}
+
+              {/* Text overlays the SVG */}
+              {/* <h1 className="relative z-10 whitespace-normal">
+                Aronne&nbsp;Kohler
+              </h1> */}
+
+              <h1 className="whitespace-normal opacity-[100%]">Aronne Kohler</h1>
             </motion.div>
+
+
+
+
           </motion.div>
         </div>
       </motion.section>
@@ -165,11 +191,18 @@ export default function MobileHomePage() {
               height={420}
               className="rounded-xl border-4 border-black/10"
             />
-            <span className="absolute inset-x-0 bottom-4 mx-auto w-max px-6 py-2 bg-[#df0939] text-white rounded-full text-lg font-semibold shadow-lg hover:brightness-110 transition">
+
+            {/* Centered overlay button */}
+            <span
+              className="absolute inset-0 m-auto flex h-fit w-max items-center justify-center
+                        px-6 py-2 bg-[#df0939] text-white rounded-full text-lg font-semibold
+                        shadow-lg hover:brightness-110 transition"
+            >
               View Resume
             </span>
           </Link>
         </motion.div>
+
       </section>
 
       {/* ––––– PROJECTS ––––– */}

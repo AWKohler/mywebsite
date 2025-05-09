@@ -45,7 +45,7 @@ const FooterSection = () => {
           <div className="col-span-1 bg-black border p-4 border-[#444444] border-1">
             <h3 className="text-[#f7f2e1] font-semibold mb-4">Contact</h3>
             <ul className="space-y-2">
-              <li><a href="mailto:contact@aronnekohler.com" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Email</a></li>
+              <li><a href="mailto:contact@awkohler@proton.me" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Email</a></li>
               <li><a href="/resume" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Resume</a></li>
               <li><a href="/contact" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">Get in Touch</a></li>
             </ul>
@@ -56,15 +56,15 @@ const FooterSection = () => {
 
         <div className="pt-8 border-[#f7f2e1]/10 flex flex-col md:flex-row justify-between items-center">
           <div className="flex space-x-6 mb-6 md:mb-0 bg-black border py-2 px-3 border-[#444444] border-1">
-            <a href="https://github.com/aronnekohler" target="_blank" rel="noopener noreferrer" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">
+            <a href="https://github.com/awkohler" target="_blank" rel="noopener noreferrer" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">
               GitHub
             </a>
-            <a href="https://www.linkedin.com/in/aronnekohler" target="_blank" rel="noopener noreferrer" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">
+            <a href="https://linkedin.com/in/aronne-kohler-2b1204292/" target="_blank" rel="noopener noreferrer" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">
               LinkedIn
             </a>
-            <a href="https://www.twitter.com/aronnekohler" target="_blank" rel="noopener noreferrer" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">
+            {/* <a href="https://www.twitter.com/aronnekohler" target="_blank" rel="noopener noreferrer" className="text-[#f7f2e1]/70 hover:text-[#f7f2e1] transition-colors">
               Twitter
-            </a>
+            </a> */}
           </div>
 
           <div className="text-[#f7f2e1]/70 text-sm bg-black border py-2 px-3 border-[#444444] border-1">
