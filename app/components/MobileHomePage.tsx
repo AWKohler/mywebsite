@@ -63,7 +63,7 @@ export default function MobileHomePage() {
   };
 
   return (
-    <div className="overflow-x-clip bg-[#f0f0f0] min-h-screen">
+    <div className="overflow-x-clip bg-[#f0f0f0] min-h-screen z-10">
       <ScrollProgress className="top-0" />
       <Navbar />
 
@@ -121,7 +121,7 @@ export default function MobileHomePage() {
                 Aronne&nbsp;Kohler
               </h1> */}
 
-              <h1 className="whitespace-normal opacity-[100%]">Aronne Kohler</h1>
+              <h1 className="whitespace-normal">Aronne Kohler</h1>
             </motion.div>
 
 
@@ -132,7 +132,7 @@ export default function MobileHomePage() {
       </motion.section>
 
       {/* ––––– HERO / ABOUT ––––– */}
-      <section className="px-6 pt-8 flex flex-col gap-16 text-black">
+      <section className="px-6 pt-24 flex flex-col gap-16 text-black">
         {/* tagline */}
         <motion.div variants={fadeUp} initial="hidden" whileInView="show" className="text-4xl flex items-center justify-center">
           {/* <h1 className="text-[#df0939] text-4xl font-extrabold leading-tight text-center">
