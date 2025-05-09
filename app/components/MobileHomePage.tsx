@@ -450,13 +450,13 @@ export default function MobileHomePage() {
           </div>
 
           <motion.div
-            className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#f5f5f5] overflow-auto"
+            className="py-8 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#f5f5f5] overflow-auto"
             transition={{ duration: 1.2 }}
             viewport={{ once: true, amount: 0.3 }}
           >
             <div className="max-w-6xl mx-auto">
               {/* <h2 className="text-6xl md:text-8xl font-bold mb-3">Connect</h2> */}
-              <h2 className="text-4xl font-bold mb-6 text-white">Connect</h2>
+              <h2 className="text-4xl font-bold mb-6 text-black">Connect</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
                 <div className="flex items-center justify-center">
