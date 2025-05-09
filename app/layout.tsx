@@ -19,7 +19,7 @@ const tomatoGrotesk = localFont({
 
 const lockSerif = localFont({
   weight: "400",
-  src: "../public/fonts/lock-serif.ttf",
+  src: "../public/fonts/lock-serif.otf",
   variable: "--font-lock-serif",
 });
 
