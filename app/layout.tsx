@@ -1,3 +1,4 @@
+import FooterSection from "@/components/FooterSection";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Instrument_Sans, Instrument_Serif } from "next/font/google";
@@ -85,6 +86,7 @@ export default function RootLayout({
       >
         <div className="bg-background font-instrument-serif">
           {children}
+          <FooterSection />
         </div>
       </body>
     </html>

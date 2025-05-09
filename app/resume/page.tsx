@@ -1,16 +1,14 @@
-
-// components/Resume.tsx
-
+import { Download, FileDown } from "lucide-react"
 import React from "react";
 
 export default function Resume() {
   return (
-    <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-gray-800 bg-white">
+    <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-gray-800 bg-white shadow">
 
       {/* ---------- Heading ---------- */}
       <header className="text-center mb-10">
-        <h1 className="text-4xl font-extrabold tracking-tight">Aronne Kohler</h1>
-        <div className="mt-3 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+        <h1 className="text-5xl font-extrabold tracking-tight">Aronne Kohler</h1>
+        <div className="mt-3 flex flex-wrap justify-center gap-x-3 gap-y-2 text-lg">
           <span>336-708-7723</span>
           <span className="hidden sm:inline">|</span>
           <a href="mailto:awkohler@liberty.edu" className="hover:underline">
@@ -148,6 +146,22 @@ export default function Resume() {
           ]}
         />
       </Section>
+{/* 
+      <div className="sticky left-5 bottom-5 bg-black rounded-full border h-12 w-12 flex items-center justify-center hover:">
+        <Download color="lightgray" size={22} />
+      </div> */}
+{/* 
+      <div
+        className="sticky left-5 bottom-5 bg-black rounded-full border h-12 w-12 flex items-center justify-center hover:bg-gray-700 cursor-pointer"
+        onClick={() => window.open('/aronne_resume.pdf', '_blank')}
+      >
+        <Download color="lightgray" size={22} />
+      </div> */}
+
+      <a href="/aronne_resume.pdf" className="sticky left-5 bottom-5 bg-black rounded-full border h-12 w-12 flex items-center justify-center hover:bg-slate-700 cursor-pointer">
+        <Download color="lightgray" size={22} />
+      </a>
+
     </main>
   );
 }
@@ -163,7 +177,7 @@ function Section({
 }) {
   return (
     <section className="mt-12 first:mt-0">
-      <h2 className="text-2xl font-semibold border-b border-gray-300 pb-1 mb-6">
+      <h2 className="text-3xl font-semibold border-b border-gray-300 pb-1 mb-6">
         {title}
       </h2>
       {children}
@@ -182,14 +196,14 @@ function Entry({ heading, subheading, date, bullets }: EntryProps) {
   return (
     <div className="mb-8">
       <div className="flex flex-col sm:flex-row sm:justify-between">
-        <h3 className="text-lg font-medium">{heading}</h3>
-        {date && <span className="text-sm text-gray-500">{date}</span>}
+        <h3 className="text-xl font-medium">{heading}</h3>
+        {date && <span className="text-md text-gray-500">{date}</span>}
       </div>
       {subheading && (
-        <p className="italic text-sm text-gray-600 mt-0.5">{subheading}</p>
+        <p className="italic text-md text-gray-600 mt-0.5">{subheading}</p>
       )}
       {bullets && bullets.length > 0 && (
-        <ul className="mt-2 list-disc list-inside space-y-1 text-sm leading-relaxed">
+        <ul className="mt-2 list-disc list-inside space-y-1 text-md leading-relaxed">
           {bullets.map((b) => (
             <li key={b}>
               {/* Use <strong> • </strong> to emphasize keywords */}
@@ -207,7 +221,7 @@ function Entry({ heading, subheading, date, bullets }: EntryProps) {
 
 function SkillLine({ label, skills }: { label: string; skills: string }) {
   return (
-    <p className="text-sm mb-2">
+    <p className="text-md mb-2">
       <span className="font-semibold">{label}: </span>
       {skills}
     </p>
