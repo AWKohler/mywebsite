@@ -455,9 +455,9 @@ export default function MobileHomePage() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-6xl md:text-8xl font-bold mb-8">Connect</h2>
+              <h2 className="text-6xl md:text-8xl font-bold mb-3">Connect</h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
                 <div className="flex items-center justify-center">
                   <div className="w-64 h-64 rounded-full overflow-hidden bg-gray-300 flex items-center justify-center">
                     <Image 
@@ -471,9 +471,9 @@ export default function MobileHomePage() {
                 </div>
 
                 <div>
-                  <h3 className="text-3xl font-semibold mb-6">Contact Information</h3>
+                  <h3 className="text-3xl font-semibold mb-2">Contact Information</h3>
                   <ul className="space-y-2 text-xl">
-                    <li className="flex items-center gap-3">
+                    <li className="flex items-center gap-2">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
@@ -507,7 +507,7 @@ export default function MobileHomePage() {
                     </li>
                   </ul>
 
-                  <motion.button 
+                  {/* <motion.button 
                     className="mt-8 px-6 py-3 bg-black text-white rounded-full flex items-center gap-2 hover:bg-gray-800 transition-colors"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -518,7 +518,7 @@ export default function MobileHomePage() {
                       <polyline points="7 10 12 15 17 10"></polyline>
                       <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                  </motion.button>
+                  </motion.button> */}
                 </div>
               </div>
             </div>
