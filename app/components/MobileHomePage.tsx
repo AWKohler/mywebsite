@@ -94,38 +94,12 @@ export default function MobileHomePage() {
             viewport={{ amount: 0.5 }}
           >
 
-
-
-            {/* <motion.div
-              variants={titleVariants}
-              className="text-[#df0939] font-bold text-[5rem] md:text-[9rem] lg:text-[14rem] gap-y-0 text-center break-words leading-none"
-            >
-              <SVGKeyboard className="" />
-              <h1 className="whitespace-normal opacity-[100%]">Aronne Kohler</h1>
-
-            </motion.div> */}
-
-
             <motion.div
               variants={titleVariants}
               className="relative text-[#df0939] font-bold text-[8rem] md:text-[9rem] lg:text-[14rem] text-center leading-none"
             >
-              {/* SVG sits behind */}
-              {/* <SVGKeyboard
-                className="absolute inset-0 w-full h-full z-0 pointer-events-none"
-                aria-hidden="true"
-              /> */}
-
-              {/* Text overlays the SVG */}
-              {/* <h1 className="relative z-10 whitespace-normal">
-                Aronne&nbsp;Kohler
-              </h1> */}
-
               <h1 className="whitespace-normal">Aronne Kohler</h1>
             </motion.div>
-
-
-
 
           </motion.div>
         </div>
@@ -135,11 +109,6 @@ export default function MobileHomePage() {
       <section className="px-6 pt-24 flex flex-col gap-16 text-black">
         {/* tagline */}
         <motion.div variants={fadeUp} initial="hidden" whileInView="show" className="text-4xl flex items-center justify-center">
-          {/* <h1 className="text-[#df0939] text-4xl font-extrabold leading-tight text-center">
-            Full-stack Developer<br />AI Integrator
-          </h1>
-          <p className="mt-3 text-xl text-center">Liberty University ’26</p> */}
-
           <div className="flex flex-col">
             <h2 className="">Aronne Kohler</h2>
             <div className="text-2xl md:text-5xl">
@@ -202,7 +171,6 @@ export default function MobileHomePage() {
             </span>
           </Link>
         </motion.div>
-
       </section>
 
       {/* ––––– PROJECTS ––––– */}
@@ -276,100 +244,44 @@ export default function MobileHomePage() {
             </svg>
           </div>
 
-          <motion.div
-            className="py-20 px-12 h-[calc(100vh-2.5rem)] flex flex-col justify-start items-center bg-[#f7f2e1] overflow-auto"
-            transition={{ duration: 1.2 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="mx-auto flex flex-col justify-start items-start w-full h-full pt-2.5">
-              <div className="mb-8 w-full">
-                <h2 className="text-6xl md:text-8xl font-bold px-6 w-fit bg-[#f7f2e1]">
-                  Fullstack
-                </h2>
+          <div className="py-8 px-4 h-[calc(100vh-1.75rem)] flex flex-col bg-[#f7f2e1] overflow-auto">
+            <h2 className="text-4xl font-bold mb-6">Fullstack</h2>
+
+            {/* intro paragraph */}
+            <p className="text-base mb-6">
+              My strongest skill. I have several years of experience across several projects. From
+              CSS to REST APIs, CRUD, to security and resilience, I am a strong full-stack developer.
+            </p>
+
+            {/* tech columns side-by-side on mobile */}
+            <div className="grid grid-cols-2 gap-4">
+              {/* Frontend */}
+              <div>
+                <h3 className="text-2xl font-semibold mb-2">Frontend</h3>
+                <ul className="text-sm space-y-1 list-disc ml-4">
+                  <li>React &amp; Next.js</li>
+                  <li>TypeScript</li>
+                  <li>Tailwind CSS</li>
+                  <li>ShadCN UI</li>
+                  <li>Stripe</li>
+                  <li>Supabase</li>
+                  <li>Framer Motion</li>
+                  <li>Vercel</li>
+                </ul>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-3 w-full">
-                <div className="px-6 bg-[#f7f2e1] w-full md:w-2/3">
-                  <h3 className="text-4xl md:text-6xl font-semibold">Web</h3>
-                  <p className="text-xl md:text-2xl">
-                    My strongest skill. I have several years of experience across
-                    several projects. From CSS to REST APIs, CRUD, to security
-                    and resilience, I am a strong fullstack developer.
-                  </p>
-                </div>
-
-                <div className="px-6 bg-[#f7f2e1]">
-                  <h3 className="text-4xl md:text-6xl font-semibold mb-6">Frontend</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <ul className="space-y-4 text-xl md:text-2xl">
-                      <li className="flex items-center gap-4">
-                        <Image src="/web/react-2.svg" alt="React" width={40} height={40} />
-                        React & Next.js
-                      </li>
-                      <li className="flex items-center gap-4">
-                        <Image src="/web/typescript.svg" alt="TypeScript" width={40} height={40} />
-                        TypeScript
-                      </li>
-                      <li className="flex items-center gap-4">
-                        <Image src="/web/tailwindcss.svg" alt="Tailwind" width={40} height={40} />
-                        Tailwind CSS
-                      </li>
-                      <li className="flex items-center gap-4">
-                        <div className="bg-black rounded-full p-1.5">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="h-6 w-6 text-white">
-                            <rect width="256" height="256" fill="none"></rect>
-                            <line x1="208" y1="128" x2="128" y2="208" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32"></line>
-                            <line x1="192" y1="40" x2="40" y2="192" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32"></line>
-                          </svg>
-                        </div>
-                        ShadCN UI
-                      </li>
-                    </ul>
-                    <ul className="space-y-4 text-xl md:text-2xl">
-                      <li className="flex items-center gap-4">
-                        <Image src="/web/stripe-4.svg" alt="Stripe" width={40} height={40} />
-                        Stripe
-                      </li>
-                      <li className="flex items-center gap-4">
-                        <Image src="/web/supabase-logo.svg" alt="Supabase" width={40} height={40} />
-                        Supabase
-                      </li>
-                      <li className="flex items-center gap-4">
-                        <span className="text-3xl">🔥</span>
-                        Framer Motion
-                      </li>
-                      <li className="flex items-center gap-4">
-                        <Image src="/web/vercel.svg" alt="Vercel" width={40} height={40} />
-                        Vercel
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="px-6 bg-[#f7f2e1]">
-                  <h3 className="text-4xl md:text-6xl font-semibold mb-6">Backend</h3>
-                  <ul className="space-y-4 text-xl md:text-2xl">
-                    <li className="flex items-center gap-4">
-                      <Image src="/web/logo-javascript.svg" alt="JavaScript" width={40} height={40} />
-                      Node.js
-                    </li>
-                    <li className="flex items-center gap-4">
-                      <Image src="/lang/python-5.svg" alt="Python" width={40} height={40} />
-                      Python / Django
-                    </li>
-                    <li className="flex items-center gap-4">
-                      <Image src="/web/prisma-3.svg" alt="Prisma" width={40} height={40} />
-                      PostgreSQL / MySQL
-                    </li>
-                    <li className="flex items-center gap-4">
-                      <Image src="/web/aws-logo.svg" alt="AWS" width={40} height={40} />
-                      AWS & Serverless
-                    </li>
-                  </ul>
-                </div>
+              {/* Backend */}
+              <div>
+                <h3 className="text-2xl font-semibold mb-2">Backend</h3>
+                <ul className="text-sm space-y-1 list-disc ml-4">
+                  <li>Node.js</li>
+                  <li>Python / Django</li>
+                  <li>PostgreSQL / MySQL</li>
+                  <li>AWS &amp; Serverless</li>
+                </ul>
               </div>
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* Projects Tab */}
@@ -393,113 +305,63 @@ export default function MobileHomePage() {
             </svg>
           </div>
 
-          <motion.div
-            className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#EDD230] overflow-auto"
-            transition={{ duration: 1.2 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-6xl md:text-8xl font-bold mb-8">Projects</h2>
+          <div className="py-8 px-4 h-[calc(100vh-1.75rem)] flex flex-col bg-[#EDD230] overflow-auto">
+      <h2 className="text-4xl font-bold mb-6">Projects</h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                >
-                  <div>
-                    <h3 className="text-2xl font-bold">Botflow.io</h3>
-                    <p className="text-sm text-gray-500">2023 - present</p>
-                    <p className="mt-2">A SAAS platform for creating AI Chatbots, embeddable on any website</p>
+      {/* compact list of project cards */}
+      <div className="flex flex-col gap-3">
+        {/* repeat structure for each project */}
+        {[
+          {
+            name: "Botflow.io",
+            date: "2023-present",
+            tags: ["Next.js", "OpenAI", "TypeScript"],
+          },
+          {
+            name: "Linkme.tld",
+            date: "2024-present",
+            tags: ["TypeScript", "ShadCN UI"],
+          },
+          {
+            name: "SQL-MCP",
+            date: "2025-present",
+            tags: ["PostgreSQL", "MySQL", "Supabase"],
+          },
+          {
+            name: "Buddy AI",
+            date: "2024-present",
+            tags: ["Anthropic", "Groq API"],
+          },
+          {
+            name: "Liberty University AI",
+            date: "2023-2024",
+            tags: ["React", "OpenAI"],
+          },
+          {
+            name: "This Website",
+            date: "2023-present",
+            tags: ["Motion", "Next.js"],
+          },
+              ].map((proj) => (
+                <div key={proj.name} className="bg-[#f5f5f5] p-3 shadow-md">
+                  <div className="flex justify-between items-start">
+                    <h3 className="text-lg font-bold">{proj.name}</h3>
+                    <p className="text-xs text-gray-500">{proj.date}</p>
                   </div>
-                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-slate-800 text-white">Next.js</span>
-                    <span className="px-2 py-1 rounded-full text-xs bg-gray-200">OpenAI</span>
-                    <span className="px-2 py-1 rounded-full text-xs bg-blue-500 text-white">TypeScript</span>
-                    <span className="px-2 py-1 bg-blue-500 rounded-full text-xs text-white">Stripe</span>
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    {proj.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="px-1.5 py-0.5 rounded-full text-xs bg-gray-200 whitespace-nowrap"
+                      >
+                        {t}
+                      </span>
+                    ))}
                   </div>
-                </motion.div>
-
-                <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                >
-                  <div>
-                    <h3 className="text-2xl font-bold">Linkme.tld</h3>
-                    <p className="text-sm text-gray-500">2024 - present</p>
-                    <p className="mt-2">QR Code Generator - an open source alternative to Flowcode</p>
-                  </div>
-                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 rounded-full text-xs bg-blue-500 text-white">TypeScript</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">ShadCN UI</span>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                >
-                  <div>
-                    <h3 className="text-2xl font-bold">SQL-MCP</h3>
-                    <p className="text-sm text-gray-500">2025 - present</p>
-                    <p className="mt-2">SQL Management Control Platform</p>
-                  </div>
-                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">PostgreSQL</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">MySQL</span>
-                    <span className="px-2 py-1 bg-green-600 rounded-full text-xs">Supabase</span>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                >
-                  <div>
-                    <h3 className="text-2xl font-bold">Buddy AI</h3>
-                    <p className="text-sm text-gray-500">2024 - present</p>
-                    <p className="mt-2">AI companion for personal tasks</p>
-                  </div>
-                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-orange-400 rounded-full text-xs">Anthropic</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Groq API</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">RAG</span>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                >
-                  <div>
-                    <h3 className="text-2xl font-bold">Liberty University AI</h3>
-                    <p className="text-sm text-gray-500">2023 - 2024</p>
-                    <p className="mt-2">Chatbot for Liberty University</p>
-                  </div>
-                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 rounded-full text-xs bg-blue-300">React</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">OpenAI</span>
-                    <span className="px-2 py-1 bg-purple-600 rounded-full text-xs text-white">Botflow</span>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                >
-                  <div>
-                    <h3 className="text-2xl font-bold">This Website</h3>
-                    <p className="text-sm text-gray-500">2023 - present</p>
-                    <p className="mt-2">Personal portfolio with advanced animations</p>
-                  </div>
-                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-yellow-300 rounded-full text-xs">Motion</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-slate-800 text-white">Next.js</span>
-                    <span className="px-2 py-1 bg-blue-400 rounded-full text-xs">Tailwind</span>
-                  </div>
-                </motion.div>
-              </div>
+                </div>
+              ))}
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* AI & Concepts Tab */}
@@ -523,49 +385,47 @@ export default function MobileHomePage() {
             </svg>
           </div>
 
-          <motion.div
-            className="py-20 px-8 h-[calc(100vh-2.5rem)] flex flex-col justify-start bg-[#e07a5f] overflow-auto"
-            transition={{ duration: 1.2 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-6xl md:text-8xl font-bold mb-8">AI & Concepts</h2>
+          <div className="py-8 px-4 h-[calc(100vh-1.75rem)] flex flex-col bg-[#e07a5f] overflow-auto">
+            <h2 className="text-4xl font-bold mb-6 text-white">AI &amp; Concepts</h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                  <h3 className="text-3xl font-semibold mb-6">AI Technologies</h3>
-                  <div className="grid grid-cols-2 gap-y-4 gap-x-2 text-black">
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Retrieval Augmented Generation</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">LLM Streaming</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Agentic AI</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Multimodal Embeddings</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">LLM Driven Development</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Hybrid Search</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">OpenAI API</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Anthropic Claude</div>
-                  </div>
-                </div>
+            {/* two columns side-by-side */}
+            <div className="grid grid-cols-2 gap-6">
+              {/* AI Technologies */}
+              <div>
+                <h3 className="text-xl font-semibold mb-3 text-white">AI Technologies</h3>
+                <ul className="text-sm space-y-1 list-disc pl-4 text-white">
+                  <li>Retrieval Augmented Generation</li>
+                  <li>LLM Streaming</li>
+                  <li>Agentic AI</li>
+                  <li>Multimodal Embeddings</li>
+                  <li>LLM Driven Development</li>
+                  <li>Hybrid Search</li>
+                  <li>OpenAI API</li>
+                  <li>Anthropic Claude</li>
+                </ul>
+              </div>
 
-                <div>
-                  <h3 className="text-3xl font-semibold mb-6">Concepts & Architecture</h3>
-                  <div className="grid grid-cols-2 gap-y-4 gap-x-2 text-black">
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">React Server Components</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Static Site Generation</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">CDN Distribution</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Containerization</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Microservices</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Cross-site Embedding</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Authentication</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Serverless Deployment</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Rate Limiting</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">KV Storage</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Headless CMS</div>
-                    <div className="bg-white/80 p-4 rounded-3xl shadow-sm">Github Actions</div>
-                  </div>
-                </div>
+              {/* Concepts & Architecture */}
+              <div>
+                <h3 className="text-xl font-semibold mb-3 text-white">Concepts &amp; Architecture</h3>
+                <ul className="text-sm space-y-1 list-disc pl-4 text-white">
+                  <li>React Server Components</li>
+                  <li>Static Site Generation</li>
+                  <li>CDN Distribution</li>
+                  <li>Containerization</li>
+                  <li>Microservices</li>
+                  <li>Cross-site Embedding</li>
+                  <li>Authentication</li>
+                  <li>Serverless Deployment</li>
+                  <li>Rate Limiting</li>
+                  <li>KV Storage</li>
+                  <li>Headless CMS</li>
+                  <li>GitHub Actions</li>
+                </ul>
               </div>
             </div>
-          </motion.div>
+          </div>
+
         </section>
 
         {/* Contact Tab */}
@@ -612,7 +472,7 @@ export default function MobileHomePage() {
 
                 <div>
                   <h3 className="text-3xl font-semibold mb-6">Contact Information</h3>
-                  <ul className="space-y-6 text-xl">
+                  <ul className="space-y-2 text-xl">
                     <li className="flex items-center gap-3">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
