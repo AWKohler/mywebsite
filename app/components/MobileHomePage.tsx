@@ -80,7 +80,9 @@ export default function MobileHomePage() {
         <div>
           <motion.div
             // ref={headerRef}
-            className="w-screen border-b border-gray-300 top-[5rem] lg:pb-0 md:pb-10 pb-14"
+            className="w-screen top-[5rem] lg:pb-0 md:pb-10 pb-14"
+            // className="w-screen border-b border-gray-300 top-[5rem] lg:pb-0 md:pb-10 pb-14"
+
             style={{
               overflow: "hidden",
               display: "flex",
