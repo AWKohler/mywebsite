@@ -61,7 +61,7 @@ export default function Resume() {
           date="Aug 2023 – Present"
           bullets={[
             "Launched Botflow LLC, a SaaS platform for creating embedded AI chatbots on client websites.",
-            "Acquired and managed three initial client contracts, overseeing requirements gathering, billing, and delivery.",
+            "Acquired and managed initial client contracts, overseeing requirements gathering, billing, and delivery.",
             "Architected and developed the full-stack application using Next.js, React, MySQL & Prisma; deployed on Vercel.",
           ]}
         />
