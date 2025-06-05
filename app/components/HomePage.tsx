@@ -479,7 +479,7 @@ export default function HomePage() {
                       Node.js
                     </li>
                     <li className="flex items-center gap-4">
-                      <Image src="/lang/python-5.svg" alt="Python" width={40} height={40} />
+                      <Image src="/language/python-5.svg" alt="Python" width={40} height={40} />
                       Python / Django
                     </li>
                     <li className="flex items-center gap-4">
