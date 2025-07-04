@@ -142,7 +142,7 @@ export default function Resume() {
           subheading="Liberty University"
           date="Apr 2024"
           bullets={[
-            "Awarded $1,000 in seed funding for Botflow.io development.",
+            "Awarded $1,000 in funding for Botflow.io development.",
           ]}
         />
       </Section>
