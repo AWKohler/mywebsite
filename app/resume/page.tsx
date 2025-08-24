@@ -156,7 +156,7 @@ export default function Resume() {
       {/* ---------- Download Button ---------- */}
       <a
         href="/aronne_resume.pdf"
-        className="sticky left-5 bottom-5 bg-black rounded-full border h-12 w-12 flex items-center justify-center hover:bg-slate-700 cursor-pointer"
+        className="sticky right-5 bottom-5 bg-black rounded-full border h-12 w-12 flex items-center justify-center hover:bg-slate-700 cursor-pointer"
       >
         <Download color="lightgray" size={22} />
       </a>
