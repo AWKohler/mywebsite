@@ -1,10 +1,9 @@
-import { Download, FileDown } from "lucide-react"
+import { Download } from "lucide-react";
 import React from "react";
 
 export default function Resume() {
   return (
     <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-gray-800 bg-white shadow">
-
       {/* ---------- Heading ---------- */}
       <header className="text-center mb-10">
         <h1 className="text-5xl font-extrabold tracking-tight">Aronne Kohler</h1>
@@ -53,44 +52,44 @@ export default function Resume() {
         />
       </Section>
 
+      {/* ---------- Professional Experience ---------- */}
+      <Section title="Professional Experience">
+        <Entry
+          heading="Software Engineer, Data Intern"
+          subheading="Cachengo — Huntingdon, TN (Remote)"
+          date="Jun 2025 – Aug 2025"
+          bullets={[
+            "Led the transformation of internal database data into leadership dashboards, improving decision-making visibility.",
+            "Generated synthetic datasets in Python to accelerate testing, analytics, and product development.",
+            "Built an MCP server and integrated AI agents to automate and streamline data workflows.",
+            "Contributed production code to active company projects, enhancing performance and reliability.",
+            "Partnered with cross-functional teams to ensure data accuracy, accessibility, and scalability.",
+          ]}
+        />
+      </Section>
+
       {/* ---------- Leadership Experience ---------- */}
       <Section title="Leadership Experience">
         <Entry
-          heading="Founder & CEO, Botflow LLC"
+          heading="Founder & CEO, Botflow.io"
           subheading="Lynchburg, VA & Greensboro, NC"
           date="Aug 2023 – Present"
           bullets={[
-            "Launched Botflow LLC, a SaaS platform for creating embedded AI chatbots on client websites.",
-            "Acquired and managed initial client contracts, overseeing requirements gathering, billing, and delivery.",
+            "Launched Botflow.io, a SaaS platform for creating embedded AI chatbots on client websites.",
+            "Acquired and managed three initial client contracts, overseeing requirements gathering, billing, and delivery.",
             "Architected and developed the full-stack application using Next.js, React, MySQL & Prisma; deployed on Vercel.",
           ]}
         />
         <Entry
-          heading="Botflow LLC Capstone"
+          heading="Botflow.io Capstone"
           subheading="Liberty University • Lynchburg, VA"
           date="Aug 2023 – Present"
           bullets={[
             "Defined product roadmap and feature requirements for a team of four senior developers.",
             "Held weekly sprint planning and review meetings, ensuring milestones were achieved on schedule.",
-            "Coordinated QA cycles and integrated customer feedback, resulting in 100 % completion of planned tasks.",
+            "Coordinated QA cycles and integrated customer feedback, resulting in 100% completion of planned tasks.",
           ]}
         />
-        <Entry
-          heading="Secretary, AI Club"
-          subheading="Liberty University • Lynchburg, VA"
-          date="Jan 2023 – Present"
-          bullets={[
-            "Organize weekly meetings, record sessions, and coordinate guest-speaker workshops for a 30-member student organization.",
-          ]}
-        />
-      </Section>
-
-      {/* ---------- Technical Skills ---------- */}
-      <Section title="Technical Skills">
-        <SkillLine label="Languages & Tools" skills="TypeScript, JavaScript, Java, Python, C++, Swift, Kotlin, SQL, Git, Docker" />
-        <SkillLine label="Frameworks & Libraries" skills="React, Next.js, Node.js, Angular, React Native, Prisma, Tailwind CSS, React Flow, PyTorch, Scikit-Learn, Pandas, NumPy, Matplotlib" />
-        <SkillLine label="Databases & Data Stores" skills="MySQL, PostgreSQL, MongoDB, Redis, Pinecone, Epsilla, Amazon S3" />
-        <SkillLine label="Cloud & Services" skills="Vercel, AWS, Supabase, OpenAI API, Anthropic API, Stripe, Cloudflare, GCP" />
       </Section>
 
       {/* ---------- Projects ---------- */}
@@ -106,9 +105,18 @@ export default function Resume() {
           ]}
         />
         <Entry
+          heading="Web-IDE"
+          subheading="TypeScript • Next.js • WebContainers • WASM"
+          date="Jul 2025 – Present"
+          bullets={[
+            "Developed an open-source, browser-native IDE with built-in Node.js sandbox.",
+            "Leveraged WebContainers and WASM to enable a local-first development environment directly in the browser.",
+          ]}
+        />
+        <Entry
           heading="Linkme.ltd"
           subheading="TypeScript • React • Next.js • SVG"
-          date="Oct 2024 – Present"
+          date="Oct 2024 – Jan 2025"
           bullets={[
             "Built an open-source alternative to Flowcode for generating compliant, customizable QR codes.",
             "Implemented advanced SVG manipulation in React with exports to PNG, JPG, and PDF formats.",
@@ -116,58 +124,47 @@ export default function Resume() {
           ]}
         />
         <Entry
-          heading="Buddy Shopping AI"
-          subheading="TypeScript • React Native • Expo"
-          date="Nov 2024 – Present"
-          bullets={[
-            "Co-founded and developed an AI-powered shopping assistant mobile app.",
-            "Utilized Google Shopping via SERP API and Vertex AI for visual product search and recommendations.",
-          ]}
-        />
-        <Entry
           heading="Personal Website"
           subheading="Next.js • Tailwind CSS • React • Framer Motion"
           date="May 2025"
           bullets={[
-            "Designed and developed a responsive portfolio site (awkohler.dev) to showcase projects and design skills.",
-            "Implemented dynamic animations and theming with Framer Motion and Tailwind CSS.",
+            "Built a responsive portfolio site (awkohler.dev) with Next.js, Tailwind, and Framer Motion.",
           ]}
         />
       </Section>
 
-      {/* ---------- Awards ---------- */}
-      <Section title="Awards">
-        <Entry
-          heading="3rd Place, University-Wide Create Fest"
-          subheading="Liberty University"
-          date="Apr 2024"
-          bullets={[
-            "Awarded $1,000 in funding for Botflow.io development.",
-          ]}
+      {/* ---------- Technical Skills ---------- */}
+      <Section title="Technical Skills">
+        <SkillLine
+          label="Languages"
+          skills="TypeScript, JavaScript, Python, Java, C++, Kotlin, Swift, SQL"
+        />
+        <SkillLine
+          label="Frameworks & Libraries"
+          skills="React, Next.js, Node.js, Prisma, Angular, React Native, Tailwind CSS, Pandas, NumPy, Matplotlib, PyTorch, Scikit-Learn, Reactflow"
+        />
+        <SkillLine
+          label="Databases"
+          skills="MySQL, PostgreSQL, MongoDB, Redis, Pinecone, Epsilla, Amazon S3"
+        />
+        <SkillLine
+          label="Cloud & Tools"
+          skills="AWS, GCP, Vercel, Supabase, Docker, Cloudflare, Stripe, OpenAI API, Anthropic API"
         />
       </Section>
-{/* 
-      <div className="sticky left-5 bottom-5 bg-black rounded-full border h-12 w-12 flex items-center justify-center hover:">
-        <Download color="lightgray" size={22} />
-      </div> */}
-{/* 
-      <div
-        className="sticky left-5 bottom-5 bg-black rounded-full border h-12 w-12 flex items-center justify-center hover:bg-gray-700 cursor-pointer"
-        onClick={() => window.open('/aronne_resume.pdf', '_blank')}
+
+      {/* ---------- Download Button ---------- */}
+      <a
+        href="/aronne_resume.pdf"
+        className="sticky left-5 bottom-5 bg-black rounded-full border h-12 w-12 flex items-center justify-center hover:bg-slate-700 cursor-pointer"
       >
         <Download color="lightgray" size={22} />
-      </div> */}
-
-      <a href="/aronne_resume.pdf" className="sticky left-5 bottom-5 bg-black rounded-full border h-12 w-12 flex items-center justify-center hover:bg-slate-700 cursor-pointer">
-        <Download color="lightgray" size={22} />
       </a>
-
     </main>
   );
 }
 
 /* ---------- Helper Components ---------- */
-
 function Section({
   title,
   children,
@@ -205,13 +202,7 @@ function Entry({ heading, subheading, date, bullets }: EntryProps) {
       {bullets && bullets.length > 0 && (
         <ul className="mt-2 list-disc list-inside space-y-1 text-md leading-relaxed">
           {bullets.map((b) => (
-            <li key={b}>
-              {/* Use <strong> • </strong> to emphasize keywords */}
-              {b.replace(
-                /\*\*(.*?)\*\*/g,
-                (_, bold) => `<strong>${bold}</strong>`
-              )}
-            </li>
+            <li key={b}>{b}</li>
           ))}
         </ul>
       )}
