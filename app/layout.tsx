@@ -5,6 +5,7 @@ import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import localFont from "next/font/local";
 import React from "react";
 
+
 const whyteInktrap = localFont({
   weight: "400",
   src: "../public/fonts/Whyte-Inktrap-Regular.otf",
