@@ -1,8 +1,9 @@
 Import-Module ActiveDirectory
 
-$domainDN = "DC=musclehustle,DC=net"
+# Correct domain DN
+$domainDN = "DC=ad,DC=musclehustle,DC=net"
 
-# All users except CEO (Johnny Bravo) and CIO (Aronne Kohler)
+# All users except CEO (Johnny Bravo) and CIO (Aronne Kohler) who are created manually
 $users = @(
     # Administration (remaining staff)
     @{ Department="Administration"; Name="Rachel Alvarez";   Username="rachelacmo";        Password="werunthistown992mh" }
@@ -52,10 +53,12 @@ $users = @(
 )
 
 foreach ($u in $users) {
+    # Split Name into first/last
     $names = $u.Name -split " "
     $firstName = $names[0]
     $lastName = $names[-1]
 
+    # Build OU path
     $ouPath = "OU=$($u.Department),$domainDN"
     $password = ConvertTo-SecureString $u.Password -AsPlainText -Force
 
@@ -64,13 +67,13 @@ foreach ($u in $users) {
         -GivenName $firstName `
         -Surname $lastName `
         -SamAccountName $u.Username `
-        -UserPrincipalName "$($u.Username)@musclehustle.net" `
+        -UserPrincipalName "$($u.Username)@ad.musclehustle.net" `
         -Path $ouPath `
         -AccountPassword $password `
         -Enabled $true `
         -ChangePasswordAtLogon $true
 
-    # Add to Department Group
+    # Add user to corresponding group
     $groupName = "$($u.Department)_GRP"
     Add-ADGroupMember -Identity $groupName -Members $u.Username
 
