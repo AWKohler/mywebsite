@@ -1,0 +1,78 @@
+Import-Module ActiveDirectory
+
+$domainDN = "DC=musclehustle,DC=net"
+
+# All users except CEO (Johnny Bravo) and CIO (Aronne Kohler)
+$users = @(
+    # Administration (remaining staff)
+    @{ Department="Administration"; Name="Rachel Alvarez";   Username="rachelacmo";        Password="werunthistown992mh" }
+    @{ Department="Administration"; Name="Angela Foster";    Username="angelaftchro";      Password="wonderfuladmincity29mh" }
+    @{ Department="Administration"; Name="Larry Crossley";   Username="larrycrossleycoo";  Password="livinglikelarryc291mh" }
+    @{ Department="Administration"; Name="Daniel Wright";    Username="danielwcfo";        Password="doingitwright219mh" }
+
+    # Management
+    @{ Department="Management"; Name="Mark Patel";           Username="markpdof";          Password="financialmastermind20mh" }
+    @{ Department="Management"; Name="Sophia Martinez";      Username="sophiampm";         Password="martinezdamanager40mh" }
+    @{ Department="Management"; Name="Johnathan Peters";     Username="johnathanpgm";      Password="managethestuff73mh" }
+    @{ Department="Management"; Name="Olivia Sanchez";       Username="oliviasgm";         Password="hustlerofmuscles10mh" }
+    @{ Department="Management"; Name="Daniel Foster";        Username="danielfmd";         Password="baconeggcheese43mh" }
+    @{ Department="Management"; Name="Preston Peters";       Username="prestonpvpit";      Password="prestonplayswithfire92mh" }
+    @{ Department="Management"; Name="James Carter";         Username="jamescdota";        Password="handsomeandtalented201mh" }
+    @{ Department="Management"; Name="Hannah Kim";           Username="hannahtkdm";        Password="trainforstrength101lmh" }
+    @{ Department="Management"; Name="Brett Pyle";           Username="brettpfm";          Password="lovetobehere291mh" }
+    @{ Department="Management"; Name="Sasha Conner";         Username="sashacam";          Password="seriouslyserious421mh" }
+    @{ Department="Management"; Name="Pete Lyle";            Username="petelfm";           Password="itstimetowatchthetv29mh" }
+    @{ Department="Management"; Name="Catherine Mallow";     Username="catherinemas";      Password="helpingmanage765mh" }
+
+    # IT
+    @{ Department="IT"; Name="Priya Desai";                  Username="priyadd";           Password="securityiskey403mh" }
+    @{ Department="IT"; Name="Ryan Matthews";                Username="ryanmsa";           Password="crewmanmatthews50mh" }
+    @{ Department="IT"; Name="James Parker";                 Username="jamespne";          Password="troublemaker02mh" }
+
+    # Training & Nutrition
+    @{ Department="TrainingAndNutrition"; Name="Ashley Carter";   Username="ashleycpt";    Password="eatgoodeathealthy19mh" }
+    @{ Department="TrainingAndNutrition"; Name="Brooks Smith";    Username="brookssn";     Password="nutritionpower124mh" }
+    @{ Department="TrainingAndNutrition"; Name="Hannah Thompson"; Username="hannahtpt";    Password="workinghard432mh" }
+    @{ Department="TrainingAndNutrition"; Name="Bradley Scott";   Username="bradleysn";    Password="hardlyworking324mh" }
+
+    # Customer Service
+    @{ Department="CustomerService"; Name="Chloe Ngyuen";    Username="chloenfd";          Password="happytohelp543mh" }
+    @{ Department="CustomerService"; Name="Tyler Jackson";   Username="tylerjfd";          Password="servingyou043mh" }
+    @{ Department="CustomerService"; Name="Sophia Fielder";  Username="sophiaffd";         Password="dealingwithproblems12mh" }
+    @{ Department="CustomerService"; Name="Anthony Clark";   Username="anthonycfd";        Password="itsmypleasure876mh" }
+
+    # Sales & Marketing
+    @{ Department="SalesAndMarketing"; Name="Kevin Brooks";  Username="kevinbdobc";        Password="brandnameisbetter543mh" }
+    @{ Department="SalesAndMarketing"; Name="Olivia Chen";   Username="oliviachendmm";     Password="withchenwewin882mh" }
+    @{ Department="SalesAndMarketing"; Name="Tyler Johnson"; Username="tylerjcd";          Password="pbjtimepbjtime291mh" }
+
+    # Maintenance
+    @{ Department="Maintenance"; Name="Conner O'Conner";     Username="conneromt";         Password="makingitshine392mh" }
+    @{ Department="Maintenance"; Name="Diego Torres";        Username="diegotmt";          Password="cleanisgood492mh" }
+)
+
+foreach ($u in $users) {
+    $names = $u.Name -split " "
+    $firstName = $names[0]
+    $lastName = $names[-1]
+
+    $ouPath = "OU=$($u.Department),$domainDN"
+    $password = ConvertTo-SecureString $u.Password -AsPlainText -Force
+
+    # Create User
+    New-ADUser -Name $u.Name `
+        -GivenName $firstName `
+        -Surname $lastName `
+        -SamAccountName $u.Username `
+        -UserPrincipalName "$($u.Username)@musclehustle.net" `
+        -Path $ouPath `
+        -AccountPassword $password `
+        -Enabled $true `
+        -ChangePasswordAtLogon $true
+
+    # Add to Department Group
+    $groupName = "$($u.Department)_GRP"
+    Add-ADGroupMember -Identity $groupName -Members $u.Username
+
+    Write-Host "Created user: $($u.Name) in $($u.Department), added to $groupName"
+}
