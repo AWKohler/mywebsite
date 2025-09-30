@@ -1,182 +1,57 @@
-Get-ADDefaultDomainPasswordPolicy |
-  Select MinPasswordLength, PasswordHistoryCount, ComplexityEnabled
-
-Get-ADFineGrainedPasswordPolicy -Filter * |
-  Select Name, Precedence, MinPasswordLength, PasswordHistoryCount, ComplexityEnabled
-
-
-
--------
-
-
-
-Get-ADFineGrainedPasswordPolicy -Filter * |
-  ForEach-Object {
-    $_.Name
-    Get-ADFineGrainedPasswordPolicySubject $_
-  }
-
-
---------
-
+# 01-Cleanup.ps1
 Import-Module ActiveDirectory
 
-# Domain DN
 $domainDN = "DC=ad,DC=musclehustle,DC=net"
+$whatIf = $true  # set $false to actually delete
 
-# Your user list (use the same $users you already have)
-# ... paste your $users definition here ...
+$users = @(
+  @{ Department="Administration"; Name="Rachel Alvarez";   Username="rachelacmo" }
+  @{ Department="Administration"; Name="Angela Foster";    Username="angelaftchro" }
+  @{ Department="Administration"; Name="Larry Crossley";   Username="larrycrossleycoo" }
+  @{ Department="Administration"; Name="Daniel Wright";    Username="danielwcfo" }
+  @{ Department="Management";     Name="Mark Patel";       Username="markpdof" }
+  @{ Department="Management";     Name="Sophia Martinez";  Username="sophiampm" }
+  @{ Department="Management";     Name="Johnathan Peters"; Username="johnathanpgm" }
+  @{ Department="Management";     Name="Olivia Sanchez";   Username="oliviasgm" }
+  @{ Department="Management";     Name="Daniel Foster";    Username="danielfmd" }
+  @{ Department="Management";     Name="Preston Peters";   Username="prestonpvpit" }
+  @{ Department="Management";     Name="James Carter";     Username="jamescdota" }
+  @{ Department="Management";     Name="Hannah Kim";       Username="hannahtkdm" }
+  @{ Department="Management";     Name="Brett Pyle";       Username="brettpfm" }
+  @{ Department="Management";     Name="Sasha Conner";     Username="sashacam" }
+  @{ Department="Management";     Name="Pete Lyle";        Username="petelfm" }
+  @{ Department="Management";     Name="Catherine Mallow"; Username="catherinemas" }
+  @{ Department="IT";             Name="Priya Desai";      Username="priyadd" }
+  @{ Department="IT";             Name="Ryan Matthews";    Username="ryanmsa" }
+  @{ Department="IT";             Name="James Parker";     Username="jamespne" }
+  @{ Department="TrainingAndNutrition"; Name="Ashley Carter";   Username="ashleycpt" }
+  @{ Department="TrainingAndNutrition"; Name="Brooks Smith";    Username="brookssn" }
+  @{ Department="TrainingAndNutrition"; Name="Hannah Thompson"; Username="hannahtpt" }
+  @{ Department="TrainingAndNutrition"; Name="Bradley Scott";   Username="bradleysn" }
+  @{ Department="CustomerService"; Name="Chloe Ngyuen";   Username="chloenfd" }
+  @{ Department="CustomerService"; Name="Tyler Jackson";  Username="tylerjfd" }
+  @{ Department="CustomerService"; Name="Sophia Fielder"; Username="sophiaffd" }
+  @{ Department="CustomerService"; Name="Anthony Clark";  Username="anthonycfd" }
+  @{ Department="SalesAndMarketing"; Name="Kevin Brooks";  Username="kevinbdobc" }
+  @{ Department="SalesAndMarketing"; Name="Olivia Chen";   Username="oliviachendmm" }
+  @{ Department="SalesAndMarketing"; Name="Tyler Johnson"; Username="tylerjcd" }
+  @{ Department="Maintenance"; Name="Conner O'Conner"; Username="conneromt" }
+  @{ Department="Maintenance"; Name="Diego Torres";    Username="diegotmt" }
+)
 
-# Settings
-$minLen = (Get-ADDefaultDomainPasswordPolicy).MinPasswordLength
-if (-not $minLen) { $minLen = 12 } # fallback
-
-$resetExistingPasswords = $false  # set $true to reset existing accounts
-
-function Ensure-StrongPassword {
-  param(
-    [string]$Plain,
-    [int]$MinLength = 14
-  )
-  $p = $Plain
-
-  # Guarantee 4/4 categories: upper, lower, digit, special
-  if ($p -notmatch '[A-Z]') {
-    # Capitalize first letter if needed
-    if ($p.Length -gt 0) { $p = $p.Substring(0,1).ToUpper() + $p.Substring(1) }
-    else { $p += 'A' }
-  }
-  if ($p -notmatch '[a-z]') { $p += 'a' }
-  if ($p -notmatch '\d')   { $p += '1' }
-  if ($p -notmatch '[^a-zA-Z0-9]') { $p += '!' }
-
-  while ($p.Length -lt $MinLength) { $p += 'X' }
-  return $p
-}
-
-function Ensure-Ou {
-  param([string]$Name, [string]$RootDn)
-  $ouDn = "OU=$Name,$RootDn"
-  $ou = Get-ADOrganizationalUnit -LDAPFilter "(distinguishedName=$ouDn)" `
-    -ErrorAction SilentlyContinue
-  if (-not $ou) {
-    New-ADOrganizationalUnit -Name $Name -Path $RootDn `
-      -ProtectedFromAccidentalDeletion:$false | Out-Null
-  }
-  return $ouDn
-}
-
-function Ensure-Group {
-  param([string]$GroupName, [string]$PathDn)
-  $grp = Get-ADGroup -LDAPFilter "(cn=$GroupName)" `
-    -SearchBase $PathDn -ErrorAction SilentlyContinue
-  if (-not $grp) {
-    New-ADGroup -Name $GroupName -Path $PathDn `
-      -GroupScope Global -GroupCategory Security | Out-Null
-  }
-}
-
-$results = @()
-
-foreach ($u in $users) {
-  try {
-    $first, $last = ($u.Name -split ' ', 2)[0], ($u.Name -split ' ')[-1]
-    $ouPath = Ensure-Ou -Name $u.Department -RootDn $domainDN
-    $groupName = "$($u.Department)_GRP"
-    Ensure-Group -GroupName $groupName -PathDn $ouPath
-
-    $sam = $u.Username
-    $upn = "$sam@ad.musclehustle.net"
-    $user = Get-ADUser -Filter "SamAccountName -eq '$sam'" `
-      -Properties DistinguishedName, MemberOf -ErrorAction SilentlyContinue
-
-    # Build a policy-compliant password from your phrase
-    $pwdPlain = Ensure-StrongPassword -Plain $u.Password -MinLength ([Math]::Max($minLen,14))
-    $pwdSecure = ConvertTo-SecureString $pwdPlain -AsPlainText -Force
-
-    if (-not $user) {
-      # Create new user
-      New-ADUser -Name $u.Name `
-        -GivenName $first `
-        -Surname $last `
-        -SamAccountName $sam `
-        -UserPrincipalName $upn `
-        -DisplayName $u.Name `
-        -Path $ouPath `
-        -AccountPassword $pwdSecure `
-        -Enabled $true `
-        -ChangePasswordAtLogon $true
-
-      Add-ADGroupMember -Identity $groupName -Members $sam
-      $action = "Created"
-    }
-    else {
-      # Ensure OU placement
-      $targetDn = "CN=$($u.Name),$ouPath"
-      if ($user.DistinguishedName -ne $targetDn) {
-        try { Move-ADObject -Identity $user.DistinguishedName -TargetPath $ouPath }
-        catch { } # ignore if CN differs; move by object instead
-      }
-
-      # Ensure group membership
-      $inGroup = (Get-ADGroupMember -Identity $groupName -Recursive |
-                  Where-Object SamAccountName -eq $sam)
-      if (-not $inGroup) {
-        Add-ADGroupMember -Identity $groupName -Members $sam
-      }
-
-      # Optional: reset password to the compliant one
-      if ($resetExistingPasswords) {
-        Set-ADAccountPassword -Identity $sam -Reset `
-          -NewPassword $pwdSecure -ErrorAction Stop
-        Set-ADUser -Identity $sam -ChangePasswordAtLogon $true
-      }
-
-      # Ensure enabled
-      Enable-ADAccount -Identity $sam -ErrorAction SilentlyContinue
-      $action = "Updated"
-    }
-
-    $results += [pscustomobject]@{
-      Name       = $u.Name
-      Username   = $sam
-      Department = $u.Department
-      Action     = $action
-      Password   = $pwdPlain  # export for handout; protect appropriately
-      Status     = "OK"
-    }
-    Write-Host "$action user: $($u.Name), added to $groupName"
-  }
-  catch {
-    $results += [pscustomobject]@{
-      Name       = $u.Name
-      Username   = $u.Username
-      Department = $u.Department
-      Action     = "Error"
-      Password   = $u.Password
-      Status     = $_.Exception.Message
-    }
-    Write-Warning "Failed for $($u.Name): $($_.Exception.Message)"
-  }
-}
-
-# Save a simple report for verification/handout (store securely)
-$results | Export-Csv -NoTypeInformation -Path .\UserProvisioningReport.csv
-
-
-
--------
-
-
-Import-Module ActiveDirectory
-
-# assumes $users is still defined
 foreach ($u in $users) {
   $acct = Get-ADUser -Filter "SamAccountName -eq '$($u.Username)'" `
-    -ErrorAction SilentlyContinue
-  if ($acct) {
-    Disable-ADAccount $acct -ErrorAction SilentlyContinue
-    Remove-ADUser $acct -Confirm:$false
-    Write-Host "Removed $($u.Username)"
+    -Properties DistinguishedName -ErrorAction SilentlyContinue
+  if (-not $acct) {
+    Write-Host "Not found: $($u.Username)"
+    continue
+  }
+
+  $expected = "*,OU=$($u.Department),$domainDN"
+  if ($acct.DistinguishedName -like $expected) {
+    Write-Host "Removing $($u.Username) in $($u.Department)"
+    Remove-ADUser -Identity $acct -Confirm:$false -WhatIf:$whatIf
+  } else {
+    Write-Warning ("Skip {0}: not in OU {1}" -f $u.Username, $u.Department)
   }
 }
