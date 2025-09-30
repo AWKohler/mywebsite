@@ -1,8 +1,13 @@
-# 01-Cleanup.ps1
+# 02-Provision.ps1
 Import-Module ActiveDirectory
 
 $domainDN = "DC=ad,DC=musclehustle,DC=net"
-$whatIf = $true  # set $false to actually delete
+$scriptTag = "ProvisionedBy=MH-Bulk-2025-09-30"
+$outDir = Join-Path $env:USERPROFILE "Desktop\MH-Provisioning"
+New-Item -Path $outDir -ItemType Directory -Force | Out-Null
+$stamp = Get-Date -Format "yyyyMMdd-HHmmss"
+$csvPath = Join-Path $outDir "ProvisionedUsers-$stamp.csv"
+$securePath = Join-Path $outDir "ProvisionedUsers-$stamp.secure.xml"
 
 $users = @(
   @{ Department="Administration"; Name="Rachel Alvarez";   Username="rachelacmo" }
@@ -39,19 +44,123 @@ $users = @(
   @{ Department="Maintenance"; Name="Diego Torres";    Username="diegotmt" }
 )
 
+function Ensure-Ou {
+  param([string]$Dept)
+  $ou = Get-ADOrganizationalUnit -Filter "Name -eq '$Dept'" `
+    -SearchBase $domainDN -SearchScope OneLevel `
+    -ErrorAction SilentlyContinue
+  if (-not $ou) {
+    New-ADOrganizationalUnit -Name $Dept -Path $domainDN `
+      -ProtectedFromAccidentalDeletion:$false | Out-Null
+  }
+  return "OU=$Dept,$domainDN"
+}
+
+function Ensure-Group {
+  param([string]$Dept, [string]$OuDn)
+  $name = "${Dept}_GRP"
+  $grp = Get-ADGroup -Filter "Name -eq '$name'" -SearchBase $OuDn `
+    -ErrorAction SilentlyContinue
+  if (-not $grp) {
+    New-ADGroup -Name $name -Path $OuDn -GroupScope Global `
+      -GroupCategory Security | Out-Null
+  }
+  return $name
+}
+
+function New-CompliantPassword {
+  param([string]$First, [string]$Last, [string]$User, [int]$MinLength = 16)
+
+  $lower = "abcdefghijkmnopqrstuvwxyz"
+  $upper = "ABCDEFGHJKLMNPQRSTUVWXYZ"
+  $digit = "23456789"
+  $spec  = "!@#$%^&*?-_=+"
+
+  function R([string]$set) { $set[(Get-Random -Max $set.Length)] }
+
+  do {
+    $pw = (R $upper) + (R $lower) + (R $digit) + (R $spec)
+    $mix = $upper + $lower + $digit + $spec
+    while ($pw.Length -lt $MinLength) { $pw += R $mix }
+    $pw = ($pw.ToCharArray() | Sort-Object { Get-Random }) -join ""
+    $lc = $pw.ToLower()
+    $bad = $false
+    foreach ($frag in @($First, $Last, $User)) {
+      if ([string]::IsNullOrWhiteSpace($frag)) { continue }
+      $f = $frag.ToLower()
+      if ($f.Length -ge 3) {
+        for ($i = 0; $i -le $f.Length - 3; $i++) {
+          if ($lc.Contains($f.Substring($i, 3))) { $bad = $true; break }
+        }
+      }
+      if ($bad) { break }
+    }
+  } while ($bad)
+  return $pw
+}
+
+# Get minimum policy (fallback 14)
+$minLen = (Get-ADDefaultDomainPasswordPolicy `
+  -ErrorAction SilentlyContinue).MinPasswordLength
+if (-not $minLen) { $minLen = 14 }
+
+$report = @()
+
 foreach ($u in $users) {
-  $acct = Get-ADUser -Filter "SamAccountName -eq '$($u.Username)'" `
-    -Properties DistinguishedName -ErrorAction SilentlyContinue
-  if (-not $acct) {
-    Write-Host "Not found: $($u.Username)"
-    continue
+  $first = ($u.Name -split ' ')[0]
+  $last  = ($u.Name -split ' ')[-1]
+
+  $ouDn = Ensure-Ou -Dept $u.Department
+  $grp  = Ensure-Group -Dept $u.Department -OuDn $ouDn
+
+  $tempPassword = New-CompliantPassword -First $first -Last $last `
+    -User $u.Username -MinLength ([Math]::Max($minLen, 16))
+  $securePwd = ConvertTo-SecureString $tempPassword -AsPlainText -Force
+
+  $existing = Get-ADUser -Filter "SamAccountName -eq '$($u.Username)'" `
+    -ErrorAction SilentlyContinue
+
+  if ($existing) {
+    # If something is left from earlier, reset + retag
+    Set-ADAccountPassword -Identity $u.Username -Reset `
+      -NewPassword $securePwd -ErrorAction Stop
+    Set-ADUser -Identity $u.Username `
+      -ChangePasswordAtLogon $true `
+      -Description $scriptTag -Add @{ info = $scriptTag } `
+      -ErrorAction SilentlyContinue
+  } else {
+    New-ADUser -Name $u.Name `
+      -GivenName $first `
+      -Surname $last `
+      -SamAccountName $u.Username `
+      -UserPrincipalName "$($u.Username)@ad.musclehustle.net" `
+      -DisplayName $u.Name `
+      -Path $ouDn `
+      -AccountPassword $securePwd `
+      -Enabled $true `
+      -ChangePasswordAtLogon $true `
+      -Description $scriptTag `
+      -OtherAttributes @{ info = $scriptTag } `
+      -ErrorAction Stop
   }
 
-  $expected = "*,OU=$($u.Department),$domainDN"
-  if ($acct.DistinguishedName -like $expected) {
-    Write-Host "Removing $($u.Username) in $($u.Department)"
-    Remove-ADUser -Identity $acct -Confirm:$false -WhatIf:$whatIf
-  } else {
-    Write-Warning ("Skip {0}: not in OU {1}" -f $u.Username, $u.Department)
+  Add-ADGroupMember -Identity $grp -Members $u.Username `
+    -ErrorAction SilentlyContinue
+
+  $report += [pscustomobject]@{
+    Name         = $u.Name
+    Username     = $u.Username
+    Department   = $u.Department
+    TempPassword = $tempPassword
   }
+
+  Write-Host "Provisioned: $($u.Name) -> $grp"
 }
+
+# Plain CSV (handle with care) + encrypted copy (current user only)
+$report | Export-Csv -NoTypeInformation -Path $csvPath
+$report | Export-Clixml -Path $securePath
+
+Write-Host "Saved:"
+Write-Host "  CSV     : $csvPath"
+Write-Host "  Encrypted: $securePath (only this Windows user can reopen)"
