@@ -1,19 +1,22 @@
 # 02-Provision.ps1
 Import-Module ActiveDirectory
 
-$domainDN = "DC=ad,DC=musclehustle,DC=net"
+$domainDN  = "DC=ad,DC=musclehustle,DC=net"
 $scriptTag = "ProvisionedBy=MH-Bulk-2025-09-30"
-$outDir = Join-Path $env:USERPROFILE "Desktop\MH-Provisioning"
+
+$outDir   = Join-Path $env:USERPROFILE "Desktop\MH-Provisioning"
 New-Item -Path $outDir -ItemType Directory -Force | Out-Null
-$stamp = Get-Date -Format "yyyyMMdd-HHmmss"
-$csvPath = Join-Path $outDir "ProvisionedUsers-$stamp.csv"
+$stamp    = Get-Date -Format "yyyyMMdd-HHmmss"
+$csvPath  = Join-Path $outDir "ProvisionedUsers-$stamp.csv"
 $securePath = Join-Path $outDir "ProvisionedUsers-$stamp.secure.xml"
 
+# ---- USER LIST ----
 $users = @(
   @{ Department="Administration"; Name="Rachel Alvarez";   Username="rachelacmo" }
   @{ Department="Administration"; Name="Angela Foster";    Username="angelaftchro" }
   @{ Department="Administration"; Name="Larry Crossley";   Username="larrycrossleycoo" }
   @{ Department="Administration"; Name="Daniel Wright";    Username="danielwcfo" }
+
   @{ Department="Management";     Name="Mark Patel";       Username="markpdof" }
   @{ Department="Management";     Name="Sophia Martinez";  Username="sophiampm" }
   @{ Department="Management";     Name="Johnathan Peters"; Username="johnathanpgm" }
@@ -26,86 +29,95 @@ $users = @(
   @{ Department="Management";     Name="Sasha Conner";     Username="sashacam" }
   @{ Department="Management";     Name="Pete Lyle";        Username="petelfm" }
   @{ Department="Management";     Name="Catherine Mallow"; Username="catherinemas" }
+
   @{ Department="IT";             Name="Priya Desai";      Username="priyadd" }
   @{ Department="IT";             Name="Ryan Matthews";    Username="ryanmsa" }
   @{ Department="IT";             Name="James Parker";     Username="jamespne" }
+
   @{ Department="TrainingAndNutrition"; Name="Ashley Carter";   Username="ashleycpt" }
   @{ Department="TrainingAndNutrition"; Name="Brooks Smith";    Username="brookssn" }
   @{ Department="TrainingAndNutrition"; Name="Hannah Thompson"; Username="hannahtpt" }
   @{ Department="TrainingAndNutrition"; Name="Bradley Scott";   Username="bradleysn" }
+
   @{ Department="CustomerService"; Name="Chloe Ngyuen";   Username="chloenfd" }
   @{ Department="CustomerService"; Name="Tyler Jackson";  Username="tylerjfd" }
   @{ Department="CustomerService"; Name="Sophia Fielder"; Username="sophiaffd" }
   @{ Department="CustomerService"; Name="Anthony Clark";  Username="anthonycfd" }
+
   @{ Department="SalesAndMarketing"; Name="Kevin Brooks";  Username="kevinbdobc" }
   @{ Department="SalesAndMarketing"; Name="Olivia Chen";   Username="oliviachendmm" }
   @{ Department="SalesAndMarketing"; Name="Tyler Johnson"; Username="tylerjcd" }
+
   @{ Department="Maintenance"; Name="Conner O'Conner"; Username="conneromt" }
   @{ Department="Maintenance"; Name="Diego Torres";    Username="diegotmt" }
 )
 
+# ---- HELPERS ----
 function Ensure-Ou {
   param([string]$Dept)
-  $ou = Get-ADOrganizationalUnit -Filter "Name -eq '$Dept'" `
-    -SearchBase $domainDN -SearchScope OneLevel `
-    -ErrorAction SilentlyContinue
+  $ouDn = "OU=$Dept,$domainDN"
+  $ou   = Get-ADOrganizationalUnit -LDAPFilter "(distinguishedName=$ouDn)" -ErrorAction SilentlyContinue
   if (-not $ou) {
-    New-ADOrganizationalUnit -Name $Dept -Path $domainDN `
-      -ProtectedFromAccidentalDeletion:$false | Out-Null
+    New-ADOrganizationalUnit -Name $Dept -Path $domainDN -ProtectedFromAccidentalDeletion:$false | Out-Null
   }
-  return "OU=$Dept,$domainDN"
+  return $ouDn
 }
 
 function Ensure-Group {
   param([string]$Dept, [string]$OuDn)
   $name = "${Dept}_GRP"
-  $grp = Get-ADGroup -Filter "Name -eq '$name'" -SearchBase $OuDn `
-    -ErrorAction SilentlyContinue
+  $grp  = Get-ADGroup -LDAPFilter "(cn=$name)" -SearchBase $OuDn -ErrorAction SilentlyContinue
   if (-not $grp) {
-    New-ADGroup -Name $name -Path $OuDn -GroupScope Global `
-      -GroupCategory Security | Out-Null
+    New-ADGroup -Name $name -Path $OuDn -GroupScope Global -GroupCategory Security | Out-Null
   }
   return $name
 }
 
+function Get-RChar {
+    param([string]$set)
+    $set[(Get-Random -Max $set.Length)]
+}
+
 function New-CompliantPassword {
-  param([string]$First, [string]$Last, [string]$User, [int]$MinLength = 16)
+  param([string]$First,[string]$Last,[string]$User,[int]$MinLength=16)
 
   $lower = "abcdefghijkmnopqrstuvwxyz"
   $upper = "ABCDEFGHJKLMNPQRSTUVWXYZ"
   $digit = "23456789"
   $spec  = "!@#$%^&*?-_=+"
 
-  function R([string]$set) { $set[(Get-Random -Max $set.Length)] }
-
   do {
-    $pw = (R $upper) + (R $lower) + (R $digit) + (R $spec)
+    $pw  = (Get-RChar $upper) + (Get-RChar $lower) + (Get-RChar $digit) + (Get-RChar $spec)
     $mix = $upper + $lower + $digit + $spec
-    while ($pw.Length -lt $MinLength) { $pw += R $mix }
+
+    while ($pw.Length -lt $MinLength) { $pw += Get-RChar $mix }
+
+    # shuffle characters
     $pw = ($pw.ToCharArray() | Sort-Object { Get-Random }) -join ""
     $lc = $pw.ToLower()
     $bad = $false
-    foreach ($frag in @($First, $Last, $User)) {
+
+    foreach ($frag in @($First,$Last,$User)) {
       if ([string]::IsNullOrWhiteSpace($frag)) { continue }
       $f = $frag.ToLower()
       if ($f.Length -ge 3) {
-        for ($i = 0; $i -le $f.Length - 3; $i++) {
-          if ($lc.Contains($f.Substring($i, 3))) { $bad = $true; break }
+        for ($i=0; $i -le $f.Length-3; $i++) {
+          if ($lc.Contains($f.Substring($i,3))) { $bad = $true; break }
         }
       }
       if ($bad) { break }
     }
   } while ($bad)
+
   return $pw
 }
 
-# Get minimum policy (fallback 14)
-$minLen = (Get-ADDefaultDomainPasswordPolicy `
-  -ErrorAction SilentlyContinue).MinPasswordLength
+$minLen = (Get-ADDefaultDomainPasswordPolicy -ErrorAction SilentlyContinue).MinPasswordLength
 if (-not $minLen) { $minLen = 14 }
 
 $report = @()
 
+# ---- MAIN LOOP ----
 foreach ($u in $users) {
   $first = ($u.Name -split ' ')[0]
   $last  = ($u.Name -split ' ')[-1]
@@ -113,21 +125,15 @@ foreach ($u in $users) {
   $ouDn = Ensure-Ou -Dept $u.Department
   $grp  = Ensure-Group -Dept $u.Department -OuDn $ouDn
 
-  $tempPassword = New-CompliantPassword -First $first -Last $last `
-    -User $u.Username -MinLength ([Math]::Max($minLen, 16))
-  $securePwd = ConvertTo-SecureString $tempPassword -AsPlainText -Force
+  $tempPassword = New-CompliantPassword -First $first -Last $last -User $u.Username -MinLength ([Math]::Max($minLen,16))
+  $securePwd    = ConvertTo-SecureString $tempPassword -AsPlainText -Force
 
-  $existing = Get-ADUser -Filter "SamAccountName -eq '$($u.Username)'" `
-    -ErrorAction SilentlyContinue
+  $existing = Get-ADUser -Filter "SamAccountName -eq '$($u.Username)'" -ErrorAction SilentlyContinue
 
   if ($existing) {
-    # If something is left from earlier, reset + retag
-    Set-ADAccountPassword -Identity $u.Username -Reset `
-      -NewPassword $securePwd -ErrorAction Stop
-    Set-ADUser -Identity $u.Username `
-      -ChangePasswordAtLogon $true `
-      -Description $scriptTag -Add @{ info = $scriptTag } `
-      -ErrorAction SilentlyContinue
+    # Reset password and update description if already exists
+    Set-ADAccountPassword -Identity $u.Username -Reset -NewPassword $securePwd -ErrorAction Stop
+    Set-ADUser -Identity $u.Username -ChangePasswordAtLogon $true -Description $scriptTag -Add @{ info = $scriptTag } -ErrorAction SilentlyContinue
   } else {
     New-ADUser -Name $u.Name `
       -GivenName $first `
@@ -144,8 +150,7 @@ foreach ($u in $users) {
       -ErrorAction Stop
   }
 
-  Add-ADGroupMember -Identity $grp -Members $u.Username `
-    -ErrorAction SilentlyContinue
+  Add-ADGroupMember -Identity $grp -Members $u.Username -ErrorAction SilentlyContinue
 
   $report += [pscustomobject]@{
     Name         = $u.Name
@@ -157,10 +162,10 @@ foreach ($u in $users) {
   Write-Host "Provisioned: $($u.Name) -> $grp"
 }
 
-# Plain CSV (handle with care) + encrypted copy (current user only)
+# ---- OUTPUT ----
 $report | Export-Csv -NoTypeInformation -Path $csvPath
 $report | Export-Clixml -Path $securePath
 
-Write-Host "Saved:"
-Write-Host "  CSV     : $csvPath"
-Write-Host "  Encrypted: $securePath (only this Windows user can reopen)"
+Write-Host "Done."
+Write-Host "Plain CSV     : $csvPath"
+Write-Host "Encrypted XML : $securePath (only current Windows account can read)"
