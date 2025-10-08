@@ -30,7 +30,7 @@ try {
     $env:TENANT_ID = "e884beca-1fe2-4fed-a97f-45ad64eb3ff1";
     $env:LOCATION = "eastus";
     $env:AUTH_TYPE = "token";
-    $env:CORRELATION_ID = "7bfabc1f-95b4-4745-9426-e0659edd35dd";
+    $env:CORRELATION_ID = "280bc4e5-9170-4666-bb8e-15e1838e38be";
     $env:CLOUD = "AzureCloud";
     
 
@@ -49,17 +49,11 @@ try {
     }
 
     $installScriptPath = Join-Path $tempPath "install_windows_azcmagent.ps1"
-
-    # Download the installation package
     Invoke-WebRequest -UseBasicParsing -Uri "https://gbl.his.arc.azure.com/azcmagent-windows" -TimeoutSec 30 -OutFile "$installScriptPath";
-
-    # Install the hybrid agent
     & "$installScriptPath";
     if ($LASTEXITCODE -ne 0) { exit 1; }
     Start-Sleep -Seconds 5;
-
-    # Run connect command
-    & "$env:ProgramW6432\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "$env:RESOURCE_GROUP" --tenant-id "$env:TENANT_ID" --location "$env:LOCATION" --subscription-id "$env:SUBSCRIPTION_ID" --cloud "$env:CLOUD" --correlation-id "$env:CORRELATION_ID";
+    & "$env:ProgramW6432\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "$env:RESOURCE_GROUP" --tenant-id "$env:TENANT_ID" --location "$env:LOCATION" --subscription-id "$env:SUBSCRIPTION_ID" --cloud "$env:CLOUD" --tags 'ArcSQLServerExtensionDeployment=Disabled' --correlation-id "$env:CORRELATION_ID";
 }
 catch {
     $logBody = @{subscriptionId="$env:SUBSCRIPTION_ID";resourceGroup="$env:RESOURCE_GROUP";tenantId="$env:TENANT_ID";location="$env:LOCATION";correlationId="$env:CORRELATION_ID";authType="$env:AUTH_TYPE";operation="onboarding";messageType=$_.FullyQualifiedErrorId;message="$_";};
