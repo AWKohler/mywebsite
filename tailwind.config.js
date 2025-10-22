@@ -20,6 +20,8 @@ module.exports = {
         "instrument-serif": "var(--font-instrument-serif)", // note: you can call the left side of this whatever you want - barlow-bold or title-font or foo-bar, this is what you'll use in your Tailwind css classes to use this font
         "tomato-sans": "var(--font-tomato-sans)", // note: the bit that goes inside the var() function is the same variable name we defined in app.tsx
         "whyte-inktrap": "var(--font-whyte-inktrap)", // note: the bit that goes inside the var() function is the same variable name we defined in app.tsx
+        "pp-editorial": "var(--font-pp-editorial)", // note: the bit that goes inside the var() function is the same variable name we defined in app.tsx
+        "pp-editorial-ultralight": "var(--font-pp-editorial-ultralight)", // note: the bit that goes inside the var() function is the same variable name we defined in app.tsx
       },
       colors: {
         border: "hsl(var(--border))",

@@ -5,6 +5,17 @@ import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import localFont from "next/font/local";
 import React from "react";
 
+const PPEditorialUltralight = localFont({
+  weight: "100",
+  src: "../public/fonts/PPEditorialNew-Ultralight.otf",
+  variable: "--font-pp-editorial-ultralight",
+});
+
+const PPEditorial = localFont({
+  weight: "400",
+  src: "../public/fonts/PPEditorialNew-Regular.otf",
+  variable: "--font-pp-editorial",
+});
 
 const whyteInktrap = localFont({
   weight: "400",
@@ -38,6 +49,7 @@ const instrumentSans = Instrument_Sans({
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
+  style: "italic",
   subsets: ["latin"],
   variable: "--font-instrument-serif",
 });
@@ -81,6 +93,8 @@ export default function RootLayout({
           ${instrumentSans.variable}
           ${tomatoGrotesk.variable}
           ${whyteInktrap.variable}
+          ${PPEditorial.variable}
+          ${PPEditorialUltralight.variable}
           ${dotemp.variable}
           ${lockSerif.variable}
         `}
