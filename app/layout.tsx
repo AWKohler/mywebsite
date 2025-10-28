@@ -5,6 +5,12 @@ import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import localFont from "next/font/local";
 import React from "react";
 
+const instrumentSerifTTF = localFont({
+  weight: "400",
+  src: "../public/fonts/InstrumentSerif-Italic.ttf",
+  variable: "--font-instrument-serif",
+});
+
 const PPEditorialUltralight = localFont({
   weight: "100",
   src: "../public/fonts/PPEditorialNew-Ultralight.otf",
@@ -59,12 +65,12 @@ const instrumentSans = Instrument_Sans({
 //   variable: "--font-instrument-serif-safari",
 // });
 
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  style: "italic",
-  subsets: ["latin"],
-  variable: "--font-instrument-serif",
-});
+// const instrumentSerif = Instrument_Serif({
+//   weight: "400",
+//   style: "italic",
+//   subsets: ["latin"],
+//   variable: "--font-instrument-serif",
+// });
 
 // const instrumentSerifItalic = Instrument_Serif({
 //   weight: "400",
@@ -108,7 +114,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`
-          ${instrumentSerif.variable}
+          ${instrumentSerifTTF.variable}
           ${instrumentSans.variable}
           ${tomatoGrotesk.variable}
           ${whyteInktrap.variable}
