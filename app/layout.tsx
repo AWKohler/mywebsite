@@ -17,6 +17,12 @@ const PPEditorial = localFont({
   variable: "--font-pp-editorial",
 });
 
+const PPEditorialItalic = localFont({
+  weight: "400",
+  src: "../public/fonts/PPEditorialNew-Italic.otf",
+  variable: "--font-pp-editorial-italic",
+});
+
 const whyteInktrap = localFont({
   weight: "400",
   src: "../public/fonts/Whyte-Inktrap-Regular.otf",
@@ -47,12 +53,25 @@ const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
 });
 
+// const instrumentSerifSafari = Instrument_Serif({
+//   weight: "400",
+//   subsets: ["latin"],
+//   variable: "--font-instrument-serif-safari",
+// });
+
 const instrumentSerif = Instrument_Serif({
   weight: "400",
   style: "italic",
   subsets: ["latin"],
   variable: "--font-instrument-serif",
 });
+
+// const instrumentSerifItalic = Instrument_Serif({
+//   weight: "400",
+//   style: "italic",
+//   subsets: ["latin"],
+//   variable: "--font-instrument-serif-italic",
+// });
 
 export const metadata: Metadata = {
   title: "Aronne Kohler",
@@ -86,7 +105,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`
           ${instrumentSerif.variable}
@@ -95,11 +114,13 @@ export default function RootLayout({
           ${whyteInktrap.variable}
           ${PPEditorial.variable}
           ${PPEditorialUltralight.variable}
+          ${PPEditorialItalic.variable}
           ${dotemp.variable}
           ${lockSerif.variable}
         `}
       >
-        <div className="bg-background font-instrument-serif">
+        <div className="bg-background font-pp-editorial-italic md:font-instrument-serif">
+        {/* <div className="bg-background font-instrument-serif"> */}
           {children}
           <FooterSection />
         </div>
