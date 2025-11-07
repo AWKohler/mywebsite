@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muscle Hustle - Premium Fitness Experience</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <div class="logo">
+            <img
+              src="logo.png"
+              alt="Muscle Hustle gym logo featuring a flexed bicep with lightning bolt and barbell"
+              class="logo-img"
+            />
+          </div>
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#locations">Locations</a></li>
+            <li><a href="#membership">Membership</a></li>
+            <li><a href="#signup" class="cta-button">Join Now</a></li>
+          </ul>
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span class="highlight">UNLEASH</span> YOUR POTENTIAL
+          </h1>
+          <p class="hero-subtitle">
+            Where strength meets determination. Join Lynchburg's premier
+            fitness community.
+          </p>
+          <a href="#signup" class="hero-cta">Start Your Journey</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-header">
+          <h2>WHY MUSCLE HUSTLE?</h2>
+          <p>More than a gym. It's a lifestyle.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="card-icon">💪</div>
+            <h3>State-of-the-Art Equipment</h3>
+            <p>
+              Top-tier machines, free weights, and functional training
+              areas designed for serious results.
+            </p>
+          </div>
+          <div class="about-card">
+            <div class="card-icon">👥</div>
+            <h3>Expert Trainers</h3>
+            <p>
+              Certified professionals dedicated to helping you reach your
+              goals safely and effectively.
+            </p>
+          </div>
+          <div class="about-card">
+            <div class="card-icon">⚡</div>
+            <h3>High-Energy Environment</h3>
+            <p>
+              A motivating atmosphere where champions are made and limits
+              are pushed daily.
+            </p>
+          </div>
+          <div class="about-card">
+            <div class="card-icon">🏆</div>
+            <h3>Community Driven</h3>
+            <p>
+              Join a supportive family of fitness enthusiasts committed to
+              growth and excellence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section class="locations" id="locations">
+      <div class="container">
+        <div class="section-header">
+          <h2>OUR LOCATIONS</h2>
+          <p>Two premier facilities serving Central Virginia</p>
+        </div>
+        <div class="locations-grid">
+          <div class="location-card">
+            <div class="location-image">
+              <img
+                src="placeholder-downtown.jpg"
+                alt="AI Image Prompt: Professional photograph of a historic red brick building exterior in downtown urban setting, 3-story industrial warehouse converted to modern gym, large windows with visible gym equipment inside, evening golden hour lighting, people walking on sidewalk, street view, architectural photography, high quality, 4k"
+              />
+            </div>
+            <div class="location-content">
+              <h3>Downtown Lynchburg</h3>
+              <p class="location-type">FLAGSHIP LOCATION</p>
+              <p class="location-description">
+                Our original location in the heart of downtown. Housed in a
+                beautifully restored historic brick building, this facility
+                combines old-world charm with cutting-edge fitness
+                technology.
+              </p>
+              <ul class="location-features">
+                <li>24/7 Access</li>
+                <li>Olympic Lifting Platform</li>
+                <li>Boxing Ring</li>
+                <li>Rooftop Yoga Studio</li>
+                <li>Juice Bar & Lounge</li>
+              </ul>
+              <p class="location-address">
+                📍 428 Main Street, Lynchburg, VA 24504
+              </p>
+            </div>
+          </div>
+
+          <div class="location-card">
+            <div class="location-image">
+              <img
+                src="placeholder-suburban.jpg"
+                alt="AI Image Prompt: Professional photograph of a modern suburban gym facility exterior, contemporary architecture with large glass windows, spacious parking lot, well-lit signage, clean landscaping, daylight photography, welcoming entrance with glass doors, fitness center exterior, commercial real estate photography, 4k quality"
+              />
+            </div>
+            <div class="location-content">
+              <h3>Forrest</h3>
+              <p class="location-type">SUBURBAN FACILITY</p>
+              <p class="location-description">
+                Our newest location serving the Forrest community. Spacious,
+                modern, and equipped with everything you need for a
+                complete workout experience.
+              </p>
+              <ul class="location-features">
+                <li>Ample Parking</li>
+                <li>Turf Training Area</li>
+                <li>Kids Zone</li>
+                <li>Sauna & Steam Room</li>
+                <li>Group Fitness Studio</li>
+              </ul>
+              <p class="location-address">
+                📍 2156 Forest Road, Forrest, VA 24551
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section class="membership" id="membership">
+      <div class="container">
+        <div class="section-header">
+          <h2>MEMBERSHIP OPTIONS</h2>
+          <p>Find the perfect plan for your fitness journey</p>
+        </div>
+        <div class="membership-grid">
+          <div class="membership-card">
+            <h3>BASIC</h3>
+            <div class="price">
+              <span class="currency">$</span>
+              <span class="amount">49</span>
+              <span class="period">/month</span>
+            </div>
+            <ul class="features-list">
+              <li>✓ Access to one location</li>
+              <li>✓ Standard hours (5am-11pm)</li>
+              <li>✓ All equipment access</li>
+              <li>✓ Locker room facilities</li>
+            </ul>
+            <a href="#signup" class="membership-btn">Get Started</a>
+          </div>
+
+          <div class="membership-card featured">
+            <div class="badge">MOST POPULAR</div>
+            <h3>PRO</h3>
+            <div class="price">
+              <span class="currency">$</span>
+              <span class="amount">79</span>
+              <span class="period">/month</span>
+            </div>
+            <ul class="features-list">
+              <li>✓ Both locations access</li>
+              <li>✓ 24/7 access</li>
+              <li>✓ Guest passes (2/month)</li>
+              <li>✓ Group classes included</li>
+              <li>✓ Sauna & steam room</li>
+            </ul>
+            <a href="#signup" class="membership-btn">Get Started</a>
+          </div>
+
+          <div class="membership-card">
+            <h3>ELITE</h3>
+            <div class="price">
+              <span class="currency">$</span>
+              <span class="amount">129</span>
+              <span class="period">/month</span>
+            </div>
+            <ul class="features-list">
+              <li>✓ All Pro features</li>
+              <li>✓ Personal training (4 sessions/month)</li>
+              <li>✓ Nutrition consultation</li>
+              <li>✓ Priority equipment access</li>
+              <li>✓ Exclusive member events</li>
+            </ul>
+            <a href="#signup" class="membership-btn">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+      <div class="container">
+        <div class="section-header">
+          <h2>THE MUSCLE HUSTLE EXPERIENCE</h2>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img
+              src="placeholder-weights.jpg"
+              alt="AI Image Prompt: High-quality photograph of a modern gym weight room, rows of chrome dumbbells on racks, Olympic barbells, weight plates, dramatic gym lighting with red accent lights, industrial ceiling, rubber flooring, professional fitness photography, sharp focus, 4k resolution"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="placeholder-cardio.jpg"
+              alt="AI Image Prompt: Professional gym interior photo showing modern cardio equipment area, rows of treadmills and elliptical machines, large mirrors, motivational wall graphics, bright LED lighting, clean and organized space, commercial gym photography, wide angle, 4k quality"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="placeholder-training.jpg"
+              alt="AI Image Prompt: Action photograph of personal trainer working with client in modern gym, demonstrating proper form on exercise, motivational coaching moment, athletic wear, dynamic composition, natural gym lighting, professional fitness photography, inspiring and energetic, 4k"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="placeholder-group.jpg"
+              alt="AI Image Prompt: Energetic photograph of group fitness class in session, diverse group of people doing HIIT workout, instructor leading from front, bright studio with mirrors, participants showing determination and effort, community atmosphere, professional gym photography, vibrant and motivating, 4k resolution"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Signup Section -->
+    <section class="signup" id="signup">
+      <div class="container">
+        <div class="signup-content">
+          <div class="signup-text">
+            <h2>READY TO TRANSFORM?</h2>
+            <p>
+              Join hundreds of members who have already started their
+              fitness journey with us. Enter your contact information to
+              begin your membership today.
+            </p>
+            <ul class="signup-benefits">
+              <li>✓ No commitment, cancel anytime</li>
+              <li>✓ First week free trial</li>
+              <li>✓ Complimentary fitness assessment</li>
+            </ul>
+          </div>
+          <div class="signup-form-container">
+            <form id="signupForm" class="signup-form">
+              <h3>Start Your Journey</h3>
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="John Doe"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="john@example.com"
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  placeholder="(555) 123-4567"
+                />
+              </div>
+              <div class="form-group">
+                <label for="location">Preferred Location</label>
+                <select id="location" name="location" required>
+                  <option value="">Select a location</option>
+                  <option value="downtown">Downtown Lynchburg</option>
+                  <option value="forrest">Forrest</option>
+                  <option value="both">Both Locations</option>
+                </select>
+              </div>
+              <button type="submit" class="submit-btn">
+                Join Muscle Hustle
+              </button>
+              <p class="form-message" id="formMessage"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <img
+              src="logo.png"
+              alt="Muscle Hustle logo"
+              class="footer-logo"
+            />
+            <p>
+              Building stronger bodies and stronger communities since 2018.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#locations">Locations</a></li>
+              <li><a href="#membership">Membership</a></li>
+              <li><a href="#signup">Join Now</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contact</h4>
+            <p>Email: info@musclehustle.com</p>
+            <p>Downtown: (434) 555-0100</p>
+            <p>Forrest: (434) 555-0200</p>
+          </div>
+          <div class="footer-section">
+            <h4>Hours</h4>
+            <p>Downtown: 24/7</p>
+            <p>Forrest: Mon-Sun 5am-11pm</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Muscle Hustle. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
