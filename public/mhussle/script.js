@@ -67,17 +67,42 @@ signupForm.addEventListener("submit", (e) => {
     timestamp: new Date().toISOString(),
   };
 
-  // Save to local file (download as text file)
-  saveToFile(formData);
+  // // Save to local file (download as text file)
+  // saveToFile(formData);
 
-  // Show success message
-  showMessage(
-    "Success! Your information has been saved. We'll contact you soon!",
-    "success"
-  );
+  // // Show success message
+  // showMessage(
+  //   "Success! Your information has been saved. We'll contact you soon!",
+  //   "success"
+  // );
 
-  // Reset form
-  signupForm.reset();
+  // // Reset form
+  // signupForm.reset();
+
+  // Send to PHP backend using fetch
+  fetch('signup.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData) // Convert the JS object to a JSON string
+  })
+  .then(response => response.json()) // Get the JSON response from PHP
+  .then(result => {
+    if (result.success) {
+      // Show success message (comes from PHP)
+      showMessage(result.message, "success");
+      signupForm.reset(); // Reset form on success
+    } else {
+      // Show error message (e.g., "duplicate email")
+      showMessage(result.message, "error");
+    }
+  })
+  .catch(error => {
+    // This catches network errors
+    console.error('Error:', error);
+    showMessage("A server error occurred. Please try again later.", "error");
+  });
 });
 
 function showMessage(message, type) {
@@ -90,37 +115,37 @@ function showMessage(message, type) {
   }, 5000);
 }
 
-function saveToFile(data) {
-  // Create a formatted string
-  const content = `
-=================================
-MUSCLE HUSTLE - NEW SIGNUP
-=================================
-Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone}
-Preferred Location: ${data.location}
-Timestamp: ${data.timestamp}
-=================================
+// function saveToFile(data) {
+//   // Create a formatted string
+//   const content = `
+// =================================
+// MUSCLE HUSTLE - NEW SIGNUP
+// =================================
+// Name: ${data.name}
+// Email: ${data.email}
+// Phone: ${data.phone}
+// Preferred Location: ${data.location}
+// Timestamp: ${data.timestamp}
+// =================================
 
-`;
+// `;
 
-  // Check if we have existing data in localStorage
-  let existingData = localStorage.getItem("muscleHustleSignups") || "";
-  existingData += content;
-  localStorage.setItem("muscleHustleSignups", existingData);
+//   // Check if we have existing data in localStorage
+//   let existingData = localStorage.getItem("muscleHustleSignups") || "";
+//   existingData += content;
+//   localStorage.setItem("muscleHustleSignups", existingData);
 
-  // Create a blob and download
-  const blob = new Blob([content], { type: "text/plain" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = `muscle-hustle-signup-${Date.now()}.txt`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
-}
+//   // Create a blob and download
+//   const blob = new Blob([content], { type: "text/plain" });
+//   const url = URL.createObjectURL(blob);
+//   const link = document.createElement("a");
+//   link.href = url;
+//   link.download = `muscle-hustle-signup-${Date.now()}.txt`;
+//   document.body.appendChild(link);
+//   link.click();
+//   document.body.removeChild(link);
+//   URL.revokeObjectURL(url);
+// }
 
 // Smooth scroll for navigation
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
