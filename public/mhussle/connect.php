@@ -2,8 +2,8 @@
   // Database connection settings
   $host = 'localhost';
   $user = 'root';
-  $pass = 'YOUR_MYSQL_PASSWORD_HERE'; // The password you set for MySQL
-  $db = 'muscle_hustle';             // The database you created
+  $pass = 'hussle'; // The password you set for MySQL
+  $db = 'mussle_hustle';             // The database you created
 
   // Create connection
   $conn = new mysqli($host, $user, $pass, $db);
