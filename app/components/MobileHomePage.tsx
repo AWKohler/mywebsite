@@ -32,25 +32,25 @@ const fadeUpDelayed: Variants = {
 
 const projects = [
   {
+    title: "OpenVibeCode",
+    period: "2025 – present · botflow.io",
+    desc: "AI-powered web IDE — build and deploy full-stack apps from your browser using natural language.",
+    img: "https://botflow.io/demo-app.png",
+    tags: ["Multi-LLM", "WebContainers", "Next.js", "Convex", "TypeScript"],
+  },
+  {
     title: "Botflow.io",
-    period: "2023 – present",
-    desc: "A SAAS platform for creating AI Chatbots, embeddable on any website.",
+    period: "2023 – 2025 · Pre-pivot",
+    desc: "SaaS platform for creating embeddable AI chatbots — RAG, multi-model support, Stripe billing.",
     img: "/botflow-landing.png",
-    tags: ["Next.js", "OpenAI", "TypeScript", "Stripe"],
+    tags: ["Next.js", "OpenAI", "TypeScript", "Stripe", "LangChain"],
   },
   {
-    title: "Linkme.tld",
+    title: "linkme.ltd",
     period: "2024 – present",
-    desc: "QR Code Generator — an open-source alternative to Flowcode.",
+    desc: "QR code & link-in-bio platform — open source alternative to Flowcode with analytics.",
     img: "/rangers-qr.png",
-    tags: ["TypeScript", "ShadCN UI"],
-  },
-  {
-    title: "This Website",
-    period: "2023 – present",
-    desc: "Personal portfolio with advanced animations.",
-    img: "/og-image.png",
-    tags: ["Framer Motion", "Next.js", "Tailwind"],
+    tags: ["TypeScript", "Next.js", "Clerk", "Neon", "Drizzle"],
   },
 ];
 
@@ -122,7 +122,7 @@ export default function MobileHomePage() {
             <h2 className="">Aronne Kohler</h2>
             <div className="text-2xl md:text-5xl">
               <p>Full stack developer, AI integrator</p>
-              <p>Liberty University &apos;26</p>
+              <p>Student, Liberty University</p>
             </div>
           </div>
 
@@ -322,34 +322,34 @@ export default function MobileHomePage() {
         {/* repeat structure for each project */}
         {[
           {
+            name: "OpenVibeCode",
+            date: "2025–present",
+            tags: ["Multi-LLM", "WebContainers", "Next.js", "Convex"],
+          },
+          {
             name: "Botflow.io",
-            date: "2023-present",
-            tags: ["Next.js", "OpenAI", "TypeScript"],
+            date: "2023–2025",
+            tags: ["Next.js", "OpenAI", "TypeScript", "Stripe"],
           },
           {
-            name: "Linkme.tld",
-            date: "2024-present",
-            tags: ["TypeScript", "ShadCN UI"],
-          },
-          {
-            name: "SQL-MCP",
-            date: "2025-present",
-            tags: ["PostgreSQL", "MySQL", "Supabase"],
+            name: "linkme.ltd",
+            date: "2024–present",
+            tags: ["Next.js", "TypeScript", "Clerk", "Neon"],
           },
           {
             name: "Buddy AI",
-            date: "2024-present",
-            tags: ["Anthropic", "Groq API"],
+            date: "2024–present",
+            tags: ["Anthropic", "Groq API", "RAG"],
           },
           {
             name: "Liberty University AI",
-            date: "2023-2024",
-            tags: ["React", "OpenAI"],
+            date: "2023–2024",
+            tags: ["React", "OpenAI", "RAG", "Embeddings"],
           },
           {
             name: "This Website",
-            date: "2023-present",
-            tags: ["Motion", "Next.js"],
+            date: "2023–present",
+            tags: ["Framer Motion", "Next.js", "Tailwind"],
           },
               ].map((proj) => (
                 <div key={proj.name} className="bg-[#f5f5f5] p-3 shadow-md">

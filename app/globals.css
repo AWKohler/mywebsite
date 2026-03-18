@@ -86,6 +86,10 @@
   -webkit-text-fill-color: transparent;
 }
 
+.font-tomato-sans {
+  font-style: normal;
+}
+
 /* Instrument Serif — loaded from Google Fonts CDN for cross-browser compatibility */
 .font-instrument-serif {
   -webkit-font-smoothing: antialiased;

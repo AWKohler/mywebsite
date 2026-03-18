@@ -96,6 +96,7 @@ export default function HomePage() {
   });
 
   const x = useTransform(carouselProgress, [0, 1], ["0%", "-108.5%"]);
+
   
   // Tab state
   const [activeTab, setActiveTab] = useState(4);
@@ -161,7 +162,7 @@ export default function HomePage() {
           <h2 className="mb-4">Aronne Kohler</h2>
           <div className="text-2xl md:text-5xl">
             <p>Full stack developer, AI integrator</p>
-            <p>Liberty University &apos;26</p>
+            <p className="mt-3">Student, Liberty University</p>
           </div>
         </motion.div>
 
@@ -279,7 +280,7 @@ export default function HomePage() {
                   x,
                   whiteSpace: "nowrap",
                   position: "absolute",
-                  left: "50%",
+                  left: "70%",
                   transform: "translateX(-50px)",
                 }}
                 className="flex text-[9rem] font-bold text-[#f7f2e1] items-center -ml-[12rem]"
@@ -288,12 +289,94 @@ export default function HomePage() {
                 <div className="font-tomato-sans tracking-tighter pl-[20rem] text-[38rem] font-extrabold">
                   1
                 </div>
-                
-                <SparklesText className="font-tomato-sans tracking-tighter px-8 pl-[8rem] pr-[8rem] flex flex-row font-extrabold">
+
+                <SparklesText className="font-tomato-sans tracking-tighter px-8 pl-[8rem] pr-[4rem] flex flex-row font-extrabold">
                   Botflow.io
                 </SparklesText>
-                
-                A{" "}
+
+                <TextAnimate className="pl-8 pr-12 flex flex-row" animation="slideUp" by="word">
+                  a deployment of
+                </TextAnimate>
+
+                <span className="pl-6 pr-[8rem] relative inline-flex flex-col items-start overflow-visible">
+                  <span className="font-tomato-sans tracking-tighter text-[8rem] bg-gradient-to-r from-[#f7f2e1] to-[#f48e47] text-transparent bg-clip-text">
+                    OpenVibeCode
+                  </span>
+                  <div className="absolute mt-32 ml-40">
+                    <GitHubButton href="https://github.com/AWKohler/open-vibe-code" className="text-[4rem] font-instrument-serif font-italic py-3 px-10" />
+                </div>
+                </span>
+
+                <TextAnimate className="pl-2.5 flex flex-row" animation="slideUp" by="word">
+                  Build full-stack apps
+                </TextAnimate>
+
+                <span className="pl-12 font-tomato-sans tracking-tighter pr-8 bg-gradient-to-r from-[#f7f2e1] to-[#f48e47] text-transparent bg-clip-text pr-[4rem]">
+                  with AI
+                </span>
+
+                {/* <div className="relative flex-shrink-0 w-[700px] h-[440px]">
+                  <Image
+                    src="https://botflow.io/demo-app.png"
+                    alt="OpenVibeCode workspace"
+                    width={650}
+                    height={400}
+                    className="absolute top-0 left-0 w-[600px] h-auto rounded-2xl"
+                  />
+                  <Image
+                    src="https://botflow.io/convex.png"
+                    alt="Convex database"
+                    width={450}
+                    height={300}
+                    className="absolute top-[120px] left-[220px] w-[460px] h-auto rounded-2xl"
+                  />
+                </div> */}
+
+                <div className="relative flex-shrink-0 w-[800px] h-[520px]">
+                  <Image
+                    src="https://botflow.io/demo-app.png"
+                    alt="OpenVibeCode workspace"
+                    width={650}
+                    height={400}
+                    className="absolute top-0 left-0 w-[700px] h-auto rounded-2xl"
+                  />
+                  <Image
+                    src="https://botflow.io/convex.png"
+                    alt="Convex database"
+                    width={450}
+                    height={300}
+                    className="absolute top-[140px] left-[250px] w-[540px] h-auto rounded-2xl"
+                  />
+                </div>
+
+                <TextAnimate className="pl-[4rem] flex flex-row" animation="hinge" by="word">
+                  No-code
+                </TextAnimate>
+
+                <span className="px-[2rem]">web app</span>
+
+                <TextAnimate className="font-tomato-sans px-[1rem] tracking-tighter flex flex-row font-extrabold" animation="blurInDown" by="word">
+                  creation
+                </TextAnimate>
+
+                <span className="px-[4rem]">platform</span>
+
+                <div className="font-tomato-sans tracking-tighter pl-[20rem] pr-[10rem] text-[38rem] font-extrabold">
+                  2
+                </div>
+
+                <div className="flex flex-col gap-0">
+                  <span className="font-tomato-sans tracking-tighter pl-8 pr-8">
+                    Botflow.io
+                  </span>
+                  <span className="font-tomato-sans tracking-tighter pl-8 pr-8 text-[3rem] py-0 -mt-16 opacity-60">
+                    Pre-pivot · 2023–2026
+                  </span>
+                </div>
+
+                <span className="tracking-tighter pl-8 pr-8">
+                    A
+                </span>{" "}
                 <span className="font-tomato-sans tracking-tighter px-8 bg-gradient-to-r from-[#f7f2e1] to-[#f48e47] text-transparent bg-clip-text">
                   SAAS
                 </span>{" "}
@@ -314,7 +397,7 @@ export default function HomePage() {
                 />
 
                 <TextAnimate className="pl-[4rem] flex flex-row" animation="hinge" by="word">
-                  Embedable
+                  Embeddable
                 </TextAnimate>
 
                 <span className="pl-[2rem]">on</span>
@@ -333,19 +416,11 @@ export default function HomePage() {
                   className="w-full h-auto border rounded-2xl border-[#f7f2e1] border-8"
                 />
                 <div className="font-tomato-sans tracking-tighter pl-[20rem] pr-[10rem] text-[38rem] font-extrabold">
-                  2
-                </div>
-
-                <TextAnimate className="font-tomato-sans tracking-tighter pr-8 flex flex-row" animation="slideUp" by="word">
-                  This website lol
-                </TextAnimate>
-                <GitHubButton className="font-tomato-sans tracking-tighter px-8 text-[7rem]" />
-                <div className="font-tomato-sans tracking-tighter pl-[20rem] pr-[10rem] text-[38rem] font-extrabold">
                   3
                 </div>
                 <div className="flex flex-col gap-0">
                   <span className="font-tomato-sans tracking-tighter pl-8 pr-14">
-                    Linkme.ltd
+                    link-me.ltd
                   </span>
                   <span className="font-tomato-sans tracking-tighter pl-8 pr-14 text-[3rem] py-0 -mt-16">
                     QR Code Generator
@@ -370,7 +445,7 @@ export default function HomePage() {
                   alternative to Flowcode
                 </span>
 
-                <span className="pl-[30rem] text-[28rem] font-tomato-sans tracking-tighter">
+                <span className="pl-[35rem] text-[28rem] font-tomato-sans tracking-tighter">
                   Skills
                 </span>
               </motion.div>
@@ -380,7 +455,7 @@ export default function HomePage() {
       </motion.section>
 
       {/* Skills Tab Sections */}
-      <div className="relative mt-[800vh] bg-black" style={{ zIndex: 20 }}>
+      <div className="relative mt-[800vh] bg-[#0e100f]" style={{ zIndex: 20 }}>
         {/* Fullstack Development Tab */}
         <section className={cn(
           "relative text-[#0e100f] h-screen sticky top-0 overflow-hidden pointer-events-none",
@@ -528,55 +603,61 @@ export default function HomePage() {
               <h2 className="text-6xl md:text-8xl font-bold mb-8">Projects</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <motion.div 
+                <motion.div
+                  className="bg-[#0e100f] text-[#f7f2e1] p-6 shadow-md flex flex-col h-full"
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                >
+                  <div>
+                    <h3 className="text-2xl font-bold">OpenVibeCode</h3>
+                    <p className="text-sm text-[#f7f2e1]/60">2025 - present · botflow.io</p>
+                    <p className="mt-2">AI-powered web IDE — build and deploy full-stack apps from your browser using natural language</p>
+                  </div>
+                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
+                    <span className="px-2 py-1 bg-[#f48e47] rounded-full text-xs text-black font-medium">Multi-LLM</span>
+                    <span className="px-2 py-1 bg-[#f7f2e1]/20 rounded-full text-xs">WebContainers</span>
+                    <span className="px-2 py-1 bg-[#f7f2e1]/20 rounded-full text-xs">Next.js</span>
+                    <span className="px-2 py-1 bg-[#f7f2e1]/20 rounded-full text-xs">Convex</span>
+                    <span className="px-2 py-1 bg-blue-500 rounded-full text-xs text-white">TypeScript</span>
+                  </div>
+                </motion.div>
+
+                <motion.div
                   className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <div>
                     <h3 className="text-2xl font-bold">Botflow.io</h3>
-                    <p className="text-sm text-gray-500">2023 - present</p>
-                    <p className="mt-2">A SAAS platform for creating AI Chatbots, embeddable on any website</p>
+                    <p className="text-sm text-gray-500">2023 - 2025 · Pre-pivot</p>
+                    <p className="mt-2">SaaS platform for creating embeddable AI chatbots — RAG, multi-model support, Stripe billing</p>
                   </div>
                   <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-slate-800 text-white">Next.js</span>
+                    <span className="px-2 py-1 bg-slate-800 rounded-full text-xs text-white">Next.js</span>
                     <span className="px-2 py-1 rounded-full text-xs bg-gray-200">OpenAI</span>
                     <span className="px-2 py-1 rounded-full text-xs bg-blue-500 text-white">TypeScript</span>
                     <span className="px-2 py-1 bg-blue-500 rounded-full text-xs text-white">Stripe</span>
+                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">LangChain</span>
                   </div>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <div>
-                    <h3 className="text-2xl font-bold">Linkme.tld</h3>
+                    <h3 className="text-2xl font-bold">linkme.ltd</h3>
                     <p className="text-sm text-gray-500">2024 - present</p>
-                    <p className="mt-2">QR Code Generator - an open source alternative to Flowcode</p>
+                    <p className="mt-2">QR code & link-in-bio platform — open source alternative to Flowcode with analytics</p>
                   </div>
                   <div className="mt-auto pt-4 flex flex-wrap gap-2">
                     <span className="px-2 py-1 rounded-full text-xs bg-blue-500 text-white">TypeScript</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">ShadCN UI</span>
+                    <span className="px-2 py-1 bg-slate-800 rounded-full text-xs text-white">Next.js</span>
+                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Clerk</span>
+                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Neon</span>
+                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Drizzle</span>
                   </div>
                 </motion.div>
 
-                <motion.div 
-                  className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                >
-                  <div>
-                    <h3 className="text-2xl font-bold">SQL-MCP</h3>
-                    <p className="text-sm text-gray-500">2025 - present</p>
-                    <p className="mt-2">SQL Management Control Platform</p>
-                  </div>
-                  <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">PostgreSQL</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">MySQL</span>
-                    <span className="px-2 py-1 bg-green-600 rounded-full text-xs">Supabase</span>
-                  </div>
-                </motion.div>
-
-                <motion.div 
+                <motion.div
                   className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
@@ -592,34 +673,35 @@ export default function HomePage() {
                   </div>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <div>
                     <h3 className="text-2xl font-bold">Liberty University AI</h3>
                     <p className="text-sm text-gray-500">2023 - 2024</p>
-                    <p className="mt-2">Chatbot for Liberty University</p>
+                    <p className="mt-2">RAG-powered chatbot deployed for Liberty University — context-aware Q&A over institutional knowledge</p>
                   </div>
                   <div className="mt-auto pt-4 flex flex-wrap gap-2">
                     <span className="px-2 py-1 rounded-full text-xs bg-blue-300">React</span>
                     <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">OpenAI</span>
-                    <span className="px-2 py-1 bg-purple-600 rounded-full text-xs text-white">Botflow</span>
+                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">RAG</span>
+                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Embeddings</span>
                   </div>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   className="bg-[#f5f5f5] p-6 shadow-md flex flex-col h-full"
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <div>
                     <h3 className="text-2xl font-bold">This Website</h3>
                     <p className="text-sm text-gray-500">2023 - present</p>
-                    <p className="mt-2">Personal portfolio with advanced animations</p>
+                    <p className="mt-2">Personal portfolio with scroll-driven animations, parallax, and custom typefaces</p>
                   </div>
                   <div className="mt-auto pt-4 flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-yellow-300 rounded-full text-xs">Motion</span>
-                    <span className="px-2 py-1 bg-gray-200 rounded-full text-xs bg-slate-800 text-white">Next.js</span>
+                    <span className="px-2 py-1 bg-yellow-300 rounded-full text-xs">Framer Motion</span>
+                    <span className="px-2 py-1 bg-slate-800 rounded-full text-xs text-white">Next.js</span>
                     <span className="px-2 py-1 bg-blue-400 rounded-full text-xs">Tailwind</span>
                   </div>
                 </motion.div>

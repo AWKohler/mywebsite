@@ -6,6 +6,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
   reactStrictMode: true,
   serverExternalPackages: [],
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'botflow.io' },
+    ],
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: '2mb',

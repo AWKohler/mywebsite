@@ -1,13 +1,15 @@
 import React from "react"
 import { cn } from "@/lib/utils"
 
-interface GitHubButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+interface GitHubButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  href?: string;
+}
 
 export const GitHubButton = React.forwardRef<HTMLButtonElement, GitHubButtonProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, href = "https://github.com/AWKohler/mywebsite", ...props }, ref) => {
     return (
       <a
-        href="https://github.com/AWKohler/mywebsite"
+        href={href}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center"
