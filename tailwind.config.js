@@ -35,9 +35,7 @@ module.exports = {
         },
       }),
       fontFamily: {
-        "instrument-serif": "var(--font-instrument-serif)", // note: you can call the left side of this whatever you want - barlow-bold or title-font or foo-bar, this is what you'll use in your Tailwind css classes to use this font
-        "instrument-serif-safari": "var(--font-instrument-serif-safari)", // note: you can call the left side of this whatever you want - barlow-bold or title-font or foo-bar, this is what you'll use in your Tailwind css classes to use this font
-        "instrument-serif-italic": "var(--font-instrument-serif-italic)", // note: you can call the left side of this whatever you want - barlow-bold or title-font or foo-bar, this is what you'll use in your Tailwind css classes to use this font
+        "instrument-serif": ['"Instrument Serif"', "serif"],
         "tomato-sans": "var(--font-tomato-sans)", // note: the bit that goes inside the var() function is the same variable name we defined in app.tsx
         "whyte-inktrap": "var(--font-whyte-inktrap)", // note: the bit that goes inside the var() function is the same variable name we defined in app.tsx
         "pp-editorial": "var(--font-pp-editorial)", // note: the bit that goes inside the var() function is the same variable name we defined in app.tsx

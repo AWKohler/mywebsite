@@ -21,6 +21,15 @@ const fadeUp: Variants = {
   },
 };
 
+const fadeUpDelayed: Variants = {
+  hidden: { y: 40, opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: { delay: 0.8, duration: 0.6, ease: "easeOut" },
+  },
+};
+
 const projects = [
   {
     title: "Botflow.io",
@@ -79,12 +88,10 @@ export default function MobileHomePage() {
       >
         <div>
           <motion.div
-            // ref={headerRef}
-            className="w-screen top-[5rem] lg:pb-0 md:pb-10 pb-14"
-            // className="w-screen border-b border-gray-300 top-[5rem] lg:pb-0 md:pb-10 pb-14"
+            className="w-full top-[5rem] pb-14 border-b"
 
             style={{
-              overflow: "hidden",
+              clipPath: "inset(-20% -10% 0 -10%)",
               display: "flex",
               justifyContent: "center",
               position: "relative",
@@ -98,9 +105,9 @@ export default function MobileHomePage() {
 
             <motion.div
               variants={titleVariants}
-              className="relative text-[#df0939] font-bold text-[8rem] md:text-[9rem] lg:text-[14rem] text-center leading-none"
+              className="relative text-[#df0939] font-bold text-[clamp(5rem,22vw,10rem)] md:text-[9rem] text-center leading-[0.85]"
             >
-              <h1 className="whitespace-normal">Aronne Kohler</h1>
+              <h1>Aronne<br />Kohler</h1>
             </motion.div>
 
           </motion.div>
@@ -108,9 +115,9 @@ export default function MobileHomePage() {
       </motion.section>
 
       {/* ––––– HERO / ABOUT ––––– */}
-      <section className="px-6 pt-24 flex flex-col gap-16 text-black">
+      <section className="px-6 pt-12 flex flex-col gap-16 text-black">
         {/* tagline */}
-        <motion.div variants={fadeUp} initial="hidden" whileInView="show" className="text-4xl flex items-center justify-center">
+        <motion.div variants={fadeUpDelayed} initial="hidden" whileInView="show" className="text-4xl flex items-center justify-center">
           <div className="flex flex-col">
             <h2 className="">Aronne Kohler</h2>
             <div className="text-2xl md:text-5xl">

@@ -100,6 +100,7 @@ export default function HomePage() {
   // Tab state
   const [activeTab, setActiveTab] = useState(4);
 
+
   return (
     <div style={{ background: "#f0f0f0", margin: 0 }} className="overflow-clip">
       <ScrollProgress className="top-[0px]" />
@@ -120,7 +121,7 @@ export default function HomePage() {
             ref={headerRef}
             className="w-screen border-b top-[5rem] lg:pb-0 md:pb-10 pb-14"
             style={{
-              overflow: "hidden",
+              clipPath: "inset(-20% -10% 0 -10%)",
               display: "flex",
               justifyContent: "center",
               position: "relative",
@@ -147,7 +148,7 @@ export default function HomePage() {
       {/* About Section */}
       <motion.div
         ref={profileRef}
-        className="w-full px-6 md:px-20 text-black text-4xl md:text-7xl grid grid-cols-2 grid-rows-3 justify-center items-center gap-x-10 gap-y-60 border-b overflow-clip"
+        className="w-full px-6 md:px-20 text-black text-4xl md:text-7xl grid grid-cols-2 grid-rows-3 justify-center items-center gap-x-10 gap-y-60 border-b"
       >
         {/* Intro */}
         <motion.div

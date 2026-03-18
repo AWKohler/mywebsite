@@ -97,7 +97,7 @@ export function Header(props: React.PropsWithChildren) {
         </div>
         {/* Right: Sign in button */}
         <div className="flex items-center gap-6 flex-1 justify-end">
-          <a href="/studio" className="group relative px-1.5 text-sm/6 text-[#df0939] dark:text-[#df0939]">
+          <Link href="/studio" className="group relative px-1.5 text-sm/6 text-[#df0939] dark:text-[#df0939]">
             <span className="absolute inset-0 border border-dashed border-[#df0939]/60 bg-[#df0939]/10 group-hover:bg-[#df0939]/15 dark:border-[#df0939]/30" />
             {/* Sign in */}
             Studio
@@ -133,7 +133,7 @@ export function Header(props: React.PropsWithChildren) {
             >
               <path d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
       {/* Mobile header */}

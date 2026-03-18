@@ -85,3 +85,88 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Instrument Serif — loaded from Google Fonts CDN for cross-browser compatibility */
+.font-instrument-serif {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@layer utilities {
+  .line-t {
+    @apply relative before:absolute before:top-0 before:-left-[100vw]
+      before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10;
+  }
+
+  .line-b {
+    @apply relative after:absolute after:bottom-0 after:-left-[100vw]
+      after:h-px after:w-[200vw] after:bg-gray-950/5 dark:after:bg-white/10;
+  }
+
+  .line-y {
+    @apply relative;
+    @apply before:absolute before:top-0 before:-left-[100vw]
+      before:h-px before:w-[200vw] before:bg-gray-950/5 dark:before:bg-white/10;
+    @apply after:absolute after:bottom-0 after:-left-[100vw]
+      after:h-px after:w-[200vw] after:bg-gray-950/5 dark:after:bg-white/10;
+  }
+
+  .line-t\/half {
+    @apply relative before:absolute before:top-0 before:right-0 before:h-px
+      before:w-screen before:bg-gray-950/5 dark:before:bg-white/10;
+  }
+
+  .line-b\/half {
+    @apply relative after:absolute after:right-0 after:bottom-0 after:h-px
+      after:w-screen after:bg-gray-950/5 dark:after:bg-white/10;
+  }
+
+  .line-y\/half {
+    @apply relative;
+    @apply before:absolute before:top-0 before:right-0 before:h-px before:w-screen
+      before:bg-gray-950/5 dark:before:bg-white/10;
+    @apply after:absolute after:right-0 after:bottom-0 after:h-px
+      after:w-screen after:bg-gray-950/5 dark:after:bg-white/10;
+  }
+}
+
+:root {
+  --gutter-width: 2.5rem;
+  --breakpoint-2xl: 1280px;
+  --color-black: #000;
+  --color-white: #fff;
+}
+
+/* Fallback styling for MDX content if typography plugin is not active */
+.mdx-content h1 { font-size: 2.25rem; line-height: 2.5rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 1rem; }
+.mdx-content h2 { font-size: 1.875rem; line-height: 2.25rem; font-weight: 700; margin-top: 1.25rem; margin-bottom: 0.75rem; }
+.mdx-content h3 { font-size: 1.5rem; line-height: 2rem; font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem; }
+.mdx-content p { margin-top: 0.75rem; margin-bottom: 0.75rem; }
+.mdx-content ul { list-style: disc; padding-left: 1.25rem; margin: 0.75rem 0; }
+.mdx-content ol { list-style: decimal; padding-left: 1.25rem; margin: 0.75rem 0; }
+.mdx-content a { color: rgb(2 132 199); text-decoration: none; }
+.mdx-content code { background-color: rgba(0,0,0,0.05); padding: 0.15rem 0.35rem; border-radius: 0.25rem; }
+.mdx-content pre { background-color: #0a0a0a; color: #e5e7eb; padding: 1rem; border-radius: 0.5rem; overflow: auto; }
+/* Markdown horizontal rule separator */
+.mdx-content hr { border: 0; height: 1px; background-color: #f3f3f2; margin: 1.5rem 0; }
+
+/* Images and videos: match code block corner radius */
+.mdx-content img,
+.mdx-content video {
+  border-radius: 0.5rem; /* same as code blocks */
+}
+
+/* Videos also get a subtle border */
+.mdx-content video {
+  border: 1px solid #dadbde;
+  overflow: hidden; /* help clip controls in some browsers */
+}
+
+/* Minimal code block styling used by CodeExample */
+.code-block { background-color: #0a0a0a; color: #e5e7eb; padding: 1rem; border-radius: 0.5rem; overflow: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.9rem; }
+.code-block .line { white-space: pre; }
+
+/* Shiki output defaults */
+pre.shiki { background-color: #0a0a0a; color: #e5e7eb; padding: 1rem; border-radius: 0.5rem; overflow: auto; }
+pre.shiki code { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.9rem; }

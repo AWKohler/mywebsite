@@ -1,15 +1,9 @@
 import FooterSection from "@/components/FooterSection";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Instrument_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import React from "react";
-
-const instrumentSerifTTF = localFont({
-  weight: "400",
-  src: "../public/fonts/InstrumentSerif-Italic.ttf",
-  variable: "--font-instrument-serif",
-});
 
 const PPEditorialUltralight = localFont({
   weight: "100",
@@ -59,25 +53,6 @@ const instrumentSans = Instrument_Sans({
   variable: "--font-instrument-sans",
 });
 
-// const instrumentSerifSafari = Instrument_Serif({
-//   weight: "400",
-//   subsets: ["latin"],
-//   variable: "--font-instrument-serif-safari",
-// });
-
-// const instrumentSerif = Instrument_Serif({
-//   weight: "400",
-//   style: "italic",
-//   subsets: ["latin"],
-//   variable: "--font-instrument-serif",
-// });
-
-// const instrumentSerifItalic = Instrument_Serif({
-//   weight: "400",
-//   style: "italic",
-//   subsets: ["latin"],
-//   variable: "--font-instrument-serif-italic",
-// });
 
 export const metadata: Metadata = {
   title: "Aronne Kohler",
@@ -112,9 +87,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
         className={`
-          ${instrumentSerifTTF.variable}
           ${instrumentSans.variable}
           ${tomatoGrotesk.variable}
           ${whyteInktrap.variable}
@@ -125,8 +108,7 @@ export default function RootLayout({
           ${lockSerif.variable}
         `}
       >
-        <div className="bg-background font-pp-editorial-italic md:font-instrument-serif">
-        {/* <div className="bg-background font-instrument-serif"> */}
+        <div className="bg-background font-pp-editorial-italic md:font-instrument-serif md:italic">
           {children}
           <FooterSection />
         </div>
