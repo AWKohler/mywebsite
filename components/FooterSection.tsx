@@ -68,7 +68,7 @@ const FooterSection = () => {
           </div>
 
           <div className="text-[#f7f2e1]/70 text-sm bg-black border py-2 px-3 border-[#444444] border-1">
-            © 2025 Aronne Kohler. All rights reserved.
+            © 2026 Aronne Kohler. All rights reserved.
           </div>
         </div>
       </div>

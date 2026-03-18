@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -22,7 +22,7 @@
     "clsx": "^2.0.0",
     "eslint": "^10.0.3",
     "eslint-config-next": "^16.1.7",
-    "framer-motion": "^12.38.0",
+    "framer-motion": "^11.18.2",
     "lucide-react": "^0.274.0",
     "motion": "^12.6.3",
     "next": "^16.1.7",

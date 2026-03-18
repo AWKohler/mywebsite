@@ -15,12 +15,12 @@ export default function Resume() {
           </a>
           <span className="hidden sm:inline">|</span>
           <a
-            href="https://linkedin.com/in/aronne-kohler-2b1204292/"
+            href="https://linkedin.com/in/aronnek"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:underline"
           >
-            linkedin.com/in/aronne-kohler-2b1204292
+            linkedin.com/in/aronnek
           </a>
           <span className="hidden sm:inline">|</span>
           <a
@@ -48,7 +48,7 @@ export default function Resume() {
         <Entry
           heading="Liberty University"
           subheading="B.S. in Computer Science • Lynchburg, VA"
-          date="Aug 2022 – May 2026"
+          date="Aug 2022 – Present"
         />
       </Section>
 
@@ -59,11 +59,10 @@ export default function Resume() {
           subheading="Cachengo — Huntingdon, TN (Remote)"
           date="Jun 2025 – Aug 2025"
           bullets={[
-            "Led the transformation of internal database data into leadership dashboards, improving decision-making visibility.",
+            "Led the transformation of internal database data into leadership dashboards in collaboration with engineering and operations teams, improving decision-making visibility.",
             "Generated synthetic datasets in Python to accelerate testing, analytics, and product development.",
             "Built an MCP server and integrated AI agents to automate and streamline data workflows.",
-            "Contributed production code to active company projects, enhancing performance and reliability.",
-            "Partnered with cross-functional teams to ensure data accuracy, accessibility, and scalability.",
+            "Contributed to Cachengo's Capacitor-based mobile app used by end users to monitor security cameras.",
           ]}
         />
       </Section>
@@ -71,23 +70,16 @@ export default function Resume() {
       {/* ---------- Leadership Experience ---------- */}
       <Section title="Leadership Experience">
         <Entry
-          heading="Founder & CEO, Botflow.io"
+          heading="Founder, Botflow.io"
           subheading="Lynchburg, VA & Greensboro, NC"
           date="Aug 2023 – Present"
           bullets={[
-            "Launched Botflow.io, a SaaS platform for creating embedded AI chatbots on client websites.",
-            "Acquired and managed three initial client contracts, overseeing requirements gathering, billing, and delivery.",
-            "Architected and developed the full-stack application using Next.js, React, MySQL & Prisma; deployed on Vercel.",
-          ]}
-        />
-        <Entry
-          heading="Botflow.io Capstone"
-          subheading="Liberty University • Lynchburg, VA"
-          date="Aug 2023 – Present"
-          bullets={[
-            "Defined product roadmap and feature requirements for a team of four senior developers.",
-            "Held weekly sprint planning and review meetings, ensuring milestones were achieved on schedule.",
-            "Coordinated QA cycles and integrated customer feedback, resulting in 100% completion of planned tasks.",
+            "Founded Botflow.io as an AI chatbot SaaS; acquired and managed clients before pivoting the product.",
+            "Pivoted to OpenVibeCode, a no-code web app creation platform (akin to Lovable and Base44), relaunched under the Botflow trademark on botflow.io.",
+            "Led a capstone team of four at Liberty University (Aug 2024 – May 2025), defining the product roadmap and running weekly sprint planning and review meetings.",
+            "Coordinated QA cycles and integrated customer feedback, delivering 100% of planned features on schedule.",
+            "Collaborated with the capstone team to design and deliver Botflow's no-code AI agent builder, enabling non-technical users to create and deploy custom AI workflows.",
+            "Won $1,000 in a university pitch competition for the Botflow.io business concept.",
           ]}
         />
       </Section>
@@ -95,40 +87,34 @@ export default function Resume() {
       {/* ---------- Projects ---------- */}
       <Section title="Projects">
         <Entry
-          heading="Botflow.io"
-          subheading="TypeScript • React • Next.js • Prisma"
-          date="Aug 2023 – Present"
-          bullets={[
-            "Built and iterated on Botflow.io, a service enabling clients to embed AI chatbots that schedule, take payments, and perform database queries.",
-            "Leveraged OpenAI and Anthropic APIs alongside RAG in a Next.js-powered full-stack application.",
-            "Secured three launch customers and integrated custom workflows for appointment booking and payments.",
-          ]}
-        />
-        <Entry
-          heading="Web-IDE"
-          subheading="TypeScript • Next.js • WebContainers • WASM"
+          heading="OpenVibeCode — botflow.io"
+          subheading="TypeScript • Next.js • Agents • WebContainers • Convex"
           date="Jul 2025 – Present"
           bullets={[
-            "Developed an open-source, browser-native IDE with built-in Node.js sandbox.",
-            "Leveraged WebContainers and WASM to enable a local-first development environment directly in the browser.",
+            "Built an AI-powered web IDE enabling users to build and deploy full-stack web apps in minutes through natural language. Hosted on botflow.io under the Botflow trademark.",
+            "Integrated multi-provider LLM orchestration (Claude, GPT, Fireworks) with sophisticated code diff and application algorithms for reliable autonomous code generation.",
+            "Architected browser-native Node.js execution via WebContainers and WASM, eliminating local setup friction.",
+            "Integrated Convex as the platform backend for real-time data, auth, and serverless functions out of the box.",
           ]}
         />
         <Entry
-          heading="Linkme.ltd"
-          subheading="TypeScript • React • Next.js • SVG"
-          date="Oct 2024 – Jan 2025"
+          heading="Botflow.io — Technical Implementation"
+          subheading="TypeScript • React • Next.js • Prisma"
+          date="Aug 2023 – Feb 2026"
           bullets={[
-            "Built an open-source alternative to Flowcode for generating compliant, customizable QR codes.",
-            "Implemented advanced SVG manipulation in React with exports to PNG, JPG, and PDF formats.",
-            "Integrated IP-based geotracking for scan analytics and user insights.",
+            "Built Botflow.io, a service enabling clients to embed AI chatbots that schedule appointments and take payments.",
+            "Leveraged OpenAI and Anthropic's API alongside RAG in a Next.js powered full-stack application.",
+            "Integrated custom Stripe payment flows and appointment booking workflows for three launch customers; product sunset Feb 2026 following pivot to OpenVibeCode.",
           ]}
         />
         <Entry
-          heading="Personal Website"
-          subheading="Next.js • Tailwind CSS • React • Framer Motion"
-          date="May 2025"
+          heading="Personal Website & Blog"
+          subheading="Next.js • Tailwind CSS • Java • Spring Boot • Oracle Cloud"
+          date="May 2025 – Present"
           bullets={[
             "Built a responsive portfolio site (awkohler.dev) with Next.js, Tailwind, and Framer Motion.",
+            "Integrated a full-stack blog with a Spring Boot REST API, JPA, and an Oracle Cloud database.",
+            "Deployed on Oracle Cloud Free Tier, achieving near-zero maintenance and sub 100-ms load times.",
           ]}
         />
       </Section>
@@ -137,19 +123,19 @@ export default function Resume() {
       <Section title="Technical Skills">
         <SkillLine
           label="Languages"
-          skills="TypeScript, JavaScript, Python, Java, C++, Kotlin, Swift, SQL"
+          skills="TypeScript, JavaScript, Python, Java, C++, C#, Swift, SQL"
         />
         <SkillLine
           label="Frameworks & Libraries"
-          skills="React, Next.js, Node.js, Prisma, Angular, React Native, Tailwind CSS, Pandas, NumPy, Matplotlib, PyTorch, Scikit-Learn, Reactflow"
+          skills="React, Next.js, Node.js, Express.js, Astro, Tailwind CSS, Convex, Drizzle ORM, Prisma, React Hook Form, Zod, Pandas, NumPy, Matplotlib, PyTorch, Scikit-Learn, Reactflow"
         />
         <SkillLine
-          label="Databases"
-          skills="MySQL, PostgreSQL, MongoDB, Redis, Pinecone, Epsilla, Amazon S3"
+          label="Databases & Infrastructure"
+          skills="PostgreSQL, MySQL, MongoDB, Redis, Neon, Pinecone, Amazon S3, Cloudflare R2"
         />
         <SkillLine
           label="Cloud & Tools"
-          skills="AWS, GCP, Vercel, Supabase, Docker, Cloudflare, Stripe, OpenAI API, Anthropic API"
+          skills="Vercel, Cloudflare, AWS, Fly.io, Docker, GitHub Actions, Clerk, Stripe, OpenAI API, Anthropic API"
         />
       </Section>
 

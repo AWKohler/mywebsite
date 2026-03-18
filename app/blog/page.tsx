@@ -189,7 +189,8 @@ export default async function Blog() {
           <Fragment key={p.slug}>
             <GridContainer className="col-span-3 grid lg:grid-cols-[24rem_2.5rem_minmax(0,1fr)] divide-x divide-gray-950/5 dark:divide-white/10">
               {/* Date (red) - left column */}
-              <div className="px-2 font-mono text-sm/6 font-medium tracking-widest text-black md:text-gray-500 uppercase flex items-start">
+              <div className="px-2 font-mono text-sm/6 font-medium tracking-widest text-black md:text-gray-500 uppercase flex items-start"> 
+              {/* <div className="hidden lg:flex px-2 font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase items-start"> */}
                 {p.updatedAt ? formatDate(p.updatedAt) : ""}
               </div>
               {/* Middle gap column */}
