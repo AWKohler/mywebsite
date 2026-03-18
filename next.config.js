@@ -5,8 +5,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  // You can add more Next.js options here if needed
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

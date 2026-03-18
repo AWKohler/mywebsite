@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 
 export default function HomePage() {
   // Profile section refs and animations
-  const profileRef = useRef(null);
+  const profileRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: profileRef,
     offset: ["start start", "end start"],
@@ -27,7 +27,7 @@ export default function HomePage() {
   const rotate = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 0, 10, 20]);
 
   // Header section refs and animations
-  const headerRef = useRef(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: headerProgress } = useScroll({
     target: headerRef,
     offset: ["start start", "end start"],
@@ -64,8 +64,8 @@ export default function HomePage() {
   };
 
   // Projects section refs and animations
-  const projectsSectionRef = useRef(null);
-  const projectsScrollRef = useRef(null);
+  const projectsSectionRef = useRef<HTMLDivElement>(null);
+  const projectsScrollRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress: projectsProgress } = useScroll({
     target: projectsSectionRef,
@@ -81,7 +81,7 @@ export default function HomePage() {
   });
 
   // Projects horizontal scroll animations
-  const projectsContainerRef = useRef(null);
+  const projectsContainerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: projectsHScroll } = useScroll({
     target: projectsContainerRef,
     offset: ["start start", "end end"],
@@ -90,7 +90,7 @@ export default function HomePage() {
   const horizontalScroll = useTransform(projectsHScroll, [0.1, 0.9], ["0%", "-75%"]);
 
   // Projects carousel refs and animations
-  const carouselRef = useRef(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: carouselProgress } = useScroll({
     target: carouselRef,
   });
