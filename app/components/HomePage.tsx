@@ -162,7 +162,7 @@ export default function HomePage() {
           <h2 className="mb-4">Aronne Kohler</h2>
           <div className="text-2xl md:text-5xl">
             <p>Full stack developer, AI integrator</p>
-            <p className="mt-3">Student, Liberty University</p>
+            <p className="">Liberty University '27</p>
           </div>
         </motion.div>
 

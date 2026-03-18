@@ -122,7 +122,7 @@ export default function MobileHomePage() {
             <h2 className="">Aronne Kohler</h2>
             <div className="text-2xl md:text-5xl">
               <p>Full stack developer, AI integrator</p>
-              <p>Student, Liberty University</p>
+              <p>Liberty University '27</p>
             </div>
           </div>
 
